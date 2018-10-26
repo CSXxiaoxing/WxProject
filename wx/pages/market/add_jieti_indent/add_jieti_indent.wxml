@@ -1,0 +1,101 @@
+<!--pages/my/my_indent/add_indent/add_indent.wxml-->
+<view class="address_container" catchtap="jumpToAddress">
+
+  <view class="address_text" wx:if="{{address!=undefined}}">
+    <view>{{address.name}}
+      <text class="phone_txt">{{address.phone}}</text>
+    </view>
+    <view>
+      <text class="address_txt">{{address.addAll}}</text>
+    </view>
+  </view>
+    <view class="address_text" wx:else>
+    <view >请先选择地址</view>
+  </view>
+  <image src="/images/Jump.png"></image>
+
+</view>
+<image mode="widthFix" src="/images/bian.png" class="underline"></image>
+
+<!--订单的货品-->
+<view class="shops_container">
+ 
+    <view class="shop_item">
+      <view class="shop_head">
+        <image src="{{good.sellerLogo}}"></image>
+        <text>{{good.shopName}}</text>
+      </view>
+      <view class="goods_contents">
+        
+          <view class="goods_item">
+            <image src="{{good.img}}"></image>
+            <view class="goods_desc">
+              <view class="goods_name">
+                {{good.goodsName}}
+              </view>
+              <view class="goods_price">
+                ￥{{good.price}}
+              </view>
+              <view class="goods_num">X {{good.count_num}} <text wx:if="{{good.style!=null && good.style!=undefined && good.style!=''}}">({{good.style}})</text></view>
+            </view>
+          </view>
+        
+      </view>
+    </view>
+
+</view>
+
+<!--发票-->
+
+<view class="bill_container">
+  <view class="bill_head" catchtap="hideOrShowBill">
+    <text>发票</text>
+    <image src="{{hideOrShowBill?'/images/hide.png':'/images/display.png'}}"></image>
+  </view>
+  <form  bindsubmit="setTickets">
+  <view class="bill_contents" hidden="{{hideOrShowBill}}">
+    <view class="bill_items">
+      <text>发票抬头：</text>
+      <input name="ticket" value="{{ticket}}" class="bill_input" placeholder-class="bill_h" placeholder="填写发票抬头" />
+    </view>
+    <view class="bill_items">
+      <text>发票抬头：纸质发票</text>
+
+    </view>
+    <view class="bill_items">
+      <text>发票内容：明细</text>
+
+    </view>
+    <button style="background-color:{{tColor}};" class="sava_btn" formType="submit">保存并使用</button>
+    <button class="noBill_btn" catchtap="noBill">不开发票</button>
+  </view>
+  </form>
+</view>
+
+<!--商品金额计算-->
+<view class="indent_count">
+  <view >
+     <text class="item-name">竞价商品单价</text><text class="right_text color_blue" style="color:{{tColor}};">+￥{{good.price}}</text>
+    
+  </view>
+  <view >
+     <text class="item-name">运费</text><text class="right_text color_blue" style="color:{{tColor}};">+￥{{good.transFee}}</text>
+    
+  </view>
+    <view>
+      <text >买家留言：</text> 
+      <input bindinput="InputEvent" maxlength='150' placeholder='填写内容已和卖家协商确认' style="height:66rpx;line-height:66rpx;width:500rpx;" class="text-limit1"></input>
+  </view>
+</view>
+<view class="act_money" style="color:{{tColor}};">
+  实付款：￥{{good.total}}
+</view>
+<view class="sel_pay">
+    <form report-submit="true" bindsubmit="pay">
+    <button formType="submit"  class="act paybtn" style="background-color:{{tColor}};">
+     微信支付
+  </button>
+  </form>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,33 @@
+<!--pages/bindPhone/bindPhone.wxml-->
+
+<view class="container">
+    <image src="{{userInfo.avatarUrl}}" class="user-icon" />
+    <view class="text">
+        <view>亲爱的用户：</view>
+        <view>请绑定一个手机号，以便我们给您提供更好的服务</view>
+    </view>
+
+    <button style="background: -webkit-linear-gradient(-90deg,{{tColor}},{{tColorHelp}});" open-type='getPhoneNumber' class="bind-btn act" bindgetphonenumber='getPhoneNum'>使用微信已绑定的手机号</button>
+
+    <view class="or">
+        <view/>
+        <text>或</text>
+        <view/>
+    </view>
+    <form bindsubmit="bindPhone">
+    <view class="iput-item">
+        <view>手机号</view>
+        <input bindinput='inputEvent' value='{{phone}}' data-type='phoneNum' type='number' maxlength='11' name="phone" placeholder='请输入绑定手机号码' />
+    </view>
+     <view class="iput-item">
+        <view>验证码</view>
+        <input name="qrCode" bindinput='inputEvent' value='{{qrCode}}' data-type='qrCode'  maxlength='6' type='number' placeholder='请输入验证码' />
+        <view class="qrcode act" wx:if="{{!countTime}}" catchtap='getQrCode'>获取验证码</view>
+        <view class="qrcode act" wx:else >{{time}}s</view>
+    </view>
+    <button formType="submit"  class="bind-btn act" style="background: -webkit-linear-gradient(-45deg,{{tColor}},{{tColorHelp}});"      >绑定</button>
+    </form>
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,86 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.3",
+	"appid": "wx2ad56d88e6c1c441",
+	"projectname": "%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": 0,
+					"name": "index0",
+					"pathName": "pages/index0/index0",
+					"query": "pages=index0",
+					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "购物车",
+					"pathName": "pages/shopCart/shopCart",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 2,
+					"name": "index",
+					"pathName": "pages/bargainList/bargainList",
+					"query": "id=1",
+					"scene": "1011"
+				},
+				{
+					"id": 3,
+					"name": "newPages",
+					"pathName": "pages/fx/fx_QR/fx_QR",
+					"query": "type=我的用户",
+					"scene": "1011"
+				},
+				{
+					"id": 4,
+					"name": "页面优化",
+					"pathName": "pages/add_address/add_address",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": 5,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 6,
+					"name": "地址",
+					"pathName": "pages/inTime/inTime",
+					"query": "",
+					"scene": "1011"
+				}
+			]
+		}
+	}
+}

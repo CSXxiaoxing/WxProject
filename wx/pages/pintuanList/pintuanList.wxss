@@ -1,0 +1,47 @@
+/* pages/barginList/barginList.wxss */
+page{
+  background-color: #fafafa;
+}
+.bargin-item{
+
+  display: flex;
+  margin-top: 20rpx;
+  background-color: #fff;
+   padding: 25rpx 35rpx 25rpx 20rpx; 
+   color: #4c4c4c;
+}
+.bargin-item > image{
+  display: block;
+  margin-right: 50rpx;
+  height: 190rpx;
+    width: 190rpx;
+}
+.goods-content{
+    position: relative;
+}
+.goodsName{
+  font-size: 28rpx;
+  line-height: 42rpx;
+}
+.goodsName + view{
+  position: absolute;
+  left: 0;
+  bottom: 11rpx;
+}
+.bottom{
+  display: flex;
+  line-height: 96rpx;
+  align-items: center;
+  padding: 0 20rpx;
+  color: #4d4d4d;
+  font-size: 36rpx;
+  text-align: center;
+}
+.bottom view:nth-child(2n-1){
+  flex: 1;
+  height: 1px;
+  background-color:  #ccc;
+}
+.bottom view:nth-child(2){
+  width: 200rpx;
+}

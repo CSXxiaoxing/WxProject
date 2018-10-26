@@ -1,0 +1,41 @@
+<view class="history_container" wx:if="{{history_data.length>0}}">
+  <block wx:for="{{history_data}}" wx:for-item="good">
+    <view class="history_item">
+      <image mode="aspectFit" src="{{good.img}}" data-productid="{{good.id}}" catchtap="jumpToGoodDetail"></image>
+      <view class="goods_desc_content">
+        <view class="goods_name">
+          {{good.name}}
+        </view>
+        <view class="goods_price" style='color:{{tColor}}'>￥{{good.price}}
+          <text>市场价：￥{{good.marketPrice}}</text>
+        </view>
+        <view class="buy_container">
+          <view style='background-color:{{tColor}}' class="buy_btn act" data-productid="{{good.id}}" catchtap="jumpToGoodDetail">
+            去看看
+          </view>
+          
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+   <view class="noData-container"   wx:if="{{history_data.length==0 && control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+<!--底部加载更多-->
+<!--<view class="load-more-wrap">
+  <block wx:if="{{has_more}}">
+    <view class="load-content">
+      <text class="weui-loading" />
+      <text class="loading-text">加载中</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="load-content">
+      <text>{{bottom_desc}}</text>
+    </view>
+  </block>
+</view>-->
+
+<tool bind:toolFun="onToolFun"></tool>

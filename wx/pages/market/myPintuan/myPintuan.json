@@ -1,0 +1,4 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+            "navigationBarTitleText": "我的拼团"
+}

@@ -1,0 +1,68 @@
+<view class="coupon_container">
+  <view class="title_container">
+    <view id="0" style=" {{slected=='0' ? 'color:'+tColor+';border-bottom-color:'+tColor+';' : ''}}" bindtap="type_select" class="title {{slected=='0' ? 'text_select' : ''}}">默认</view>
+    <view id="1" style=" {{slected=='1' ? 'color:'+tColor+';border-bottom-color:'+tColor+';' : ''}}" bindtap="type_select" class="title {{slected=='1' ? 'text_select' : ''}}">即将过期</view>
+    <view id="2" style=" {{slected=='2' ? 'color:'+tColor+';border-bottom-color:'+tColor+';' : ''}}" bindtap="type_select" class="title {{slected=='2' ? 'text_select' : ''}}">面值最大</view>
+  </view>
+     <!--循环添加优惠券-->
+  <!-- <view class="coupon_item_container" wx:if="{{coupon_datas.length>0}}">
+ 
+    <block wx:for="{{coupon_datas}}" wx:for-item="coupon">
+    <view class="couponItem">
+      <image style="background-color:{{tColor}};" src="/images/youbg.png">
+      </image>
+      <view class="coupon_desc">
+        <view class="coupon_val">
+          ￥<text>{{coupon.price}}</text>
+        </view>
+
+        <view class="coupon_bottom_desc">
+             <view class="condition">满 {{coupon.rule}}元 可用</view>
+             <view class="time_desc">{{coupon.time_start}}至{{coupon.time_end}}</view>
+        </view>
+      </view>
+      <text catchtap="toShop" class="getCoupons act" data-shopid="{{coupon.shopId}}">立即使用</text>
+    </view>
+      </block>
+  </view>
+   <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view> -->
+
+      <!--循环添加优惠券-->
+  <view class="coupon_item_container" wx:if="{{coupon_datas.length>0}}">
+
+    <block wx:for="{{coupon_datas}}" wx:for-item="coupon">
+
+      <view class="couponItem">
+
+
+        <view class="coupon_desc">
+          <view class="shopName position text-limit1">{{coupon.shopName}}
+          </view>
+          <view class="coupon_val text-limit1 position">
+            ￥
+            <text>{{coupon.price}}</text>
+          </view>
+          <view class="position coupon_bottom_desc">
+            <view style="flex:1">
+              <view class="condition text-limit1">满 {{coupon.rule}}元 可用</view>
+              <view class="time_desc">{{coupon.time_start}}至{{coupon.time_end}}</view>
+            </view>
+            <view class="getCoupons act" catchtap="toShop" data-shopid="{{coupon.shopId}}">立即使用</view>
+          </view>
+        </view>
+        <image style="background-color:{{tColor}};" src="/images/youbg.png" />
+      </view>
+    </block>
+  </view>
+     <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

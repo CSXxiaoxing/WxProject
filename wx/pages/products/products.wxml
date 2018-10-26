@@ -1,0 +1,46 @@
+<!--pages/products/products.wxml-->
+<!--第一种轮播图  -->
+<swiper wx:if="{{data.banner.length>0}}" class="banner1-swiper" interval="5000" indicator-color="rgba(0, 0, 0, 0.3)" indicator-dots="true" duration="1500" circular="true" autoplay="true">
+  <block wx:for="{{data.banner}}">
+  <swiper-item>
+    <image class="banner1-img" src="{{item}}"></image>
+  </swiper-item>
+  </block>
+</swiper>
+<!--产品展示  -->
+<view class="goodsList1-container" wx:if="{{data.recommonds.length>0}}">
+  <!--头部  -->
+  <view class="goodsList1-head">
+    <view>
+    <view class="goodsList1-line"></view>
+    <view class="goodsList1-title">产品展示</view>
+    </view>
+  </view>
+  <scroll-view scroll-x="true" scroll-y="false" class="goodsList1-scrollView">
+    <block wx:for="{{data.recommonds}}">
+    <view class="goodsList1-scroll-item" catchtap="jumpToProductDetail" data-productid="{{item.id}}">
+      <image src="{{item.image}}"></image>
+      <view class="text-limit1">{{item.name}}</view>
+    </view>
+    </block>
+  </scroll-view>
+
+</view>
+
+<!--产品展示二  -->
+<view class="goodsList2-container" wx:if="{{data.products.length>0}}">
+<block wx:for="{{data.products}}">
+     <view class="goodsList2-item"  catchtap="jumpToProductDetail" data-productid="{{item.id}}">
+        <image src="{{item.image}}"></image>
+
+        <view class="text-limit1">{{item.name}}</view>
+     </view>
+       </block>
+</view>
+
+   <view class="noData-container"   wx:if="{{!(data.banner.length>0 || data.recommendProduct.length>0 || data.showProduct.length>0)}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

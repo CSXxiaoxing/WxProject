@@ -1,0 +1,68 @@
+/* 魔法导航部分 */
+.sort1 {
+    padding: 20rpx 0rpx 0;
+}
+.sort1 .hang{
+    width:25%;
+}
+.sort2 {
+    padding: 40rpx 0rpx 0;
+}
+.sort2 .hang{
+    width:33.33%;
+}
+.sort3 {
+    padding: 20rpx 20rpx 0;
+}
+.sort3 .hang{
+    width:20%;
+}
+
+.hang{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items:center;
+    overflow: hidden;
+    position: relative;
+}
+.mf {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.mf image{
+    width:96rpx;
+    height: 96rpx;
+}
+.hang view{
+    margin: 24rpx 0 40rpx;
+}
+.mf .cub-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.cub-txt {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.butZJ {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    background: rgba(255,255,255,0);
+}

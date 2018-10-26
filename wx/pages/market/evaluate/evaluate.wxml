@@ -1,0 +1,54 @@
+<!--pages/test_eval/test_eval.wxml-->
+<view class="eval-head">
+  <view class="eval-title act" catchtap='changeTab' data-tabid='0' style="{{tabId==0?'color:'+tColor:''}}">
+    <view>待评价</view>
+  </view>
+  <view class="title-line" />
+  <view class="eval-title act" catchtap='changeTab' data-tabid='1' style="{{tabId==1?'color:'+tColor:''}}">
+    <view>已评价</view>
+  </view>
+</view>
+
+<view class="eval-container">
+  <view class="wait-container" hidden='{{tabId!=0}}'>
+    <block wx:if="{{wait_eval.length>0}}">
+    <block wx:for="{{wait_eval}}">
+      <view class="eval-item">
+        <image src="{{config+item.productLeadLittle}}"></image>
+        <view>
+          <view class="text-limit2">{{item.productName}}
+            <view class="eval-btn act" style="color:{{tColor}};border-color:{{tColor}}" data-goodsimg='{{config+item.productLeadLittle}}' data-goodsname='{{item.productName}}' data-ordersn='{{item.ordersSn}}' data-productid='{{item.productId}}' data-productgoodsid='{{item.productGoodsId}}' data-ordersproductid='{{item.id}}' catchtap='jumpToAddEval'>去评价</view>
+          </view>
+        </view>
+      </view>
+      
+    </block>
+      </block>
+          <view class="noData-container"  wx:elif="{{control1}}">
+      <!-- <image class="noData-logo" src="/images/cry.png"></image> -->
+      <text>-暂无未评价的订单商品信息-</text>
+    </view>
+  </view>
+ 
+
+  <view class="wait-container" hidden='{{tabId!=1}}'>
+      <block wx:if="{{is_eval.length>0}}">
+        <block wx:for="{{is_eval}}">
+    <view class="eval-item">
+      <image src="{{config+item.productLeadLittle}}"></image>
+      <view>
+        <view class="text-limit2">{{item.productName}}
+          <view class="eval-btn act" style="color:{{tColor}};border-color:{{tColor}}" data-goodsimg='{{config+item.productLeadLittle}}' data-goodsname='{{item.productName}}' data-ordersn='{{item.ordersSn}}' data-productid='{{item.productId}}' data-productgoodsid='{{item.productGoodsId}}' data-ordersproductid='{{item.id}}' catchtap='jumpToEvalDetail'>查看评价</view>
+        </view>
+      </view>
+    </view>
+    </block>
+    </block>
+     <view class="noData-container"  wx:elif="{{control2}}">
+      <!-- <image class="noData-logo" src="/images/cry.png"></image> -->
+      <text>-暂无已评价的订单商品信息-</text>
+    </view>
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

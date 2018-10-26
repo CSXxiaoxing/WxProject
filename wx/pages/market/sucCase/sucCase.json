@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "navigationBarTitleText": "成功案例",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+}

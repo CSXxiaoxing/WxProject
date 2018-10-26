@@ -1,0 +1,112 @@
+<!--pages/index/goods_search/goods_search.wxml-->
+<form bindsubmit="submsit">
+  <view class="goods_search_container">
+
+    <view class="goods_search_head" style="background-color:{{tColor}};">
+      
+      <view class="search-child">
+        <view data-index="0" style="display: flex;align-items: center;" bindtap="onClickButton">
+          <image src="/images/ditu.png" style="margin: 0 20rpx 0 0;width: 43rpx;height: 40rpx;display: block;"></image>
+          <view class="text-limit1" style="max-width: 90rpx;color:#fff;">{{headAdd}}</view>
+          <image src='/images/hide.png' style=" margin: 0 26rpx 0 30rpx;width: 18rpx;height: 10rpx;display: block;"></image>
+        </view>
+        <view style="display: flex;align-items: center;display: flex;flex: 1;box-sizing: border-box;border-radius: 8rpx;border: 1px solid rgba(40, 40, 40, 0.9);padding: 0 20rpx 0 28rpx;"  catchtap="jumpToSearch">
+          <input bindconfirm="reqConfirm" name="keyword" bindinput='inputEvent' value='{{goods_type}}' placeholder='搜索你想要的' placeholder-style="color:#f3f3f3;" />
+
+          <button formType="submit" class="sgo_stn">
+            <image src='/images/sousuo03.png'>
+
+            </image>
+          </button>
+        </view>
+      </view>
+      <!--sortype控制切换不同的选中样式-->
+      <view class="goods_sort_title" hidden="{{hideOrShowGoods || showDialog}}">
+        <text style="{{sortType==0?'color:'+tColor+';':''}}" class="{{sortType==0?' color_blue':''}}" data-sortid="0" catchtap="changeSort">全部</text>
+        <text style="{{sortType==1?'color:'+tColor+';':''}}" class="{{sortType==1?' color_blue':''}}" data-sortid="1" catchtap="changeSort">最新</text>
+        <text style="{{sortType==2?'color:'+tColor+';':''}}" class="{{sortType==2?' color_blue':''}}" data-sortid="2" catchtap="changeSort">销量</text>
+        <text style="{{sortType==3?'color:'+tColor+';':''}}" class="{{sortType==3?' color_blue':''}}" data-sortid="3" catchtap="changeSort">价格</text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{hideOrShowGoods}}" class="MarginTop1"></view>
+  <view wx:if="{{!hideOrShowGoods}}" class="MarginTop2"></view>
+  <!--商品展示-->
+  <view class="hot_act" hidden="{{hideOrShowGoods}}">
+    <view class="goods_show" wx:if="{{goods_datas.length>0}}">
+      <block wx:for="{{goods_datas}}" wx:for-item="datas">
+        <view catchtap="jumpToDetail" data-productid="{{datas.goods_id}}" class="goods_showitem act">
+          <image src="{{datas.goods_img}}"></image>
+          <view>{{datas.goods_name}}</view>
+          <view style="color:{{tColor}};">￥{{datas.goods_price}}</view>
+        </view>
+
+      </block>
+
+    </view>
+       <view class="noData-container" hidden="{{hideOrShowGoods}}"  wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+  </view>
+  <!--热门商品关键词选择-->
+  <view class="keyWord_sel_add" hidden="{{!first_enter}}">
+    <view class="keyword_title">热门搜索</view>
+    <view class="keyword_container">
+
+      <block wx:for="{{keywords}}" wx:for-item="keyword">
+
+        <text data-keyword="{{keyword}}" catchtap="search" class="act">{{keyword}}</text>
+
+      </block>
+
+
+    </view>
+  </view>
+</form>
+<!-- <template is="diaView" data="{{showDialog:showDialog}}" /> -->
+<!-- <template name="diaView"> -->
+<view class="dialog {{ showDialog ? 'dialog_show animation' : '' }}">
+  <view class="dialog_mask" bindtap="onClickdiaView" />
+  <view class="dialog_container" style="height:{{dialog_height}}rpx">
+
+    <!--  //此区域自定义视图  -->
+    <scroll-view scroll-y="true" scroll-top="{{scrollPosition}}" style="height:100%;background:white;">
+      <view class="loc-head" style='margin-top:40rpx;'>
+        <view class="loc-head-item" catchtap='selAll' style="{{isAll?'background-color:'+tColor+';color:#fff;':''}}">全国</view>
+      </view>
+      <view class="loc-title">GPS定位</view>
+      <view class="loc-head">
+        <view class="loc-head-item text-limit1" style="{{(locCityId!=-1 && !isAll && isSelLoc ) || (selCityId == locCityId  && !isAll && locCityId != -1 && isSelLoc)?'background-color:'+tColor+';color:#fff;':''}}"  catchtap='selLocAddress'>{{locCityName}}</view>
+        <image class="refresh-btn" src="/images/F5.png" catchtap='refreshLoc'></image>
+        <view style="font-size:28rpx">定位</view>
+      </view>
+      <view>
+        <view class="loc-title">城市</view>
+        <view class="loc-container loc-city" >
+          <block wx:for="{{cityList}}">
+            <view  class="loc-item text-limit1" data-cityname='{{item.regionName}}' data-cityid='{{item.id}}' catchtap='selCity' style="{{item.id==selCityId&&!isAll?'background-color:'+tColor+';color:#fff;':''}}">{{item.regionName}}</view>
+          </block>
+        </view>
+      </view>
+      <view>
+        <view class="loc-title">省份</view>
+        <view class="loc-container">
+          <block wx:for="{{provinceList}}">
+            <view data-proname='{{item.regionName}}' class="loc-item text-limit1" data-proid='{{item.id}}' catchtap='selProvince' style="{{item.id==selProId&&!isAll?'background-color:'+tColor+';color:#fff;':''}}">{{item.regionName}}</view>
+          </block>
+        </view>
+      </view>
+    </scroll-view>
+
+  </view>
+</view>
+<!-- </template> -->
+<view class="{{ showDialog ? 'dialog_show' : '' }}">
+  <view class="dialog-btn-container ">
+    <text catchtap='selAll' data-types='1'>重置</text>
+    <text style='background-color:{{tColor}};color:#fffefe;' catchtap='sureAddress'>确定</text>
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

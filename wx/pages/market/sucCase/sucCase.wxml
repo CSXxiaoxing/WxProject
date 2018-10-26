@@ -1,0 +1,32 @@
+<!--第一种轮播图  -->
+<swiper wx:if="{{caseData.banners.length>0}}" class="banner1-swiper" interval="5000" indicator-color="rgba(255, 255, 255, 0.3)" indicator-dots="true" duration="1500" circular="true" autoplay="true">
+  <block wx:for="{{caseData.banners}}">
+    <swiper-item>
+      <image class="banner1-img" src="{{caseData.config.image_resource+item.image}}"></image>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 案例展示一  -->
+<view class="case1-container" wx:if="{{caseData.successCases.length>0}}">
+  <view class="case1-head">
+    <view class="case1-line"></view>
+    <view class="case1-title" >成功案例</view>
+  </view>
+
+  <view class="case1-item-container" wx:if="{{caseData.successCases.length>0}}">
+    <block wx:for="{{caseData.successCases}}">
+      <view class="case1-item" catchtap="jumpToCaseDetail" data-caseid="{{item.id}}">
+        <image mode='aspectFill' src="{{caseData.config.image_resource+item.smallImage}}"></image>
+        <view class="text-limit1">{{item.caseName}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+   <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

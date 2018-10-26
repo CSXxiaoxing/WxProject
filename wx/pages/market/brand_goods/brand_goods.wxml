@@ -1,0 +1,44 @@
+<!--pages/index/brand_goods/brand_goods.wxml-->
+<view class="head">
+  <view class="act3 brand_logo_view">
+     <image src="/images/ppai.png"></image>
+  </view>
+  <view class="titles">
+    <text  data-tabid="0" catchtap="changeTab" class="{{tabId==0?'color_blue':''}}">全部</text>
+    <text  data-tabid="1" catchtap="changeTab" class="{{tabId==1?'color_blue':''}}">最新</text>
+    <text  data-tabid="2" catchtap="changeTab" class="{{tabId==2?'color_blue':''}}">销量</text>
+    <text  data-tabid="3" catchtap="changeTab" class="{{tabId==3?'color_blue':''}}">价格</text>
+  </view>
+</view>
+
+  <view class="hot_act">
+
+      <view class="goods_show">
+          <block wx:for="{{goods}}" wx:for-item="good">
+          <view catchtap="jumpToDetail" class="goods_showitem act" data-productid="{{good.id}}">
+            <image src="{{good.img}}"></image>
+            <view>{{good.name}}</view>
+            <view>￥{{good.price}}</view>
+          </view >
+          </block>
+                     <!--<view class="goods_showitem act">
+            <image src="/images/cp.png"></image>
+            <view>时尚斜挎包真皮</view>
+            <view>￥59</view>
+          </view >
+                    <view class="goods_showitem act">
+            <image src="/images/cp.png"></image>
+            <view>时尚斜挎包真皮</view>
+            <view>￥59</view>
+          </view >
+                    <view class="goods_showitem act">
+            <image src="/images/cp.png"></image>
+            <view>时尚斜挎包真皮</view>
+            <view>￥59</view>
+          </view >-->
+      </view>
+      
+  </view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

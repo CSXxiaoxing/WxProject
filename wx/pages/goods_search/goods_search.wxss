@@ -1,0 +1,368 @@
+/* pages/index/goods_search/goods_search.wxss */
+
+page {
+  color: #4d4d4d;
+  height: 100%;
+}
+
+/*占位*/
+
+.MarginTop1 {
+  width: 100%;
+  height: 110rpx;
+}
+
+.MarginTop2 {
+  width: 100%;
+  height: 170rpx;
+}
+
+/*搜索头部*/
+
+.search_input_container {
+  padding: 20rpx;
+}
+
+.goods_search_head {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  z-index: 13;
+  width: 100%;
+  
+}
+.search-child {
+    padding: 10rpx 30rpx 10rpx 30rpx;
+    font-size: 28rpx;
+    color: #282828;
+    display: flex;
+    line-height: 60rpx;
+    /* background-color: #ffd100; */
+    /* background-color:#6e00e6; */
+}
+/*搜索按钮*/
+
+.sgo_stn {
+  padding: 0;
+  width: 35rpx;
+  background-color: transparent;
+}
+
+.sgo_stn:after {
+  border: 0;
+}
+
+.search03 input {
+  flex: 1;
+}
+
+.input_view {
+  align-items: center;
+  border-radius: 35rpx;
+  display: flex;
+  border: 1px #e6e6e6 solid;
+  height: 70rpx;
+  position: relative;
+}
+
+button image {
+  width: 34rpx;
+  height: 34rpx;
+  display: block;
+}
+
+.soucuo_icon {
+  margin: 0 20rpx 0 20rpx;
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+input {
+  flex: 1;
+  margin-right: 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+
+.input_h {
+  color: #e6e6e6;
+}
+
+.go_icon {
+  display: block;
+  width: 33rpx;
+  height: 23rpx;
+}
+
+/*排序标题栏*/
+
+.goods_sort_title {
+  z-index: 9;
+  padding: 0 20rpx;
+  display: flex;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #b3b3b3;
+  border-bottom: 1px #e6e6e6 solid;
+}
+
+.goods_sort_title text {
+  text-align: center;
+  flex: 1;
+}
+
+/*选中下划线*/
+
+.underline {
+  position: relative;
+}
+
+.underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 33rpx;
+  width: 115rpx;
+  height: 1px;
+  background: #91a3ff;
+}
+
+/*商品展示*/
+
+.goods_show {
+  padding: 50rpx 30rpx 0rpx 30rpx;
+  overflow: hidden;
+}
+
+.goods_show view {
+  width: 200rpx;
+  float: left;
+}
+
+.goods_show view image {
+  display: block;
+  width: 100%;
+  height: 200rpx;
+}
+
+.goods_show view view:nth-child(2) {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  font-size: 24rpx;
+  color: #4d4d4d;
+  line-height: 64rpx;
+}
+
+.goods_show view view:last-child {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  font-size: 28rpx;
+  color: #91a3ff;
+}
+
+.goods_showitem {
+  margin-bottom: 30rpx;
+  margin-left: 45rpx;
+}
+
+.goods_showitem:nth-child(3n-2) {
+  margin-left: 0rpx;
+}
+
+/*关键词布局*/
+
+.keyword_title {
+  border-bottom: 1px solid #e6e6e6;
+  padding-left: 40rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+}
+
+.keyword_container {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 56rpx;
+  font-size: 24rpx;
+  padding: 20rpx 40rpx 0 40rpx;
+}
+
+.keyword_container text {
+  margin-right: 40rpx;
+  margin-bottom: 40rpx;
+  padding: 0 28rpx 0 28rpx;
+  background-color: #f1f0fa;
+  border-radius: 28rpx;
+}
+
+.keyword_act:active {
+  background-color: #91a3ff;
+  color: #fff;
+}
+
+/*弹窗  */
+
+.backgroundViewStyle {
+  margin-top: 30rpx;
+  background: white;
+  height: 500rpx;
+  flex-direction: column;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.flex_Center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.demoButtonStyle {
+  background-color: #3cb371;
+  width: 60%;
+  height: 100rpx;
+  color: #fff;
+}
+
+.dialog_mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.dialog_container {
+  height: 1100rpx;
+  position: fixed;
+  top: 82rpx;
+  width: 750rpx;
+  background: white;
+  transform: translateY(-100%);
+  transition: all 0.4s ease;
+  z-index: 11;
+}
+
+.dialog_show .dialog_container, .dialog_show .dialog-btn-container {
+  transform: translateY(0);
+}
+
+.dialog_show .dialog_mask {
+  display: block;
+}
+
+.dialog__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.dialog__container {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+  z-index: 11;
+  height: 100%;
+}
+
+.dialog--show {
+  transform: translateY(0);
+}
+
+.dialog--show .dialog__mask {
+  display: block;
+}
+
+/*定位的样式  */
+
+.loc-title {
+  padding-top: 10rpx;
+  padding-left: 40rpx;
+  line-height: 88rpx;
+  font-size: 28rpx;
+  color: #808080;
+}
+
+.loc-head-item, .loc-item {
+  background-color: #f2f2f2;
+  border-radius: 7rpx;
+  width: 160rpx;
+  text-align: center;
+  line-height: 70rpx;
+  color: #4d4d4d;
+  font-size: 28rpx;
+}
+
+.loc-head {
+  margin-bottom: 10rpx;
+  padding-left: 40rpx;
+  display: flex;
+  align-items: center;
+}
+.loc-head .text-limit1 {
+    border-radius: 5rpx;
+}
+
+.refresh-btn {
+  margin-left: 40rpx;
+  padding: 20rpx;
+  width: 30rpx;
+  height: 27rpx;
+  display: block;
+}
+
+.loc-container {
+  padding: 0 40rpx 100rpx 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loc-city {
+  padding: 0 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.loc-item {
+  margin-bottom: 40rpx;
+}
+
+.loc-item:nth-child(3n-1) {
+  margin-left: 95rpx;
+  margin-right: 95rpx;
+}
+
+.dialog-btn-container {
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+  z-index: 14;
+  display: flex;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #282828;
+}
+
+.dialog-btn-container text {
+  flex: 1;
+  border-top: 1px solid #f2f2f2;
+  box-sizing: border-box;
+}

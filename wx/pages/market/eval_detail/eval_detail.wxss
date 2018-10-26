@@ -1,0 +1,76 @@
+page{
+  background-color: #f2f2f2;
+}
+.evaluate-item{
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.evaluate-head{
+  display: flex;
+  padding: 30rpx 30rpx 30rpx 20rpx;
+  line-height: 51rpx;
+}
+.evaluate-head>image{
+  display: block;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 30rpx 0 0;
+  border-radius: 50%;
+}
+.evaluate-head>view{
+  font-size: 28rpx;
+  color: #4d4d4d;
+  
+  flex: 1;
+}
+.evaluate-head>text{
+  font-size: 24rpx;
+  color: #999;
+}
+.grade-imgs{
+  margin-top: 11.5rpx;
+  display: flex;
+}
+.g-img{
+  margin-right: 12rpx;
+  position: relative;
+     width: 24rpx;
+  height: 20rpx;
+}
+.g-img view{
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  
+  height: 100%;
+}
+.g-img image{
+  z-index: 3;
+  width: 24rpx;
+  height: 20rpx;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.eval-text{
+  color: #4d4d4d;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  padding: 0 20rpx 20rpx 20rpx;
+}
+.eval-images{
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0 25rpx 30rpx 25rpx;
+}
+.eval-images image{
+  width: 220rpx;
+  height: 160rpx;
+  margin-bottom: 10rpx;
+  display: block;
+}
+.eval-images view:nth-child(3n-1){
+  margin: 0 20rpx;
+}

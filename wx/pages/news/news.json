@@ -1,0 +1,5 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+            "navigationBarTitleText": "新闻资讯",
+            "backgroundTextStyle": "dark"
+}

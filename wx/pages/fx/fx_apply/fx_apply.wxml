@@ -1,0 +1,89 @@
+
+<view class="fx-ti-xian">
+    <view class="sq-center">
+        <view class="head">分销申请</view>
+        <view class="ying ying1">
+            <view class="text xin">姓名</view>
+            <input placeholder="请输入姓名" class="ipt" type="text" confirm-type="next"  bindinput="onipt" data-ele="1"></input>
+        </view>
+        <view class="ying">
+            <view class="text xin">手机</view>
+            <input placeholder="请输入手机号码" class="ipt" type="number" confirm-type="done"  bindinput="onipt" data-ele="2"></input>
+        </view>
+        <view class="ying">
+            <view class="text xin">邮箱</view>
+            <input placeholder="请输入邮箱" class="ipt" type="text" confirm-type="done"  bindinput="onipt" data-ele="3"></input>
+        </view>
+        <view class="ying">
+            <view class="text">推广码</view>
+            <input placeholder="{{QRcode || '请输入推广码'}}" disabled="{{QRcode?true:false}}" class="ipt" type="number" confirm-type="done"  bindinput="onipt" data-ele="4"></input>
+        </view>
+
+        <view class="ying-qita" wx:if="{{data }}">
+            <view class="ying-xian"></view>
+            <view class="text">其他信息</view>
+            <block wx:for="{{data}}" wx:key="{{index}}">
+                <view class="qt-starView"  wx:if="{{item.isShow==1}}">
+                
+                <input placeholder="{{item.placeholder}}" class="ipt qt-star" type="text" confirm-type="done"  bindinput="onipt" data-ele="{{5+index}}"></input>
+                <text class="qt-star">{{item.isRequired == 1 ? '*':''}}</text>
+
+                </view>
+            </block>
+        </view>
+
+         <checkbox-group bindchange="bindAgreeChange">
+            <label class="weui-agree fx-xy" for="weuiAgree"> 
+                <view class="weui-agree__text">
+                    <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+                    <view class="weui-agree__checkbox-icon">
+                        <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="9" wx:if="{{isAgree}}"></icon>
+                    </view>
+                    我已阅读并同意<text class="fx-blue" data-name="xy" capture-catch:touchend="mark">（分销协议）</text>
+                </view>
+            </label>
+        </checkbox-group>
+
+        <button class="xia" bindtap="save" data-name="btn">立即申请</button>
+    </view>
+
+    <view class="mark" wx:if="{{mark}}">
+        <view class="mark-center mark{{markType}}" hover-class="none" hover-stop-propagation="false">
+            <block wx:if="{{markType==3}}">
+                <view class="mark-title">{{routerTitle}}</view>
+                <text>
+                    {{router}}
+                </text>
+                <view  class="mark-btn" capture-catch:touchend="motype">
+                    返回
+                </view>
+            </block>
+            <block wx:else>
+                <image src='/images/fx_tip.png'></image>
+                <view class="wenzi">
+                    {{markType==1?'用户加入分销的条件:':'用户申请分销需要购买指定商品'}}
+                </view>
+                <view wx:if="{{markType==1}}" class="wenzi-ms">
+                    成交笔数满<text>1</text>笔或消费额度达<text>50</text>元
+                </view>
+                <view wx:if="{{markType==2}}" class="wenzi-ms">
+                    是否需购买？
+                </view>
+
+                <view  class="mark-btn" capture-catch:touchend="motype">
+                    {{markType==1?'知道了':''}}
+                    <view hidden="{{markType!=2}}" class="mark-n" data-name="N" capture-catch:touchend="motype">
+                        否
+                    </view>
+                    <view hidden="{{markType!=2}}" class="mark-y" data-name="Y" capture-catch:touchend="motype">
+                        是
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="mark-child" catchtap="motype"></view>
+    </view>
+    
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,60 @@
+<!--pages/index/tuangou/tuangou.wxml-->
+<view class="goods_title_head">
+  <view class="goods_titles_container">
+  <view class="titles">
+    <view catchtap="changeTab" style="{{tabId == -1 ?'color:'+tColor+';':''}}" data-tabid="-1" class="{{tabId == -1?'':''}}">全部</view>
+    <!--<view>时尚aa</view>-->
+    <block wx:for="{{tuangou_data.titles}}" wx:for-item="title">
+    <view catchtap="changeTab" style="{{title.id == tabId ?'color:'+tColor+';':''}}"  data-tabid="{{title.id}}" class="{{title.id == tabId ?'underline':''}}">{{title.name}}</view>
+    </block>
+    <!--<view>时尚aa</view>
+    <view>时尚aa</view>-->
+    </view>
+    <block wx:if="{{hideOrShow}}">
+      <image src="/images/hide.png" catchtap="hideOrShowType"></image>
+    </block>
+    <block wx:else>
+      <image src="/images/display.png" catchtap="hideOrShowType"></image>
+    </block>
+  </view>
+  <view class="title_more" hidden="{{hideOrShow}}">
+   <block wx:for="{{tuangou_data.hideTitles}}" wx:for-item="title">
+    <view catchtap="changeTab" style="{{title.id == tabId ?'color:'+tColor+';':''}}"  data-tabid="{{title.id}}" class="{{title.id == tabId ?'underline':''}}">{{title.name}}</view>
+    </block>
+  </view>
+</view>
+<view class="goods_container">
+  <swiper interval="5000" autoplay="true" duration="1500" class="banner" indicator-dots="true" indicator-color="rgba(0, 0, 0, .5)" indicator-active-color="#fff">
+  <block wx:for="{{tuangou_data.banners}}" wx:for-item="banner">
+    <swiper-item class="banner_item">
+      <image mode="aspectFill" src="{{banner.img}}" catchtap="jumpToNavigator" data-linkurl="{{banner.linkUrl}}"></image>
+    </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="history_container">
+  <block wx:for="{{goods}}" wx:for-item="good">
+  <view class="history_item">
+    <image src="{{good.img}}"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        {{good.name}}
+      </view>
+      <view class="goods_price" style="color:{{tColor}};">
+       ￥{{good.price}}
+        <text>￥{{good.marketPrice}}</text>
+      </view>
+      <view class="buy_container">
+        <view style="background-color:{{tColor}};" catchtap="jumpToDetail" data-goodid="{{good.id}}" data-productid="{{good.productId}}" class="buy_btn act">
+          参团
+        </view>
+        <text>已参团{{good.count}}人</text>
+      </view>
+
+    </view>
+  </view>
+  </block>
+
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

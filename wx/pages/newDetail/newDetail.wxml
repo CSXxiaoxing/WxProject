@@ -1,0 +1,41 @@
+<!--pages/newDetail/newDetail.wxml-->
+<view class="new-head">
+    <view class="new-name">{{data.news.title}}</view>
+    <view class="new-desc-container">
+        <view class="new-time">{{data.news.createTime}}</view>
+        <image src="/images/yanj.png"></image>
+        <view class="read-text">阅读</view>
+        <view>{{data.news.browseCount}}</view>
+    </view>
+    <image mode='widthFix' catchtap="previewImage" data-imgurl="{{data.config.image_resource+data.news.image}}"  wx:if="{{data.news.image!=undefined}}" class="new-img" src="{{data.config.image_resource+data.news.image}}"></image>
+</view>
+<view class="new-detail-container">
+
+         <block wx:for="{{passage}}">
+    <block wx:if="{{item.type==0}}">
+      <image mode='widthFix' class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}"  src="{{item.str}}"></image>
+    </block>
+    <block wx:else>
+      <view class="paragraph">
+        {{item.str}}
+      </view>
+    </block>
+
+  </block> 
+  
+</view>
+
+<view class="btn-container" wx:if="{{data.news}}">
+    <view class="sub-btn" hidden="{{data.collected=='true'}}" style=" {{data.collected=='true'?'color:'+tColor+'; border: 1px'+tColor+' solid;':'border:1px #999 solid;'}}" catchtap="reqCol"> 
+        <image class="btn-icon"  style=" background-color:{{tColor}}; "  src="/images/xinb.png"></image>
+        <view>{{data.news.collectionCount==undefined?0:data.news.collectionCount}}</view>
+    </view>
+
+    <view class=" sub-btn isCol" hidden="{{data.collected=='false'}}" style="border: 1px {{tColor}} solid; color:{{tColor}}"   catchtap="reqCancel">
+        <image class="btn-icon" style=" background-color:{{tColor}};" src="/images/xina.png"></image>
+        <view>{{data.news.collectionCount==undefined?0:data.news.collectionCount}}</view>
+    </view>
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

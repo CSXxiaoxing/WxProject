@@ -1,0 +1,108 @@
+<view class="back_goods_container" wx:if="{{goods_msg_item.length>0}}">
+  <view class="bg_indent_item_container">
+    <!--indent_id: 12345678910,
+      // 申请时间
+      app_time: '2017-04-29 20:15:45',
+      //退货的商品
+      bg_goods: [{
+        id: '123',
+        img: '/images/cp1.png',
+        name: '2017新款新款新款新快男按时打算打算打算的',
+        count: '2'
+      }],
+      // 问题描述
+      ques_desc: '是真的丑',
+      //退货数量
+      bg_count: '1',
+      // 退款金额
+      bg_price: '196',
+      //  返回积分
+      bg_integral: '0',
+      //   退货状态
+      bg_state: '退款到账号',
+      // 退款事件
+      bg_money_time: '2017-40-29 20 15 42',
+      // 处理意见
+      bg_option:'没什么意见'-->
+    <block wx:for="{{goods_msg_item}}" wx:for-index="idx" wx:for-item="goods_item">
+      <view class="msg_item">
+        <view class="inden_text_container">
+          订单编号：{{goods_item.indent_id}}
+          <text style='color:{{tColor}};' class="color_blue" wx:if="{{goods_item.bg_state==1}}">未处理</text>
+          <text style='color:{{tColor}};' class="color_blue" wx:elif="{{goods_item.bg_state==2}}">商家审核通过待收货</text>
+          <text style='color:{{tColor}};' class="color_blue" wx:elif="{{goods_item.bg_state==3}}">商家已收货</text>
+          <text style='color:{{tColor}};' class="color_blue" wx:elif="{{goods_item.bg_state==4}}">不予处理</text>
+        </view>
+        <view class="inden_text_container">
+          申请时间：{{goods_item.app_time}}
+        </view>
+        <view class="hor_line"></view>
+        <!--退货的商品图文信息-->
+        <block wx:for="{{goods_item.bg_goods}}" wx:for-item="item">
+          <!-- <view class="goods_msg_item" bindtap="jumpToDetail" id="{{item.id}}"> -->
+          <view class="goods_msg_item" id="{{item.id}}">
+            <!--a-->
+            <image src="{{item.img}}" class="goods_img"></image>
+            <view class="goods_text_desc">
+              <view class="goods_name">{{item.name}}</view>
+              <view class="goods_count">X{{item.count}}(退货数量)
+                <text data-pos="{{idx}}" catchtap="hide_orShow" style='color:{{tColor}};' class="color_blue">查看</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class="goods_detail" hidden="{{goods_item.detail_hidden}}">
+          <view class="text_item">
+       <view class="text_item_name">问题描述：</view>
+            <view> {{goods_item.ques_desc}}</view>
+          </view>
+          <view class="text_item">
+            退货数量：{{goods_item.bg_count}}
+          </view>
+
+          <view class="text_item">
+            退款金额：{{goods_item.bg_price}}
+          </view>
+
+          <view class="text_item">
+            返回积分：{{goods_item.bg_integral}}
+          </view>
+
+          <view class="text_item">
+            退货状态：
+            <text wx:if="{{goods_item.bg_state==1}}">未处理</text>
+            <text wx:elif="{{goods_item.bg_state==2}}">商家审核通过待收货</text>
+            <text wx:elif="{{goods_item.bg_state==3}}">商家已收货</text>
+            <text wx:elif="{{goods_item.bg_state==4}}">不予处理</text>
+          </view>
+
+          <view class="text_item">
+            退款状态：
+            <text wx:if="{{goods_item.bg_money_state==1}}">未退款</text>
+            <text wx:elif="{{goods_item.bg_money_state==2}}">退款到账户</text>
+            <text wx:elif="{{goods_item.bg_money_state==3}}">退款到银行</text>
+            <text wx:elif="{{goods_item.bg_money_state==4}}">退款到微信</text>
+          </view>
+
+          <view class="text_item">
+            退款时间：{{goods_item.bg_money_time}}
+          </view>
+
+          <view class="text_item">
+            <view class="text_item_name"> 处理意见：</view>
+            <view> {{goods_item.bg_option==null?'无':goods_item.bg_option}}</view>
+          </view>
+
+        </view>
+      </view>
+    </block>
+
+  </view>
+
+</view>
+   <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

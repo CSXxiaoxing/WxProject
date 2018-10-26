@@ -1,0 +1,159 @@
+/* pages/index/hot_shop/shop_detail/shop_detail.wxss */
+page{
+  background-color: #f1f0fa;
+  color: #4d4d4d;
+  padding-top: 261rpx;
+}
+.shop_head{
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.shop_msgs{
+  border-bottom: 1px #e6e6e6 solid;
+  display: flex;
+  align-items: center;
+  height: 171rpx;
+}
+.underline{
+  font-size: 30rpx;
+  position: relative;
+}
+.underline::after{
+  content: '';
+  background-color: #91a3ff;
+  height: 2px;
+  width: 100rpx;
+  position: absolute;
+  bottom: 0;
+  left: 42rpx;
+}
+.shop_icon{
+  display: block;
+  margin:40rpx;
+
+  width: 90rpx;
+  height: 90rpx;
+
+  border-radius: 50%;
+}
+.shop_desc{
+  display: flex;
+  flex-direction: column;
+}
+.shop_name{
+  font-size: 28rpx;
+}
+.shop_fens{
+  font-size: 24rpx;
+}
+/*关注按钮*/
+.attention{
+  position: absolute;
+  top: 61rpx;
+  right: 40rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background-color: #91a3ff;
+  padding: 0 21rpx 0 21rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 25rpx;
+}
+/*切换的tab*/
+.shop_tab{
+  padding: 0 15rpx 0 15rpx;
+  display: flex;
+  font-size: 28rpx;
+  color: #808080;
+  line-height: 90rpx;
+  text-align: center;
+}
+.shop_tab text{
+  flex: 1;
+}
+/*商品列表*/
+.goods_container{
+  padding-top: 30rpx ;
+  display: flex;
+  flex-wrap: wrap;
+}
+.goods_item{
+  margin-left: 30rpx;
+  margin-bottom: 30rpx;
+  border-radius: 10rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 330rpx;
+}
+.goods_item image{
+  display: block;
+  margin:10rpx 10rpx 0rpx 10rpx;
+  width: 310rpx;
+  height: 325rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+.goods_name{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  font-size: 24rpx;
+  line-height: 64rpx;
+}
+.goods_price{
+  color: #91a3ff;
+  font-size: 30rpx;
+}
+.buy_btn{
+  line-height: 42rpx;
+  font-size: 24rpx;
+  color: #fff;
+  width: 120rpx;
+  background: #91a3ff;
+  border-radius: 21rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+}
+/*商店联系*/
+.shop_contact{
+  padding: 35rpx 30rpx 0 30rpx;
+}
+.shop_img_c{
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+.shop_img{
+  display: block;
+  width: 100%;
+ border-radius: 10rpx;
+ height: 280rpx;
+}
+.shop_msg_item{
+  display: flex;
+  padding-right: 50rpx;
+  position: relative;
+  margin-bottom: 30rpx;
+  background-color: #fff;
+  line-height: 100rpx;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+.shop_msg_item text{
+  margin-left: 29rpx;
+}
+.shop_msg_item image{
+  position: absolute;
+  top: 41rpx;
+  width: 11rpx;
+  height: 20rpx;
+  right: 20rpx;
+}

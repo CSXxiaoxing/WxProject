@@ -1,0 +1,322 @@
+/* pages/logistic/logistic.wxss */
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+page {
+  background-color: #fafafa;
+  font-size: 14px;
+}
+
+.logisticTop {
+  margin: 10px 0;
+  height: 100px;
+  background-color: #fff;
+}
+.logisticTop >view text{
+  padding-left: 10px;
+}
+
+.logisticTop >view .Red0{
+  color: #ff3b30;
+  padding: 0;
+}
+
+.logisticTop .logisticNum {
+  padding: 0 15px 0 20px;
+  line-height: 50px;
+}
+
+.logisticTop .logisticNum {
+  height: 50px;
+  display: block;
+  border-bottom: 1px #ddd solid;
+}
+
+.logisticTop .logisticNum >view {
+  float: left;
+}
+
+.logisticTop .logisticNum >text {
+  float: right;
+  width: 85px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 18px;
+  padding-left: 0;
+}
+
+.friendship {
+  padding: 0 15px;
+  line-height: 50px;
+  display: inline-block;
+  /* width: 100%; */
+}
+
+.friendship view {
+  display: inline-block;
+}
+
+.friendship image {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+
+.friendship .tapimg {
+  float: right;
+  padding-right: 20px;
+}
+
+.friendship >image {
+  vertical-align: sub;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.logisticCenter .adr {
+  height: auto;
+  padding:15px;
+  background-color: #fff;
+  border-bottom:1px solid #eee;
+  display: flex;
+
+}
+.adr .adrText{
+  color: #999;
+}
+
+.logisticCenter .adr>image {
+  width: 20px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.logisticCenter .adr text {
+  padding-left: 10px;
+}
+.adrdetal{
+  padding-left: 10px;
+  padding-right: 75rpx;
+  flex: 1;
+}
+/* 物流图 */
+
+.br {
+  width: 100%;
+  margin-left: 2.5%;
+  margin-bottom: 30rpx;
+  background: #d0d0d0;
+  height: 1rpx;
+}
+.logisticMsg{
+  position: relative;
+  background-color: #fff;
+}
+.logisticMsg:nth-child(n) {
+    padding-top: 10px;
+}
+
+.order{
+  margin-left: 40px;
+}
+
+.logistics_centent {
+   position: absolute; 
+  left: 165rpx;
+  height: auto;
+  color: #4d4d4d;
+  right: 10px;
+  font-size: 13px;
+}
+
+.icon {
+  width: 15rpx;
+  height: 15rpx;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0rpx 20rpx 0rpx 42rpx;
+  background-color: #bbb;
+}
+
+.in {
+  z-index: 11;
+  animation: my_animation 2s infinite;
+  width: 5px;
+  height: 5px;
+
+}
+
+@keyframes my_animation {
+  100% {
+    transform: scale(2);
+    /* background-color: transparent; */
+  }
+}
+
+.no_in {
+  border: 1rpx solid #d0d0d0;
+}
+
+.on {
+  background: #d0d0d0;
+  height: 120rpx;
+  width: 1px;
+  margin-left: 50rpx;
+}
+
+.logisticTimer{
+  width: 40px;
+  position: absolute;
+  left: 10px;
+}
+
+/* 产品推荐 */
+/*随便看看*/
+
+.recommend {
+  background-color: #fff;
+  color: #4d4d4d;
+  margin-top: 10px;
+}
+.rec_title >image {
+  width: 22px;
+  height: 22px;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+.rec_title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 100rpx;
+  font-size: 32rpx;
+  
+  text-indent: 1em;
+  color: #ff3b30
+}
+
+.rec_content {
+  padding: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.rec_item {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.rec_item:nth-child(3n-1) {
+ padding-left: 2%;
+} 
+.rec_item:nth-child(2n-1){
+  padding-right: 2%;
+}
+
+.rec_item image {
+  border-radius: 10rpx;
+  display: block;
+  width: 200rpx;
+  height: 200rpx;
+  margin:0 auto;
+
+}
+
+.rec_item_name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  font-size: 28rpx;
+  line-height: 60rpx;
+}
+
+.rec_item_price {
+  margin-bottom: 20rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 28rpx;
+  text-align: center;
+  color: #ff3b30;
+}
+.no-logistic,.no-logistic view{
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.no-logistic view{
+  width: 510rpx;
+  border-radius: 20rpx;
+  height: 240rpx;
+  color: #4d4d4d;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  background-color: #f7f7f7;
+}
+.log-container{
+  padding-top: 30rpx;
+    background-color: #fff;
+}
+.log-item{
+
+  display: flex;
+    font-size: 24rpx;
+    color: #4d4d4d;
+      line-height: 35rpx;
+}
+.time{
+  position: relative;
+  width: 80rpx;
+  padding:0 30rpx;
+
+}
+.c{
+  position: absolute;
+  right: -7.5rpx;
+  top: 10rpx;
+  border-radius: 50%;
+  width: 16rpx;
+  height: 16rpx;
+  background-color: #ccc;
+}
+
+.log-info{
+  flex: 1;
+  padding: 45rpx 35rpx 40rpx 45rpx;
+}
+.line{
+  box-sizing: border-box;
+  border-left: 2rpx solid #ccc;
+}
+.mask{
+  position: relative;
+}
+.mask::after{
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  height: 20px;
+  background-color: #fff;
+  width: 2rpx;
+}

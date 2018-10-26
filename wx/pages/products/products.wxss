@@ -1,0 +1,4 @@
+/* pages/products/products.wxss */
+page{
+  background-color: #f0f3f5;
+}

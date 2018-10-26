@@ -1,0 +1,32 @@
+page{
+    background-color: #FFFFFF;
+}
+
+.back {
+    position:relative;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:28rpx;
+    padding-right:28rpx;
+    box-sizing:border-box;
+    text-align:center;
+    text-decoration:none;
+    font-size:30rpx;
+    line-height:88rpx;
+    border-radius:5px;
+    -webkit-tap-highlight-color:transparent;
+    overflow:hidden;
+    margin-top: 100rpx;
+	border-radius: 10rpx;
+    border: solid 2rpx #228af2;
+
+    color: #228af2;
+    background-color: #2196f3;
+    border-radius: 10rpx;
+    color: #ffffff;
+}
+.img-yes {
+    height: 186rpx;
+    width: 186rpx;
+}

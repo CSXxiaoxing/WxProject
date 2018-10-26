@@ -1,0 +1,16 @@
+<!--pages/discover/discover.wxml-->
+<view class="discover_container">
+<block wx:for="{{newss}}" wx:for-item="news">
+  <view class="disc_item" catchtap="jumpToNewsDetail" data-newid="{{news.id}}" >
+    <image  src="{{news.img}}"></image>
+    <view class="text_container">
+      <view class="title">{{news.name}}</view>
+      <view class="content">{{news.news}}</view>
+    </view>
+  </view>
+  </block>
+
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,5 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "enablePullDownRefresh": false,
+    "navigationBarTitleText": "我的用户"
+}

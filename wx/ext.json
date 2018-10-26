@@ -1,0 +1,33 @@
+{
+    "extEnable": false,
+    "extAppid": "wx2ad56d88e6c1c441",
+    "directCommit": false,
+    "ext":{
+        "host":"https://wechat.cangluxmt.com/wechat/",
+        "themeColor":"#4c82e6",
+        "themeColorHelp":" #ccc",
+        "companyName":"",
+        "agentId": "279",
+        "navigatorBackColor":"#000000",
+        "miniappId":"225",
+        "debugMode": true
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": true,
+        "networkTimeout": {
+          "request": 8000,
+          "connectSocket": 8000,
+          "uploadFile": 8000,
+          "downloadFile": 8000
+        }
+    },
+    
+    "networkTimeout": {
+      "request": 10000,
+      "downloadFile": 10000
+    }
+    
+  }

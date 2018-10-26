@@ -1,0 +1,46 @@
+<view class="reserve-list" wx:if="{{list.length>0}}">
+<block wx:for="{{list}}">
+  <view class="reserve-item" >
+    <view class="item-head">
+      <text>创建时间：{{item.createTime}}</text>
+      <!--  /** 0.未付款 1.未确认 2.已确认待使用 3.已使用 4.预约失败 5.已取消*/ -->
+     
+      <text wx:if="{{item.state=='0'}}" style="color:{{tColor}}">未付款</text>
+      <text wx:elif="{{item.state=='1'}}" style="color:{{tColor}}">未确认</text>
+      <text wx:elif="{{item.state=='2'}}" style="color:{{tColor}}">已确认待使用</text>
+      <text wx:elif="{{item.state=='3'}}" style="color:{{tColor}}">已使用</text>
+      <text wx:elif="{{item.state=='4'}}" style="color:{{tColor}}">预约失败</text>
+      <text wx:elif="{{item.state=='5'}}" style="color:{{tColor}}">已取消</text>
+      <!-- <text wx:elif="{{item.state==2}}" style="color:{{tColor}}">待使用</text>
+      <text wx:elif="{{item.state==3}}" style="color:{{tColor}}">已使用</text>
+      <text wx:elif="{{item.state==4}}" style="color:{{tColor}}">预约失败</text>
+       <text wx:elif="{{item.state==5}}" style="color:{{tColor}};">已取消</text> -->
+    </view>
+    <view class="goods-info">
+      <image src="{{item.img}}"></image>
+      <view>
+        <view class="text-limit2 goodsName">{{item.actName}}</view>
+        <view class="goodsNorm text-limit1" >{{item.number}}件,“{{item.specInfo}}”</view>
+        <view class="price">￥{{item.price}}</view>
+      </view>
+    </view>
+    <view class="item-foot">
+      <view />
+    
+      <view class="btn act" catchtap='jumpToRSDetail' data-id='{{item.id}}'>订单详情</view>
+    </view>
+  </view>
+</block>
+</view>
+<view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+  <view class="bottom" wx:if="{{total!=0 && list.length == total}}">
+      <view />
+      <view>有底线的预约</view>
+      <view />
+  </view>
+
+<tool bind:toolFun="onToolFun"></tool>

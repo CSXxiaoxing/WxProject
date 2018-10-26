@@ -1,0 +1,118 @@
+<block wx:for="{{allObj}}" wx:key="{{item.index}}">
+<!-- 第一个 -->
+<swiper 
+    indicator-dots="{{indicatorDots}}" 
+    indicator-color="{{indicatorColor}}" 
+    indicator-active-color="{{indicatorActiveColor}}" 
+    display-multiple-items="{{item.itemClass=='box2'? 2.5 : displayMultipleItems}}"
+    circular="{{circular}}"
+    autoplay="{{autoplay}}" 
+    interval="{{interval}}" 
+    duration="{{duration}}"
+    wx:if="{{item.classnm == 'swiper1'}}"  
+    class="swi"
+    style="{{item.style}}box-sizing:border-box;" >
+    <block 
+    wx:for="{{item.swiperLists}}" 
+    wx:for-item="son" 
+    wx:key="{{son.index}}">
+        <swiper-item>
+            <view 
+            data-phone="{{son.phone}}" 
+            bindtap="jump" 
+            data-url="{{son.link}}" 
+            data-url-t="{{son.webview}}"
+            style="{{item.sonli[0].style}}" 
+            class="box swiper {{item.itemClass}}" >
+            <image src="{{son.imgurl}}" mode="scaleToFill"></image>
+            <text class="bt {{item.txtClass}}" style="{{item.sonli[1].style}}"
+            >{{son.tt}}</text>
+
+            <button 
+            data-url="{{son.link}}" 
+            data-url-t="{{son.webview}}"
+            data-phone="{{son.phone}}" 
+            bindtap="jump"
+            class="butZJ" 
+            open-type="{{son.openT}}"></button>
+
+            </view>
+        </swiper-item>
+    </block>
+</swiper>
+
+
+<!-- 第二个 -->
+<scroll-view 
+    scroll-x 
+    wx:if="{{item.classnm=='swiper2'}}"
+    style="{{item.style}}">
+    <view 
+    class="{{item.classnm}}" 
+    hover-class="none" 
+    hover-stop-propagation="false">
+        <block 
+        wx:for="{{item.swiperLists}}" 
+        wx:for-item="son" 
+        wx:key="{{son.index}}">
+            <view 
+            style="{{item.sonli[0].style}}" 
+            class="box swiper {{item.itemClass}}" >
+            <image src="{{son.imgurl}}" mode="scaleToFill"></image>
+            <text class="bt {{item.txtClass}}" style="{{item.sonli[1].style}}"
+            >{{son.tt}}</text>
+
+            <button 
+            data-url="{{son.link}}" 
+            data-url-t="{{son.webview}}"
+            data-phone="{{son.phone}}" 
+            bindtap="jump"
+            class="butZJ" 
+            open-type="{{son.openT}}"></button>
+
+            </view>
+        </block>
+    </view>
+</scroll-view>
+
+
+<!-- 展示页-3 -->
+<view 
+    class="swiper-two" 
+    wx:if="{{item.classnm == 'swiper3'}}" 
+    style="{{item.style}}">
+
+    <view 
+    class="swiperlist" 
+    style="" 
+    wx:for="{{item.swiperLists}}" 
+    wx:for-item="son" 
+    wx:key="son.index">
+
+    <view 
+    class='box3' 
+    bindtap="jump" 
+    data-url="{{son.link}}" 
+    data-url-t="{{son.webview}}" 
+    data-phone="{{son.phone}}" 
+    style="{{item.sonli[0].style}}">
+        <image src="{{son.imgurl}}" mode="scaleToFill"></image>
+
+        <view style="{{item.sonli[1].style}}">{{son.tt}}</view>
+
+        <!-- 控制按钮 -->
+        <button 
+        data-url="{{son.link}}" 
+        data-url-t="{{son.webview}}"
+        data-phone="{{son.phone}}" 
+        bindtap="jump"
+        class="butZJ" 
+        open-type="{{son.openT}}"></button>
+    </view>
+    
+    
+
+    </view>
+</view>
+
+</block>

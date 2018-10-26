@@ -1,0 +1,66 @@
+
+<view class="fx-card">
+    <view class="tip" wx:if="{{newShow}}">
+        Please 设置您的提现银行卡
+    </view>
+
+    <view class="ying">
+        <view class="text">卡号</view>
+
+        <input class="ipt ipt-show" placeholder="输入银行卡号" data-ele="num" bindblur="iptNumEnd" type="number" bindinput="iptNum" style="{{card.num.length>0? 'background-color: #ffffff;border: solid 2rpx #228af2;':''}}{{card.numType? '':'border: solid 2rpx #f22222;'}}" confirm-type="next" ></input>
+
+        <image hidden="{{card.num.length>0?false:true}}" src="/images/fx_cuo{{card.numType?2:''}}.png" data-name="num" ></image>
+        <view class="min-tip" hidden="{{card.numType}}">
+            请输入正确的银行卡号
+        </view>
+    </view>
+
+    <view class="ying">
+        <view class="text">姓名</view>
+        <!-- <view class="ipt-show">
+            {{nameT ? nameT : '输入银行卡开户姓名'}}
+        </view> -->
+        <input class="ipt ipt-show" data-ele="name" type="text" confirm-type="next"  placeholder="输入银行卡开户姓名" bindinput="iptName" style="{{card.name.length>0? 'background-color: #ffffff;border: solid 2rpx #228af2;':''}}{{card.nameType? '':'border: solid 2rpx #f22222;'}}"></input>
+        <image hidden="{{card.name.length>0?false:true}}" src="/images/fx_cuo2.png" data-name="name" ></image>
+    </view>
+
+    <view class="ying">
+        <view class="text">开户行</view>
+        <!-- <view class="ipt-show"  >
+            {{cardNameT ? cardNameT : '输入开户行名称'}}
+        </view> -->
+
+        <input class="ipt ipt-show" type="text" data-ele="cardName" confirm-type="done" placeholder="输入开户行名称" style="{{card.cardName.length>0? 'background-color: #ffffff;border: solid 2rpx #228af2;':''}}{{card.cardNameType? '':'border: solid 2rpx #f22222;'}}" bindinput="iptCardName"></input>
+        <image hidden="{{card.cardName.length>0?false:true}}" src="/images/fx_cuo2.png" data-name="cardName" ></image>
+    </view>
+
+    <button class="xia" bindtap="save" data-name="btn" style="{{btnType ? 'opacity: 1;':''}}">保存</button>
+
+    <view class="mark" wx:if="{{mark}}">
+        <view class="mark-center">
+            <!-- <image src='/images/fx_tip.png'></image> -->
+            <view class="mark-title">
+                请核对银行卡信息
+            </view>
+            <text>
+                卡号：{{numT}}
+
+                姓名：{{nameT}}
+
+                开户行：{{cardNameT}}
+            </text>
+            <view class="mark-btn">
+                <view class="mark-n" data-name="N" capture-catch:touchend="motype">
+                    我再改改
+                </view>
+                <view class="mark-y" data-name="Y" capture-catch:touchend="motype">
+                    对！没错
+                </view>
+                <view class="mark-fuzhu"></view>
+            </view>
+        </view>
+        <view class="mark-child" catchtap="motype"></view>
+    </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

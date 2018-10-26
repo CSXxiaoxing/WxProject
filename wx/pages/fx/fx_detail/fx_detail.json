@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50,
+    "navigationBarTitleText": "收益明细"
+}

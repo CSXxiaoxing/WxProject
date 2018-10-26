@@ -1,0 +1,27 @@
+<!--pages/productDetail/productDetail.wxml-->
+<view class="head">
+    <view class="head-title">{{data.info.name}}</view>
+    <image mode='widthFix' catchtap="previewImage" data-imgurl="{{data.config.image_resource+data.info.banner}}"   wx:if="{{data.info.banner!=undefined}}"  class="head-img" src="{{data.config.image_resource+data.info.banner}}"></image>
+
+    <view class="product-desc-title" style="color:{{tColor}};">产品详情
+    <view class="product-line" style="background-color:{{tColor}};"></view>
+    </view>
+</view>
+
+<view class="product-detail">
+
+      <block wx:for="{{passage}}">
+    <block wx:if="{{item.type==0}}">
+      <image  mode='widthFix'  class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}"  src="{{item.str}}"></image>
+    </block>
+    <block wx:else>
+      <view class="paragraph">
+        {{item.str}}
+      </view>
+    </block>
+
+  </block>
+
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

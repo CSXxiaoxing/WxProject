@@ -1,0 +1,15 @@
+<!--pages/index/hot_shop/hot_shop.wxml-->
+<view class="shops_container" wx:if="{{com_data.length!=0}}">
+<block wx:for="{{com_data}}" >
+  <view class="shop_item act" catchtap="jumpToShop" data-shopid="{{item.id}}">
+     <image   src="{{item.img}}" class="shop_image"></image>
+     <view class="shop_msgs">
+       <image src="{{item.logo}}" class="shop_icon"></image>
+       <view>{{item.name}}</view>
+       <image src="/images/go.png" class="go_icon"></image>
+     </view>
+  </view>
+  </block>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

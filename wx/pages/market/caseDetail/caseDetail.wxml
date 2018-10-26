@@ -1,0 +1,29 @@
+<!--pages/caseDetail/caseDetail.wxml-->
+<view class="head">
+    <view class="head-title">{{data.info.caseName}}</view>
+    <image mode='widthFix' catchtap="previewImage" data-imgurl="{{data.config.image_resource + data.info.banner}}" wx:if="{{data.info.banner!=undefined}}" class="head-img" src="{{data.config.image_resource + data.info.banner}}"></image>
+
+    <view class="case-desc-title" style="color:{{tColor}};">
+    案例详情
+    <view class="case-line" style="background-color:{{tColor}};"></view>
+    </view>
+</view>
+
+<view class="case-detail">
+
+      <block wx:for="{{passage}}">
+    <block wx:if="{{item.type==0}}">
+      <image  mode='widthFix'  class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}"  src="{{item.str}}"></image>
+    </block>
+    <block wx:else>
+      <view class="paragraph">
+        {{item.str}}
+      </view>
+    </block>
+
+  </block>
+  
+
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,19 @@
+{
+    "usingComponents": {
+        "title-list": "/pages/model/titleList/titleList",
+        "msg-list": "/pages/model/msgList/msgList",
+        "search-list": "/pages/model/searchList/searchList",
+        "map-list": "/pages/model/mapList/mapList",
+        "text-list": "/pages/model/textList/textList",
+        "pic-list": "/pages/model/picList/picList",
+        "button-list": "/pages/model/buttonList/buttonList",
+        "swiper-list": "/pages/model/swiperList/swiperList",
+        "video-list": "/pages/model/videoList/videoList",
+        "cube-list": "/pages/model/cubeList/cubeList",
+        "article-list": "/pages/model/articleList/articleList",
+        "goods-list": "/pages/model/goodsList/goodsList",
+        "tool": "/pages/model/tool/tool"
+    },
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+}

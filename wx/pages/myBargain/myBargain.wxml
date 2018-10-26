@@ -1,0 +1,42 @@
+<view class="reserve-list" wx:if="{{list.length>0}}">
+<block wx:for="{{list}}">
+  <view class="reserve-item" >
+    <view class="item-head">
+      <text>创建时间：{{item.createTime}}</text>
+      <!--  /** 状态0:,砍价中未领奖;1:砍价结束未支付;2砍价结束已经支付;3已过期*/ -->
+     
+      <text wx:if="{{item.state=='0'}}" style="color:{{tColor}}">砍价中</text>
+      <text wx:elif="{{item.state=='1'}}" style="color:{{tColor}}">未支付</text>
+      <text wx:elif="{{item.state=='2'}}" style="color:{{tColor}}">已支付</text>
+      <text wx:elif="{{item.state=='3'}}" style="color:{{tColor}}">已过期</text>
+      <text wx:else style="color:{{tColor}}">已取消</text>
+    </view>
+    <view class="goods-info">
+      <image src="{{item.img}}"></image>
+      <view>
+        <view class="text-limit2 goodsName">{{item.actName}}</view>
+        <view class="goodsNorm text-limit1" >{{item.number?item.number:1}}件,“{{item.specInfo}}”</view>
+        <view class="price">￥{{item.price}}</view>
+      </view>
+    </view>
+    <view class="item-foot">
+      <view class="text-limit1 cut-price">累计砍下<text style="color:{{tColor}};"> {{item.cutPrice}} </text>元</view>
+      <view class="btn act" catchtap='jumpToShareBargin' data-actid="{{item.actId}}" data-id='{{item.id}}'>砍价详情</view>
+       <view class="btn act" wx:if="{{item.state=='1' || item.state=='2' || item.state=='4'}}" catchtap='jumpToRSDetail' data-orderid='{{item.orderId}}'>订单详情</view> 
+      <!-- <button open-type='share' class="btn act"  style="background-color:{{tColor}};color:#fff;" data-id='{{item.id}}'>邀请好友</button> -->
+    </view>
+  </view>
+</block>
+</view>
+<view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+  <view class="bottom" wx:if="{{total!=0 && list.length == total}}">
+      <view />
+      <view>我的砍价底部</view>
+      <view />
+  </view>
+
+  <tool bind:toolFun="onToolFun"></tool>

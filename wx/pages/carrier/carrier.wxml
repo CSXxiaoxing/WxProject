@@ -1,0 +1,27 @@
+
+<!-- 各种组件 -->
+<template is="container"  data="{{...getData, container}}"></template>
+<!-- 各种组件 -->
+<!-- 通栏 -->
+<template name="container">
+
+    <block wx:for="{{pages1}}" wx:key="{{item.index}}">
+    <view class="ef" style="{{container[index].style}}margin-top:{{container[index].mgt*2}}rpx;">
+
+        <view wx:if="{{!item.swiperList}}" style="{{container[index].style}}margin-top:{{container[index].mgt*2}}rpx;{{container[index].insty[0].style}}" class="efbg"></view>
+        <image wx-if="{{container[index].insty[0].bgimg}}" src="{{container[index].insty[0].bgimg}}" style="width:100%;height:100%;z-index:-1;" mode="scaleToFill" lazy-load="false" binderror="" bindload="" class="efbg"></image>
+
+        <include src="../model/modelin.wxml"></include>
+
+    </view>
+    </block>
+</template>
+
+<!-- 全局设置 -->
+<tool bind:toolFun="onToolFun" tab-data="{{tab}}"></tool>
+
+<!-- 技术支持 -->
+<view style="{{itSupport.style}}" class="itSupport" capture-catch:touchstart="theVersions01" capture-catch:touchend="theVersions02">
+    <image wx:if="{{false}}" style="width:49rpx;height:47rpx;" src='/images/cp_logo.png'></image>
+    <text class="shadow" style="{{itSupport.tt ? '' : 'margin: 34rpx 0 20rpx;' }}">{{itSupport.tt}} {{theVersions}}</text>
+</view>

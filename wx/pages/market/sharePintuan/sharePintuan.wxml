@@ -1,0 +1,189 @@
+
+<view class="contain" wx:if="{{goods}}">
+  <view class="goods-container">
+    <image class="goods-img" catchtap='preSingleImage' data-imgurl="{{goods.image}}" src="{{goods.image}}" />
+    <view class="goods-info">
+      <view class="goods-name text-limit2">{{goods.name}}</view>
+      <view class="goods-desc">{{goods.bottomPersonNum}}人团</view>
+      <view class="goods-price" style="color:{{tColor}}">
+        <text>￥<text style="font-size:36rpx;">{{goods.price}}</text></text>
+        <text class="del">￥{{goods.marketPrice}}</text>
+      </view>
+    </view>
+    <image wx:if="{{goods.state==2}}" class="pin-success" src="/images/img_ptcg.png"/>
+  </view>
+  <block wx:if="{{t_members.length<6}}">
+    <view class="members">
+      <block wx:for="{{t_members}}">
+        <view catchtap='preSingleImage' data-imgurl="{{item.icon?item.icon:''}}" style="position:relative;">
+        <image src="/images/cap.png" wx:if="{{index==0}}" style="position:absolute;left:-2rpx;top:-3rpx;width:40rpx;height:40rpx;transform:rotate(-30deg);"></image>
+        <image src="{{item.icon?item.icon:'/images/img_ktx.png'}}" class="member-image" style="{{index!=0?'margin-left:20rpx':''}}" />
+        </view>
+      </block>
+    </view>
+  </block>
+  <block wx:else>
+    <scroll-view scroll-x="true" class="members-scroll">
+      <block wx:for="{{t_members}}">
+        <image src="{{item.icon?item.icon:'/images/img_ktx.png'}}" style="margin-left:{{index!=0?'20':'85'}}rpx" />
+      </block>
+    </scroll-view>
+  </block>
+  <!--stageType
+    3:活动结束
+    2：成功
+    1：进行中
+    -->
+  <view class="act-desc" wx:if="{{stageType==1 && countTime>0}}">
+    还差
+    <text style="color:{{tColor}}"> {{allowSize}} </text>人成团，
+    <text style="color:{{tColor}};">{{timepos1}}{{timepos2}}:{{timepos3}}{{timepos4}}:{{timepos5}}{{timepos6}} </text>后结束
+  </view>
+   <view class="act-desc" wx:if="{{stageType==1 && isIn && countTime>0}}">
+    {{isCreate?'开':'拼'}}团成功,快邀请好友一起拼团吧~
+  </view>
+  <view class="act-desc" wx:if="{{stageType==2 && isIn}}">
+    {{isCreate?'开':'拼'}}团成功,请等待商家发货
+  </view>
+   <view class="act-desc" wx:if="{{stageType==2 && !isIn}}">
+    来迟一步，该团已满
+  </view>
+ <view class="act-desc" wx:if="{{stageType==3}}">
+      拼团人数不足，拼团失败
+  </view>
+  <view class="btns">
+    <view class="act" wx:if="{{!isIn && !isCreate &&stageType==1}}" catchtap='judgeAction' data-fromtype="1" style="background-color:{{tColor}};">参与活动</view>
+    <view class="act" wx:if="{{!isCreate || allowSize==0 }}" catchtap='judgeAction' data-fromtype="0" style="background-color:{{tColor}};">{{!isCreate?'我也来开团':'再开一团'}}</view>
+    <button open-type='share' class="act" wx:if="{{isIn && allowSize!=0 && stageType==1 }}" style="background-color:{{tColor}};">邀请好友</button>
+  </view>
+</view>
+
+<!-- 拼团列表  -->
+<view class="pintuan-container" wx:if="{{!isIn}}">
+  <view class="pintuan-head">
+    <view style="flex:1;">或者参加别人的拼团</view>
+    <view class="pin-head-btns act" catchtap='refreshActList'>
+      <image src="/images/F5.png" />
+      <view>换一批</view>
+    </view>
+  </view>
+  <view class="pintuan-content" wx:if="{{ActPintuanActivity.length>0}}">
+    <block wx:for="{{ActPintuanActivity}}">
+      <view class="pintuan-item">
+        <view class="pt-user-info">
+          <image src="{{item.profilePhoto?item.profilePhoto:item.aliProfilePhoto}}" />
+          <view class="text-limit1">{{item.nickname?item.nickname:item.aliNickname}}</view>
+        </view>
+        <view class="pintuan-btns">
+          <view class="text-limit1">还差
+            <text style="color:{{tColor}}"> {{item.allowSize}} </text>人拼成</view>
+          <view class="act" catchtap='toOtherSharePintuan' data-nickname='{{item.nickname?item.nickname:item.aliNickname}}' data-fromtype style="background-color:{{tColor}};" data-agid='{{item.id}}'>去参团</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view wx:else class="pt-desc">
+    当前暂无可加入的拼团
+  </view>
+</view>
+<view class="goodsList-container" wx:if="{{randomGoods.length>0}}">
+  <view class="goodsList-head" catchtap='jumpToMoreCate'>
+    <image style="background-color:{{tColor}}" class="goodsList-icon" src="/images/icb.png"/>
+    <view style="color:{{tColor}}">为您推荐</view>
+    <!-- <image style=" background-color:{{tColor}}" class="go-icon" src="/images/jianc.png"/> -->
+  </view>
+  <view class="goodsList">
+    <block wx:for="{{randomGoods}}" wx:for-item="goods">
+      <view style="{{index%2==0?'margin-right: 30rpx;':''}}" class="goodsList-item" data-actid='{{goods.actId}}' data-productid="{{goods.productId}}" catchtap='jumpToPintuanDetail'>
+        <image src="{{goods.image}}"></image>
+        <view class="text-limit1" style="padding: 0 20rpx;">{{goods.name}}</view>
+        <view class="text-limit1" style="padding: 0 20rpx;color:{{tColor}}">
+          ￥{{goods.price}}
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!--  //此区域自定义视图 
+
+    
+     -->
+
+<view style=" position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 10;background: rgba(0, 0, 0, 0.5);display: none;{{ showDialog ? 'display: block;' : '' }}" catchtap="onClickdiaView">
+</view>
+<view>
+  <view class="dialog-btn-container " style="background-color: #fff;position: fixed;bottom: 0;width: 750rpx; transform: translateY(150%);transition: all 0.4s ease;z-index: 14;height:950rpx;color: #323232;{{showDialog?'transform: translateY(0);':''}}" bindtouchstart="touchStartEvent"
+    bindtouchend='touchEndEvent'>
+    <view class="position:relative;">
+      <view style="display:flex;">
+        <view style="z-index:10;transform: translate(0,0);transition: all 0.4s ease;{{flag?'transform: translate(86%,30%);':''}}">
+          <view style="background-color:#fff;padding:9rpx;border-radius:12rpx;margin:-44rpx 25rpx 22rpx 20rpx;position: relative;box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);transform: scale(1,1);transition: all 0.4s ease;{{flag?'transform: scale(1.5,1.5);':''}}">
+            <image src="{{goods.image}}" catchtap='preSingleImage' data-imgurl='{{goods.image}}' style="width:225rpx;height:225rpx;display:block;':''}}" class="act"></image>
+          </view>
+        </view>
+        <view style="z-index:9;padding-top:29rpx;width:295rpx;transform: translate(0,0);transition: all 0.6s ease;{{flag?'transform: translate(-15%,150%);text-align:center;':''}}" class="text-limit1">
+          <text style="font-size:32rpx;color:#ff0000;line-height:50rpx;color:{{tColor}};">￥{{goods.price}}
+          </text>
+          <text style="font-size:26rpx;line-height:44rpx;" class="text-limit1">库存{{goods.stock}}件
+          </text>
+          <text style="font-size:20rpx;line-height:1.56666;" class="text-limit2">“{{goods.selGoodsInfo.normName!='' &&goods.selGoodsInfo.normName!=undefined?goods.selGoodsInfo.normName:'默认规格'}}”</text>
+        </view>
+
+        <image src="/images/close.png" class="act" catchtap="onClickdiaView" style="display:block;width:48rpx;height:48rpx;padding:28rpx 43rpx 20rpx 50rpx;margin-left:30rpx;"></image>
+
+      </view>
+      <view style="transform: translateY(0);transition: all 0.4s ease;{{flag?'transform: translateY(50%);':''}}">
+        <scroll-view scroll-y="true" style="height:638rpx;width:750rpx;" upper-threshold='0' bindscrolltoupper="scrolltopEvent" scroll-top="{{disTop}}">
+          <block wx:if="{{goods.goods_styles.length>0}}">
+            <block wx:for="{{goods.goods_styles}}" wx:for-item="style" wx:for-index="pos">
+              <view style="border-bottom:1px solid #e3e3e3;margin:0 20rpx 0 30rpx;padding-bottom:10rpx;">
+                <view style="font-size:32rpx;line-height:68rpx;margin-bottom:20rpx;">{{style.name}}</view>
+                <view style="display:flex;flex-wrap:wrap;">
+                  <block wx:for="{{style.attrList}}" wx:for-item="style_item">
+                    <view style="line-height:60rpx;font-size:28rpx;border-radius:10rpx;background-color:#ff0000;padding:0 30rpx;margin:0 30rpx 20rpx 0;{{style_item.sel?'background-color:#ff0000;color:#fff;'+'background-color:'+tColor+';':'background-color:#efefef;color:#323232'}}"
+                      catchtap="sel_Style" data-pos="{{pos}}" data-normid="{{style_item.id}}">
+                      {{style_item.name}}
+                    </view>
+                  </block>
+
+                </view>
+              </view>
+
+
+            </block>
+
+          </block>
+
+          <block wx:else>
+            <view style="border-bottom:1px solid #e3e3e3;margin:0 20rpx 0 30rpx;padding-bottom:10rpx;">
+              <view style="font-size:32rpx;line-height:68rpx;margin-bottom:20rpx;">规格</view>
+              <view style="display:flex;flex-wrap:wrap;">
+
+                <view style="line-height:60rpx;font-size:28rpx;border-radius:10rpx;background-color:#ff0000;padding:0 30rpx;margin:0 30rpx 20rpx 0;background-color:#ff0000;color:#fff;background-color:{{tColor}}">
+                  默认规格
+                </view>
+
+
+              </view>
+            </view>
+          </block>
+
+          <view style="display:flex;align-items:center;height:118rpx;padding: 0 20rpx 0 30rpx;">
+            <view style="flex:1;font-size:32rpx;">购买数量:</view>
+            <view style="display:flex;">
+              <view style="width:80rpx;height:60rpx;line-height:60rpx;background-color:#efefef;text-align:center;font-size:40rpx;border-radius:6rpx;color:#979797;" class="act" catchtap="sub">-</view>
+              <input style="color:#323232;width:100rpx;margin:0 5rpx;text-align:center;font-size:32rpx;line-height:60rpx;height:60rpx;" class="text-limit1" value="{{sel_num}}" type="number" bindinput="onInputEvent" bindblur="onblurEvent"></input>
+              <view style="width:80rpx;height:60rpx;line-height:60rpx;background-color:#efefef;text-align:center;font-size:40rpx;color:#979797;border-radius:6rpx;" class="act" catchtap="add">+</view>
+            </view>
+          </view>
+
+        </scroll-view>
+      </view>
+      <view data-agid='{{tempActGroupId}}' style="line-height:90rpx;color:#fff;text-align:center;font-size:32rpx;position:absolute;bottom:0;left:0;background-color:#ff0000;width:100%;background-color:{{tColor}}" catchtap="startPintuan">{{tempActGroupId==0?'发起拼团':'参与拼团'}}</view>
+
+    </view>
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

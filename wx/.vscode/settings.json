@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.wxml": "html",
+        "*.wxss": "css"
+    },
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": false
+}

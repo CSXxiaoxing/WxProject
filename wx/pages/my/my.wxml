@@ -1,0 +1,185 @@
+
+<!-- 模板0 -->
+<block wx:if="{{template==1}}">
+<view class="my1">
+    <view class="head">
+    <image src="/images/toux_bg.png" style='background-color:{{tColorHelp}};' class="bg_img"></image>
+    <view class="info_container">
+        <image src="{{userInfo.avatarUrl}}" data-imgurl="{{userInfo.avatarUrl}}" catchtap="preImage" class="icon"></image>
+        <view class="name">{{userInfo.nickName}}</view>
+        <view class="intergral">积分：{{integral}}</view>
+    </view>
+    <view class="statu">
+        <view class="statu_item" catchtap='jumpToOtherPage' data-routid='9'>
+        <view>{{wait_pay}}</view>
+        <view>待付款</view>
+        </view>
+        <view class="statu_item" catchtap='jumpToOtherPage' data-routid='11'>
+        <view>{{wait_get}}</view>
+        <view>待收货</view>
+        </view>
+    </view> 
+    </view>
+    <view class="user_choice">
+    <block wx:for="{{spreads_items_datas}}" wx:for-index="parent_index" wx:for-item="items_datas" wx:key="showORhide">
+        <view data-id="{{items_datas.id}}" class="act3 layer1 act" catchtap="showORhide">
+        <text>{{items_datas.title}}</text>
+
+        <image src="{{items_datas.hideOrShow_Control ? '../../images/hide.png':'../../images/display.png'}}"></image>
+        </view>
+        
+        <view hidden="{{items_datas.hideOrShow_Control}}" class="spreads_items">
+        <block wx:for="{{items_datas.childs}}" wx:for-index="child_index" wx:for-item="child" wx:key="{{child_index}}">
+        
+            <view class="navi" wx:if="{{fx.isOpen&&child.child_title=='我的收藏'}}" catchtap='jumpToOtherPage' data-routid='16'>
+                <view class="selItem-title">分销中心</view>
+            </view>
+            <navigator url="{{child.page_url=='/pages/myPintuan/myPintuan'?'/pages/market/myPintuan/myPintuan':child.page_url}}" class="act">
+            {{child.child_title}}
+            </navigator>
+            <button  wx:if="{{child_index==items_datas.childs.length-1&&parent_index==spreads_items_datas.length-1}}" open-type="contact" session-from="weapp" class="act kefu_btn">
+            微信客服
+            </button>
+
+        </block>
+    
+        </view>
+    </block>
+    </view>
+</view>
+</block>
+
+<block wx:else>
+<view class="my2">
+
+    <view 
+    class="my-container"
+    style="background: -webkit-linear-gradient(-45deg, {{tColor}}, {{tColorHelp}});">
+    <view style="z-index:1000;" catchtap='preImage' data-imgurl='{{userInfo.avatarUrl}}' >
+
+    <image src='{{userInfo.avatarUrl}}' class="act user-icon" ></image>
+    </view>
+    <image src="/images/i_bg.png" class="user-bg-img"></image> 
+    <image src="{{userInfo.avatarUrl}}"  class="user-icon-bg"></image> 
+    <view class="user-info-text">
+        <view class="text-limit1">{{userInfo.nickName}}</view>
+        <view class="text-limit1">我的积分：{{integral}}</view>
+    </view>
+    </view>
+
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='12'>
+    <view class="selItem-title">我的订单</view>
+    <text>查看所有订单</text>
+    <image class="jump-logo"  src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="Img-btn-container">
+    <view class="Img-btn-item act" catchtap='jumpToOtherPage' data-routid='9'>
+        <image src='/images/i_ioc_obligation.png'></image>
+        <text>待付款</text>
+    </view>
+    <view class="Img-btn-item act" catchtap='jumpToOtherPage' data-routid='10'>
+        <image src='/images/i_ioc_shipped.png'></image>
+        <text>待发货</text>
+    </view>
+    <view class="Img-btn-item act" catchtap='jumpToOtherPage' data-routid='11'>
+        <image src='/images/i_ioc_receiving.png'></image>
+        <text>待收货</text>
+    </view>
+    <view class="Img-btn-item act" catchtap='jumpToOtherPage' data-routid='7'>
+        <image src='/images/i_ioc_barter.png'></image>
+        <text>换货记录</text>
+    </view>
+    <view class="Img-btn-item act" catchtap='jumpToOtherPage' data-routid='8'>
+        <image src='/images/icbackgoods.png'></image>
+        <text>退货记录</text>
+    </view>
+    </view>
+
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='16' wx:if="{{fx.isOpen}}">
+    <image class="icon" src='/images/fx-my.png'></image>
+    <view class="selItem-title">分销中心</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='13'>
+    <image class="icon" src='/images/pintuan-icon.png'></image>
+    <view class="selItem-title">我的拼团</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='14'>
+    <image class="icon" src='/images/bargain-icon.png'></image>
+    <view class="selItem-title">我的砍价</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='15'>
+    <image class="icon" src='/images/reserve-icon.png'></image>
+    <view class="selItem-title">我的预约</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='1'>
+    <image class="icon" src='/images/i_ioc_coupon.png'></image>
+    <view class="selItem-title">我的优惠券</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem  act" catchtap='jumpToOtherPage' data-routid='2'>
+    <image class="icon" src='/images/i_ioc_collect.png'></image>
+    <view class="selItem-title">商品收藏</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem  act" catchtap='jumpToOtherPage' data-routid='3'>
+    <image class="icon" src='/images/i_ioc_footprint.png'></image>
+    <view class="selItem-title">我的足迹</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem  act" catchtap='jumpToOtherPage' data-routid='4'>
+    <image class="icon" src='/images/i_ioc_site.png'></image>
+    <view class="selItem-title">地址管理</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem  act" catchtap='jumpToOtherPage' data-routid='5'>
+    <image class="icon" src='/images/i_ioc_service.png'></image>
+    <view class="selItem-title">咨询记录</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" catchtap='jumpToOtherPage' data-routid='6'>
+    <image class="icon" src='/images/i_ioc_comment.png'></image>
+    <view class="selItem-title">评价中心</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <button  class="selItem act" open-type="contact" session-from="weapp">
+    <image class="icon" src='/images/i_ioc_wcservice.png'></image>
+    <view class="selItem-title">微信客服</view>
+    </button>
+</view>
+</block>
+
+<!-- 模板1 -->
+<view class="mark" wx:if="{{mark}}">
+        <view class="mark-center mark{{markType}}">
+    <block>
+    <image src='/images/fx_tip.png'></image>
+    <view class="wenzi">
+        {{markType==1?'用户加入分销的条件:':'用户申请分销需要购买指定商品'}}
+    </view>
+    <view wx:if="{{markType==1}}" class="wenzi-ms">
+        成交笔数满<text>{{fx.orderCount}}</text>笔或消费额度达<text>{{fx.costAmount}}</text>元
+    </view>
+    <view wx:if="{{markType==2}}" class="wenzi-ms">
+        是否需购买？
+    </view>
+
+    <view  class="mark-btn" capture-catch:touchend="motype">
+        {{markType==1?'知道了':''}}
+        <view hidden="{{markType!=2}}" class="mark-n" data-name="N" capture-catch:touchend="motype">
+            否
+        </view>
+        <view hidden="{{markType!=2}}" class="mark-y" data-name="Y" capture-catch:touchend="motype">
+            是
+        </view>
+    </view>
+    </block>
+    </view>
+    <view class="mark-child" catchtap="motype"></view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

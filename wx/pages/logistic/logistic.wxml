@@ -1,0 +1,84 @@
+<!--pages/logistic/logistic.wxml-->
+
+<view class='logisticTop'>
+  <view class='logisticNum clearfix'>
+  <view>
+   <text style='padding-left:0'>{{logisticsName}} :</text>
+      <text>{{logisticsNumber}}</text> 
+  </view>
+
+  <text catchtap='call' class="act">联系客服</text>
+     
+  </view>
+
+   <view class='friendship clearfix'>
+  <view>
+      <image src='/images/i_ioc_barter.png'></image>
+    <text>本数据由<text class='Red0'>快递100</text>提供</text>
+  </view>
+  </view> 
+</view>
+
+ <view class='logisticCenter'>
+  <view class='adr'>
+    <image src='/images/icon_dw.png'></image>
+    <text class='adrText'>[收货地址]</text>
+  <view class="adrdetal">{{addressAll}}</view>
+  </view>
+</view> 
+
+ <view class="log-container"  wx:if="{{logistic_data.length>0}}">
+<block wx:for="{{logistic_data}}" wx:key="index">
+      <view class="log-item">
+          <view class="time">
+  
+          <view class="c {{index==0?'in':''}}" style="{{index==0?'background-color:'+tColor+';border: 1rpx solid '+tColor+';':''}}"/> 
+     
+           {{timer[index]}}</view>
+          <view class="log-info line {{index==0?'mask':''}}">{{item.context}}</view>
+      </view>
+</block>
+</view> 
+<view wx:else class="no-logistic">
+  <view>暂无物流信息</view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>
+
+<!-- <view wx:if="{{logistic_data.length>0}}">
+<block wx:for="{{logistic_data}}" wx:key="index">
+<view class='logisticMsg'>
+ <view class='logisticTimer'><text>{{timer[index]}}</text></view>
+     <view class='order'>  
+    <view class='icon {{0==index?"in":"no_in"}}'></view>  
+    <view class='logistics_centent page_clu'>  
+      {{item.context}}
+    </view>  
+   
+    <view class='on'></view>  
+  </view>  
+</view>
+</block>
+</view>
+<view wx:else class="no-logistic">
+  <view>暂无物流信息</view>
+</view> -->
+
+
+<!-- <view class='icon no_in'></view>   -->
+
+<!-- 精品推荐 -->
+<!-- 
+<view class="recommend">
+  <view class="rec_title"><image src='/images/icona.png'></image>精品推荐</view>
+  <view class="rec_content">
+  <block wx:for="{{randomtProducts}}" wx:for-item="good">
+    <view catchtap="jumpToGoodDetail" class="rec_item act" data-productid="{{good.id}}">
+      <image src="{{good.img}}"></image>
+      <view class="rec_item_name">{{good.name}}</view>
+      <view class="rec_item_price" style="color:{{tColor}};">￥{{good.price}}</view>
+    </view>
+    </block>
+
+  </view>
+</view> -->

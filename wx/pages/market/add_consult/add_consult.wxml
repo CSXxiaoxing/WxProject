@@ -1,0 +1,27 @@
+
+<view class="ask-List" wx:if="{{askList.length>0}}">
+  <block wx:for="{{askList}}">
+        <view class="cons-item">
+            <view>
+               <view class="ask-text" style="background-color:{{tColor}};">问</view>         
+               <view>{{item.content}}</view>
+            </view>
+
+            <view class="answer">
+                <text style="color:{{tColor}};">商家回复：</text>
+                <view >{{item.replyContent}}</view>
+            </view>
+        </view>
+  </block>
+</view>
+  <view class="noData-container" wx:elif="{{control}}">
+    <image class="noData-logo" src="/images/cry.png"></image>
+    <text>暂无其他顾客咨询记录</text>
+  </view>
+
+<view class="ask-bottom">
+  <input placeholder='在此提问' value="{{askContent}}" bindinput='inputEvent' maxlength='150'></input>
+  <view style="background-color:{{tColor}}" class="act"  catchtap='Askquest'>提问</view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

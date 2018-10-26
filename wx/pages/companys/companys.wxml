@@ -1,0 +1,12 @@
+<!--pages/tab5/tab5.wxml-->
+<view class="com_container">
+  <block wx:for="{{com_data}}" >
+  <view class="company_item" hover-class="hover_item" catchtap="jumpToShop" data-shopid="{{item.id}}" >
+    <image src="{{item.img}}"></image>
+    <view class="name">{{item.name}}</view>
+    <!--<view class="add">{{item.add}}</view>-->
+  </view>
+  </block>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,223 @@
+
+page {
+  background-color: #fafafa;
+}
+
+.contain {
+  background-color: #fff;
+}
+
+.goods-container {
+  display: flex;
+  padding: 30rpx 40rpx 30rpx 20rpx;
+  font-size: 26rpx;
+  color: #4d4d4d;
+  position: relative;
+}
+.pin-success{
+  position: absolute;
+  width: 192rpx;
+  height: 116rpx;
+  display: block;
+  right: 40rpx;
+  bottom: 20rpx;
+}
+.goods-img{
+  width: 190rpx;
+  height: 190rpx;
+  display: block;
+  margin-right: 45rpx;
+}
+
+.goods-info {
+  flex: 1;
+}
+
+.goods-name {
+  font-size: 28rpx;
+  line-height: 35rpx;
+  font-weight: 600;
+  height: 70rpx;
+  margin-bottom: 32rpx;
+}
+
+.goods-price>text:last-child {
+  margin-left: 20rpx;
+}
+
+.goods-desc {
+  line-height: 45rpx;
+}
+
+.members {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-top: 1px solid #fafafa;
+  padding: 20rpx 0;
+}
+
+.member-image{
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.member-image {
+  display: inline-block;
+  margin-top: 20rpx;
+}
+
+.members-scroll {
+  height: 140rpx;
+  white-space: nowrap;
+}
+
+.act-desc {
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  line-height: 68rpx;
+}
+
+.act-desc text {
+  font-weight: 500;
+}
+
+.btns {
+  padding: 20rpx 30rpx;
+}
+
+.btns view, .btns button {
+  line-height: 100rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 36rpx;
+  margin-bottom: 20rpx;
+}
+
+button :active {
+  border: 0;
+}
+
+button ::after {
+  border: 0;
+}
+
+/*拼团*/
+
+.pintuan-container {
+  background-color: #fff;
+  margin: 0 20rpx 15rpx 20rpx;
+  padding: 0 30rpx 20rpx 30rpx;
+}
+
+.pintuan-head {
+  line-height: 88rpx;
+  display: flex;
+  align-items: center;
+  color: #4d4d4d;
+  font-size: 28rpx;
+}
+
+.pin-head-btns {
+  display: flex;
+  font-size: 26rpx;
+  align-items: center;
+}
+
+.pin-head-btns image {
+  margin-right: 20rpx;
+  width: 25rpx;
+  height: 25rpx;
+  display: block;
+}
+
+.pintuan-content {
+  font-size: 26rpx;
+}
+
+.pintuan-item {
+  border-bottom: 1px solid #e6e6e6;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 120rpx;
+}
+
+.pt-user-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.pintuan-btns {
+  display: flex;
+  align-items: center;
+}
+
+.pintuan-btns view:last-child {
+  margin-left: 30rpx;
+  color: #fff;
+  border-radius: 35rpx;
+  width: 143rpx;
+  text-align: center;
+  line-height: 70rpx;
+}
+
+.pintuan-btns view {
+  max-width: 220rpx;
+}
+
+.pt-user-info image {
+  border-radius: 50%;
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  margin-right: 20rpx;
+}
+
+.pt-desc {
+  text-align: center;
+  font-size: 26rpx;
+  color: #ccc;
+}
+
+.pt-user-info view {
+  max-width: 150rpx;
+}
+
+/*拼团商品列表*/
+
+.goodsList-container{
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.goodsList-container image{
+  display: block;
+}
+.goodsList-icon{
+  width:34rpx;height: 34rpx;
+}
+.go-icon{
+  width: 36rpx;height: 10rpx;
+}
+.goodsList-head{
+padding: 0 30rpx;line-height: 100rpx;display: flex;align-items: center;font-size: 32rpx;color: #ff7200;
+}
+.goodsList-head view{
+  flex:1;padding: 0 20rpx;
+}
+.goodsList{
+  display: flex;flex-wrap: wrap;
+}
+.goodsList-item{
+  width: 360rpx;line-height: 58rpx;font-size: 28rpx;color: #4d4d4d;text-align: center;
+}
+.goodsList-item >image{
+  margin-bottom: 15rpx;width: 360rpx;height: 345rpx;display: block;
+}

@@ -1,0 +1,41 @@
+
+<view class="">
+    <view class="height">
+        <view class="people">
+          {{total}}  
+        </view>
+    </view>
+
+    <view class="axt">
+        <view>微信头像</view> 
+        <view>微信昵称</view>
+        <view>{{type=='1' ? '绑定日期':'等级'}}</view>
+    </view>
+
+    <block wx:for="{{users}}" wx:key="{{index}}" wx:for-index="idx">
+    <view class="axt-user {{type=='2' ? 'axt-user2' : '' }}" data-id="{{type=='2' ? item.id : 0 }}" catchtap="unfold">
+        <view>
+            <image class="" src="{{item.profilePhoto || '/images/img_ktx.png'}}" mode="aspectFit" lazy-load="true"></image>
+        </view>
+        <view>{{item.nickname}}</view>
+        <view>{{type=='1' ? item.registerTime : grade[1].name }}</view>
+        
+        <image class="record" wx:if="{{type=='2'}}" src="{{id_open == item.id ? '/images/fx-record01.png' : '/images/fx-record00.png'}}" mode="aspectFit" lazy-load="true"></image>
+    </view>
+
+    <view class="agents"  wx:if="{{type=='2' && id_open == item.id}}">
+        <block wx:for="{{agents[item.id]}}" wx:key="{{agents[item.id].id}}" wx:for-item="agent" >
+            <view class="axt-agents" data-id="{{type=='2' ? agent.id : 0 }}" >
+                <view>
+                    <image class="" src="{{agent.profilePhoto || '/images/img_ktx.png'}}" mode="aspectFit" lazy-load="true"></image>
+                </view>
+                <view>{{agent.nickname}}</view>
+                <view>{{grade[2].name}}</view>
+            </view>
+        </block>
+    </view>
+    </block>
+    
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

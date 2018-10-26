@@ -1,0 +1,20 @@
+<!--pages/contact/contact.wxml-->
+<image mode='widthFix' wx:if="{{data.compayInfo.banner!=undefined}}" src="{{data.config.image_resource+data.compayInfo.banner}}" class="adv-img"></image>
+<view class="company-container">
+  <view class="company-name" wx:if="{{data.compayInfo.nickName!=null}}">{{data.compayInfo.nickName}}</view>
+  <view class="company-desc" wx:if="{{data.compayInfo.englishName!=null}}">{{data.compayInfo.englishName}}</view>
+  <view class="company-msg" wx:if="{{data.compayInfo.linkman!=null}}">联系人：
+    <view class="info-content">{{data.compayInfo.linkman}}</view>
+  </view>
+  <view class="company-msg" wx:if="{{data.compayInfo.tel!=null}}" catchtap="makePhone" data-phone="{{data.compayInfo.tel}}">联系电话：{{data.compayInfo.tel}}</view>
+  <view class="company-msg" wx:if="{{data.compayInfo.email!=null}}">邮箱：
+    <view class="info-content">{{data.compayInfo.email}}</view>
+  </view>
+  <view class="company-msg" wx:if="{{data.compayInfo.address!=null}}">地址：
+    <view class="info-content">{{data.compayInfo.address}}</view>
+  </view>
+</view>
+<map wx:if="{{longitude!=undefined && latitude!=undefined}}" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}"
+  bindregionchange="regionchange" show-location class="map"></map>
+
+  <tool bind:toolFun="onToolFun"></tool>

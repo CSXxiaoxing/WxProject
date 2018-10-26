@@ -1,0 +1,17 @@
+
+<view class="fx-rule">
+    <image class="fx-rule-image" src="/images/card-bg.png" mode="aspectFill"></image>
+    <view class="fx-rule-box"></view>
+    <view class="h1">
+        提现规则
+    </view>
+
+    <block wx:for="{{text}}" wx:key="{{index}}">
+        <view class="h6">
+            {{item}}
+        </view>
+    </block>
+    
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

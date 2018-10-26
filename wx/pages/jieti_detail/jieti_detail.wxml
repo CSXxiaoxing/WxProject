@@ -1,0 +1,88 @@
+<!--轮播图-->
+<swiper class="banner" indicator-dots="true" indicator-color="rgba(0, 0, 0, .5)" indicator-active-color="#000">
+  <block wx:for="{{banners}}" wx:for-item="banner">
+  <swiper-item class="banner_item">
+    <image src="{{banner}}" catchtap="preImage" data-imgurl="{{banner}}"></image>
+  </swiper-item>
+  </block>
+ 
+</swiper>
+<!--商品价格-->
+<view class="goods_text_desc">
+  <view class="goods_name">
+    {{jieti_data.name}}
+  </view>
+  <view class="goods_price_desc" style="color:{{tColor}};">
+    <text class="first_price" style="color:{{tColor}};">首付款: </text>￥{{jieti_data.firstprice}}
+    <text class="marketPrice">市场价:￥{{jieti_data.marketPrice}}</text>
+  </view>
+</view>
+<!--参团人数-->
+<view class="desc_item">
+  <text class="desc_name">参团人数<text class="color_blue" style="color:{{tColor}};"> {{jieti_data.saleNum}}</text>人</text>
+  <text class="desc_end_time">距离结束：<text class="color_blue" style="color:{{tColor}};"> {{jieti_data.end_day==null?'0':jieti_data.end_day}} </text>天</text>
+</view>
+<!--选择配置-->
+<view class="margin_bottom20">
+<view class="desc_item margin_bottom0" catchtap="hideOrShowConfig">
+  <text class="desc_name">选择配置</text>
+  <image src="{{hideOrShowConfig?'/images/hide.png':'/images/display.png'}}"></image>
+</view>
+<view class="goods_style_container" hidden="{{hideOrShowConfig}}">
+  <block wx:for="{{good_styles}}" wx:for-index="pos" wx:for-item="style">
+  <view class="goods_styles">
+    <view class="style_name">{{style.name}}</view>
+    <view class="selecteds_container">
+     <block wx:for="{{style.attrList}}" wx:for-item="style_item">
+      <view data-pos="{{pos}}" catchtap="sel_Style" data-normid="{{style_item.id}}" class="selected_item {{style_item.sel?'selected':''}} " style="{{style_item.sel?'background-color:'+tColor+';':''}}">{{style_item.name}}</view>
+      </block>
+    </view>
+     </view>
+  
+  </block>
+
+  <view class="goods_styles">
+  <view class="style_name">数量</view>
+  <view class="selecteds_container">
+                       <view catchtap="sub" class="border1 act">-</view>
+                     <view class="border2">{{sel_num}}</view>
+                     <view catchtap="add" class="border1 act">+</view>
+  </view>
+    <view class="stock">剩余库存：{{jieti_data.stock}} </view>
+  </view>
+  <view>单次限购{{jieti_data.purchase}}件</view>
+</view>
+</view>
+
+<!-- 富文本 -->
+<import src="../../wxParse/wxParse.wxml"/>
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+
+  <view class="act_container" style="color:{{tColor}};">
+    <view >活动结束时间：{{jieti_data.act_end}}</view>
+    <view>定金截止时间：{{jieti_data.pay_end}}</view>
+    <view>尾款截止时间：{{jieti_data.balance_end}}</view>
+  </view>
+
+  <view class="price_desc_container">
+    <view class="price_desc_title">
+      当前
+      <text style="color:{{tColor}};">{{jieti_data.saleNum}}</text>人已购买,价格：
+      <text style="color:{{tColor}};">￥{{jieti_data.price}}</text>
+    </view>
+    <block wx:for="{{jieti_data.actBiddingPrices}}" wx:for-item="child">
+    <view class="price_item">
+      {{child.saleNum}}人
+      <text>￥{{child.price}}</text>
+    </view>
+    </block>
+  </view>
+<!--底部按钮-->
+<view class="bottom_btn">
+  <text catchtap="jumpToGoodDetail" class="compare act3">对比原商品</text>
+  <text wx:if="{{goodState==1}}" style="background-color:{{tColor}};" catchtap="jumpToPay" class="join_in act3">立即抢购</text>
+   <text wx:elif="{{goodState==0}}" class="join_in color_gray act3">已结束</text>
+    <text wx:elif="{{goodState==2}}"  class="join_in color_gray act3" >即将开始</text>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,93 @@
+
+<view class="box">
+    <view class="height">
+        <view class="earnings">
+            <view>总收益</view>
+            <view>{{data.total}}</view>
+            <view class="rule" data-sid="rule" catchtap="navigate">
+                <view>?</view>
+                提现规则
+            </view>
+        </view>
+        <view class="money">
+            <text>可提现金额：{{data.allow}}元</text>
+            <button class="weui-btn mini-btn" type="default" catchtap="tiXian">提现</button>
+        </view>
+        <image class="fx-bl" src="/images/fx_bl.png" mode="scaleToFill" ></image>
+    </view>
+
+    <!-- my-移植 -->
+    <view class="my2">
+
+    <view class="Img-btn-container">
+        <view class="Img-btn-item">
+            <view class="">{{~~data.userCount}}</view>
+            <view class="">我的用户</view>
+        </view>
+        <view class="Img-btn-item">
+            <view class="">{{data.userCommision}}</view>
+            <view class="">用户提成</view>
+        </view>
+        <view class="Img-btn-item">
+            <view class="">{{~~data.distrCount}}</view>
+            <view class="">我的代理</view>
+        </view>
+        <view class="Img-btn-item">
+            <view class="">{{data.distrCommision}}</view>
+            <view class="">代理提成</view>
+        </view>
+    </view>
+
+    <view class="selItem act" data-sid="user" catchtap="navigate">
+    <image class="icon user-yh" src='/images/fx_yh.png'></image>
+    <view class="selItem-title">我的用户</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" data-sid="dl" catchtap="navigate">
+    <image class="icon" src='/images/fx_dl.png'></image>
+    <view class="selItem-title">我的代理</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" data-sid="detail" catchtap="navigate">
+    <image class="icon" src='/images/fx_mx.png'></image>
+    <view class="selItem-title">收益明细</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem act" data-sid="tx" catchtap="navigate">
+    <image class="icon" src='/images/fx_tx.png'></image>
+    <view class="selItem-title">提现记录</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+    <view class="selItem  act" data-sid="card" catchtap="navigate">
+    <image class="icon" src='/images/fx_ka.png'></image>
+    <view class="selItem-title">银行卡</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+    </view>
+
+    <view class="selItem  act qr" data-sid="qr" catchtap="navigate">
+    <image class="icon" src='/images/fx_ewm.png'></image>
+    <view class="selItem-title">店铺分享</view>
+    <image class="jump-logo" src='/images/i_ioc_go.png'></image>
+
+    <button class="butZJ" open-type="share" style="z-index:{{QRcode ? 3 : -999}};"></button>
+    </view>
+
+
+    </view>
+
+    <view class="mark" wx:if="{{mark}}">
+        <view class="mark-center">
+            <image src='/images/fx_tip.png'></image>
+            <view class="wenzi">
+                {{tipText||'系统维护中'}}
+            </view>
+            <view class="mark-btn" capture-catch:touchend="motype">
+                知道了
+            </view>
+        </view>
+        <view class="mark-child" catchtap="motype"></view>
+    </view>
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

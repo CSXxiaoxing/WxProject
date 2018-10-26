@@ -1,0 +1,25 @@
+<!--pages/partner/partner.wxml-->
+<view class="head" wx:if="{{data.partnerList.length>0}}">
+  <view class="head-line"></view>
+  <view class="head-title">合作伙伴</view>
+</view>
+
+<view class="partner-container" wx:if="{{data.partnerList.length>0}}">
+  <block wx:for="{{data.partnerList}}">
+  <view class="partner-item" data-id="{{item.id}}" catchtap="jumpToPartnerDetail">
+    <image class="partner-item-img" src="{{data.config.image_resource + item.banner}}"></image>
+    <view class="partner-desc">
+      <view class="pn-name">
+        {{item.company}}
+      </view>
+      <image class="pn-logo" src="/images/jiant.png"></image>
+    </view>
+  </view>
+  </block>
+</view>
+   <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

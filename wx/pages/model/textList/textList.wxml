@@ -1,0 +1,15 @@
+<block wx:for="{{allObj}}" wx:key="{{item.index}}">
+    
+    <view style="{{item.style}}" class="zj-text">
+        <text space="nbsp">{{item.con}}</text>
+        <button 
+        data-url="{{item.link}}" 
+        data-urlT="{{item.webview}}" 
+        data-phone="{{item.phone}}" 
+        bindtap="picFn" 
+        class="butZJ" 
+        bindtap='textTap'
+        open-type="{{item.openT}}"></button>
+    </view>
+    
+</block>

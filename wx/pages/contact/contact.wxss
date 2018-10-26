@@ -1,0 +1,41 @@
+/* pages/contact/contact.wxss */
+page{
+  color: #5b6266;
+  background-color: rgb(240, 240, 240);
+}
+.adv-img{
+  width: 100%;
+  height: 340rpx;
+  display: block;
+  margin-bottom: 15rpx;
+}
+.company-name{
+  font-weight: 600;
+  font-size: 32rpx;
+  color: #1b1d1e;
+  line-height: 62rpx;
+}
+.company-desc{
+  margin-bottom: 15rpx;
+  font-size: 24rpx;
+  color: #a8afb3;
+}
+.company-container{
+
+  padding: 0 22rpx 15rpx 22rpx;
+}
+.company-container{
+  font-size: 28rpx;
+}
+.company-msg{
+  display: flex;
+  line-height: 58rpx;
+}
+.info-content{
+  flex: 1;
+}
+.map{
+  width: 710rpx;
+  margin-left: 20rpx;
+  height: 400rpx;
+}

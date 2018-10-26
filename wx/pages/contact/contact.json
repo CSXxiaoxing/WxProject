@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+            "navigationBarTitleText": "联系我们",
+            "enablePullDownRefresh": true,
+            "backgroundTextStyle": "dark"
+}

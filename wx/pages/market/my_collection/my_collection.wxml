@@ -1,0 +1,61 @@
+<view class="head" style=" border-bottom: 1px {{tColor}} solid;">
+  <view id='1' catchtap="title_selected" class="head_item act" style=" {{selected == 1?'color:'+tColor+';':''}}">
+    <image style="{{selected == 1?'background-color:'+tColor+';':''}}" src="{{selected == 1?'/images/shangp_h.png':'/images/shangp.png'}}"></image>
+    <text>商品</text>
+  </view>
+  <view id='2' catchtap="title_selected" class="head_item act " style=" {{selected == 2?'color:'+tColor+';':''}}">
+    <image style="{{selected == 2?'background-color:'+tColor+';':''}}" src="{{selected == 2?'/images/dianp_h.png':'/images/dianp.png'}}"></image>
+    <text>店铺</text>
+  </view>
+</view>
+<view  wx:if="{{goods_datas.length>0}}">
+<block wx:for="{{goods_datas}}" wx:for-item="datas">
+  <view id="{{datas.id}}" catchtap="jumpToDetail" class="indent_goods" hidden="{{hidden1}}">
+    <!--<view class="indent_goods_head">
+    <image src="/images/banner.png"></image>
+    <text>MM行业品牌店铺</text>
+  </view>-->
+    <view class="indent_goods_container">
+      <view class="indent_goods_child act3" catchtap="jumpToGoodDetail" data-productid="{{datas.id}}">
+        <image src="{{datas.imgUrl}}" class="act"></image>
+        <view class="goods_desc_content">
+          <view class="goods_name">
+            {{datas.name}}
+          </view>
+          <view class="goods_price" style="color:{{tColor}};">
+            ￥{{datas.price}}
+          </view>
+        </view>
+      </view>
+    </view>
+ 
+  </view>
+        
+</block>
+</view>
+ <view class="noData-container" hidden="{{hidden1}}"  wx:elif="{{control1}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+<view  wx:if="{{shops_datas.length>0}}">
+<block wx:for="{{shops_datas}}" wx:for-item="datas">
+  <view class="col_shops">
+    <view data-shopid="{{datas.id}}" class="act3 shop_item" bindtap="jumpToShopDetail" hidden="{{hidden2}}">
+      <image src="{{datas.icon}}" class="act shop_icon">
+      </image>
+      <text>{{datas.name}}</text>
+      <view class="right_desc">
+        <image style='background-color:{{tColor}};' src="/images/xina.png"></image>
+        <text>{{datas.fens}}</text>
+      </view>
+    </view>
+
+  </view>
+</block>
+  </view>
+   <view class="noData-container" hidden="{{hidden2}}"  wx:elif="{{control2}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,14 @@
+<block wx:for="{{allObj}}" wx:key="{{item.classnm}}">
+<view 
+    class="searchList {{item.classnm}}" 
+    style="{{item.style}}"
+    bindtap='sear' 
+    data-url="{{item.link}}" 
+    data-phone="{{item.phone}}" 
+    data-urlT="{{item.webview}}">
+
+    <view class="iconfont icon-sousuo sea-icon" style="color:{{item.icobg}}"></view>
+    <text> {{item.place}} </text>
+
+</view> 
+</block>

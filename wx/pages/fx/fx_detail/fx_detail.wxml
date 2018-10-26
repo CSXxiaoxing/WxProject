@@ -1,0 +1,66 @@
+
+<view class="box">
+    <!-- 上 -->
+    <view class="head">
+    <view class="header">
+        <view class="header-l" hidden="{{iconShow}}">
+            <view class="head-btn {{color=='all'?'blue':''}}" data-ele="all" bind:tap="btnTy">
+                全部
+            </view>
+            <view class="head-btn {{color=='dl'?'blue':''}}" data-ele="dl" bind:tap="btnTy">
+                代理提成
+            </view>
+            <view class="head-btn {{color=='user'?'blue':''}}" data-ele="user" bind:tap="btnTy">
+                用户提成
+            </view>
+        </view>
+        <view class="header-r" hidden="{{!iconShow}}">
+
+            <picker class="r-date {{dateStart ? 'r-blue' : ''}}" mode="date" value="{{date}}" end="{{dateEnd ? dateEnd:''}}" data-ele="Start" bindchange="bindDateChange">
+                <view>
+                {{dateStart? dateStart:'开始日期'}}
+                </view>
+            </picker>
+
+            <view class="zhi" hover-class="none" hover-stop-propagation="false">
+                至
+            </view>
+
+            <picker class="r-date {{dateEnd ? 'r-blue' : ''}}" mode="date" value="{{date}}" start="{{dateStart ? dateStart:''}}" data-ele="End" bindchange="bindDateChange">
+                <view>
+                {{dateEnd? dateEnd:'结束日期'}}
+                </view>
+            </picker> 
+
+        </view>
+
+        <view class="head-date" data-ele="fx-date" bind:tap="btnTy">
+            <image src="/images/fx-date0{{iconShow?2:1}}.png"></image>
+        </view>
+    </view>
+    <view class="axt">
+        <block wx:if="{{!iconShow}}">
+            <view>本月收益：￥{{allMoney[0+num]}}</view>
+            <view>今日收益：￥{{allMoney[1+num]}}</view>
+        </block>
+        <block wx:else>
+            <view bind:tap="bindDateChange" style="color: #4d4d4d;">重置</view>            
+        </block>
+    </view>
+    </view>
+
+    <!-- 下 -->
+    <view class="conten">
+    <block wx:for="{{allEarnings}}" wx:key="{{index}}">
+    <view class="axt-user">
+        <view>{{item.source}}</view>
+        <view>{{item.createTime}}</view>
+        <view>+{{item.commision}}</view>
+    </view>
+    </block>
+    <view class="mask" hidden="{{!iconShow}}"></view>
+    </view>
+
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

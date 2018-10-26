@@ -1,0 +1,35 @@
+ <!--pages/goods_evaluate/goods_evaluate.wxml-->
+
+<view class="evaluate-container" wx:if="{{allCommentList.length>0}}">
+  <block wx:for="{{allCommentList}}">
+  <view class="evaluate-item">
+    <view class="evaluate-head">
+      <image src="{{item.profilePhoto==null?item.aliProfilePhoto:item.profilePhoto}}"></image>
+      <view class="text-limit1">{{item.nickname == null?item.aliNickname:item.nickname}}</view>
+      <text>{{item.createTime}}</text>
+    </view>
+
+    <view class="eval-text">{{item.content}}</view>
+
+    <view>
+     
+     <view class="eval-images" >
+
+          <!-- wx:if="{{item.images.length>0}}"-->
+              <block wx:for="{{item.images}}" wx:for-item="img" wx:for-index="i">
+          <view catchtap='preDetailImage'  data-imgurl='{{img}}' data-imgs='{{item.images}}' wx:if="{{img!=''}}"><image src="{{img}}"/></view>
+
+        </block>
+     </view>
+    </view>
+
+  </view>
+  </block>
+</view>
+  <view class="noData-container" wx:elif="{{control}}">
+    <image class="noData-logo" src="/images/cry.png"></image>
+    <text>暂无评论</text>
+  </view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

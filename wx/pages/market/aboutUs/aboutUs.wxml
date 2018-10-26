@@ -1,0 +1,22 @@
+
+<image 
+    mode='widthFix' 
+    wx:if="{{data.compayInfo.banner!=undefined}}" 
+    catchtap="previewImage" 
+    data-imgurl="{{data.config.image_resource+data.compayInfo.banner}}" 
+    src="{{data.config.image_resource+data.compayInfo.banner}}" 
+    class="head-img">
+</image>
+
+<view class="passage-container">
+    <block wx:for="{{passage}}" wx:key="{{item.index}}">
+        <block wx:if="{{item.type==0}}">
+        <image mode="widthFix" class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}" src="{{item.str}}"></image>
+        </block>
+        <block wx:else>
+        <view class="paragraph">{{item.str}}</view>
+        </block>
+    </block>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

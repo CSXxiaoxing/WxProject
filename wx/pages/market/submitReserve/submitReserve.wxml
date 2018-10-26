@@ -1,0 +1,90 @@
+<form bindsubmit='submitMsg'>
+  <scroll-view scroll-y="true" class="msg-container" style="height:{{scrollHeight}}rpx;">
+
+    <view class="msg-item">
+      <view>预约人</view>
+      <input name="name" maxlength='20' class="text-limit1" placeholder-class='holder' placeholder='姓名' />
+    </view>
+    <view class="msg-item">
+      <view>预约时间</view>
+      <view class="date-contain">
+        <picker name="startDate" mode="date" bindchange="chooseDate" start="{{todayDate}}" end="{{endDate?endDate:''}}" data-datetype='0'>{{startDate?startDate:'开始日期'}}</picker>
+        <view>~</view>
+        <picker name="endDate" mode="date" start="{{startDate}}" bindchange="chooseDate" data-datetype='1'>{{endDate?endDate:'结束日期'}}</picker>
+      </view>
+    </view>
+    <view class="msg-item">
+      <view>联系方式</view>
+      <input name="phoneNumber" maxlength='11' type='number' class="text-limit1" placeholder-class='holder' placeholder='手机号码' />
+    </view>
+    <block wx:for="{{msgItems}}">
+      <view class="msg-item">
+        <view>{{item.title}}</view>
+        <input bindinput='customInputEvent' data-index='{{index}}' class="text-limit1" placeholder-class='holder' placeholder='{{item.holderString}}' />
+      </view>
+    </block>
+    <view class="msg-item">
+      <view>其它信息</view>
+      <input name="other" maxlength='250' class="text-limit1" placeholder-class='holder' placeholder='可在此给商家留言' />
+    </view>
+
+  </scroll-view>
+
+  <view class="btn">
+    <button form-type='submit' style="background-color:{{tColor}}">提交并支付</button>
+  </view>
+</form>
+
+<!-- 活动规则 -->
+<view class="dark-bg" style="{{ showIndentDetail? 'display: block;' : '' }}" catchtap='hideDialog' />
+<view class="reserveMsgDetail" style="height:{{msgPanelHeight}}rpx;transform: translateY(200%);{{showIndentDetail?'transform: translateY(0);':''}}">
+  <view class="resMsg-title">信息确认</view>
+  <scroll-view scroll-y="true" class="resMsg-scroll" style="height:{{msgPanelScrollHeight}}rpx;">
+    <view class="resMsg-container">
+      <view class="goods-container">
+        <image src="{{img}}" />
+        <view>
+          <view class="goodsName text-limit2">{{goodsName}}</view>
+          <view class="text-limit1 goodsNorm">{{selNum}}件，“{{normName}}”</view>
+          <view class="text-limit1">预约价：
+            <text style="color:{{tColor}};">{{priceTotal}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="msg-content">
+        <view class="text-limit1">预约人</view>：
+        <view>{{name}}</view>
+      </view>
+      <view class="msg-content">
+        <view class="text-limit1">预约时间</view>：
+        <view>{{startDate}}~{{endDate}}</view>
+      </view>
+      <view class="msg-content">
+        <view class="text-limit1">联系方式</view>：
+        <view>
+          <block wx:for="{{phoneNumber}}">
+            <text>{{item}}<text wx:if="{{(index+1)%4==0}}">-</text></text>
+          </block>
+        </view>
+      </view>
+      <block wx:for="{{msgItems}}">
+      <view class="msg-content">
+        <view class="text-limit1">{{item.title}}</view>：
+        <view>{{item.content!=''?item.content:'无'}}</view>
+      </view>
+     </block>
+      <view class="msg-content">
+        <view class="text-limit1">其它信息</view>：
+        <view>{{other!=''?other:'无'}}</view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="btns">
+    <view class="act" style="background-color:{{tColor}};color:#fff;" catchtap='pay'>已确认信息，立即支付</view>
+    <view class="act" catchtap='hideOrShowDialog'>返回修改信息</view>
+  </view>
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

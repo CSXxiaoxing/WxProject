@@ -1,0 +1,109 @@
+<!-- 背景 -->
+<image class="bg" wx:if="{{bgShow}}" lazy-load
+    style="background:url({{bg.Color? '':bg.imgUrl}}) center; background-color:{{bg.Color}};background-size: cover;">
+</image>
+
+
+<!-- 授权 -->
+    <!-- <view class="impower" wx:if="{{mark}}" hover-stop-propagation="true" >
+    <cover-view class="container">
+        <cover-view class="title">微信授权提醒</cover-view>
+        <cover-view class="desc">
+            <cover-view>授权以获取小程序全部功能</cover-view>
+            <cover-view style="font-align: center;">获得你的公开信息（昵称、头像等）</cover-view>
+        </cover-view>
+        <cover-view class="btn">
+            <cover-view catchtap="marknone">拒绝</cover-view>
+            <cover-view>去授权<button bindgetuserinfo="getUserInfo" open-type='getUserInfo'></button></cover-view>
+        </cover-view>
+    </cover-view>
+    </view> -->
+<view class="impower" wx:if="{{Authorize}}" hover-stop-propagation="true" >
+    <view class="container">
+        <view class="title">微信授权提醒</view>
+        <view class="desc">
+            <image class="headimg" lazy-load></image>
+            <view>授权以获取小程序全部功能</view>
+            <view style="font-align: center;">获得你的公开信息（昵称、头像等）</view>
+        </view>
+        <view class="btn">
+            <view capture-catch:touchend="marknone">拒绝</view>
+            <view>
+                <button bindgetuserinfo="getUserInfo" open-type='getUserInfo'></button>
+                <view>去授权</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+    <!-- 预览 -->
+    <view class="my-tabbar" wx:if="{{tabBars.tbshow}}" style="background-color:{{tabBars.bgc}};">
+
+    <block wx:for="{{tabBars.tabBar}}" wx:for-item="item" wx:key="tabBar">
+        <view class="tabBar-item">
+        <navigator 
+        open-type="redirect" 
+        url="{{item.pagePath}}" 
+        data-idx="{{index}}" 
+        capture-catch:touchend="tbclick" >
+            <view><image class="icon" src='/{{item.iconPath}}' lazy-load></image></view>
+            <view 
+            wx:if="{{tabBars.txtShow=='1'}}" 
+            style="color:{{tabBars.tbColorType==index?tabBars.codown:tabBars.co}};"
+            >{{item.name}}</view>
+        </navigator>
+        </view>
+    </block>
+  
+    </view>
+
+<!-- 分享 -->
+<!-- <cover-image hidden="{{!(shareType && !shareArrType && !Authorize && !webViewSrc)}}" 
+    class="share" src="/images/share.png" catchtap="_openShare"
+    style="bottom:{{ballBottom}}px;right:{{ballRight}}px;"
+    capture-catch:touchmove="ballMoveEvent" >
+</cover-image> -->
+<image hidden="{{!(shareType && !shareArrType && !Authorize && !webViewSrc)}}" 
+    class="share" src="/images/share.png" catchtap="_openShare"
+    style="bottom:{{ballBottom}}px;right:{{ballRight}}px;"
+    capture-catch:touchmove="ballMoveEvent" >
+</image>
+
+<view class="theShare" wx:if="{{shareArrType}}" style="{{shareChildType?'':'justify-content:center;'}}">
+    <!-- 按钮 -->
+    <block wx:if="{{shareChildType}}">
+        <view class="theShare-mark" capture-catch:touchend="_closeShare"></view>
+        <block wx:for="{{shareArr}}" wx:key="{{index}}">
+            <button open-type="{{item.type}}" data-id="{{item.id}}" capture-catch:touchend="_closeShare">{{item.name}}</button>
+        </block>
+    </block>
+    <!-- 图片 -->
+    <block wx:else>
+        <view class="theShare-mark poster-mark" capture-catch:touchend="_closeShare"></view>
+        <image class="share-poster-img" src="{{IMG_URL}}" lazy-load="false" binderror="" bindload="">
+        </image>
+        <view class="share-poster" capture-catch:touchend="_closeShare" data-id="99" >
+            <view class="share-poster01" style="background-color:{{tColor}};"></view>
+            <view class="share-poster02" style="background-color:{{tColorHelp}};"></view>
+            <text>保存海报</text>
+        </view>
+    </block>
+</view>
+
+<!-- webview 页面嵌入 -->
+<block wx:if="{{webViewSrc}}">
+    <web-view src="{{webViewSrc}}" bindmessage=""></web-view>
+    <cover-view class="web-v" style="{{webV}}" capture-catch:touchend="_clearWebView" >
+        返回
+    </cover-view>
+</block>
+
+
+<!-- <view class="cover-box" style="bottom:{{ballBottom}}px;right:{{ballRight}}px;">
+  <view class="cover-style" animation="{{animCollect}}" catchtap="collect" >1</view>
+  <view class="cover-style" animation="{{animTranspond}}" catchtap="transpond" >2</view>
+  <view class="cover-style" animation="{{animInput}}" catchtap="input" >3</view>
+
+  <view class="cover-plus-style" animation="{{animPlus}}" catchtap="plus" capture-catch:touchmove="ballMoveEvent" >拖</view>
+</view> -->
+

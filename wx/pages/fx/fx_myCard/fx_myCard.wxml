@@ -1,0 +1,18 @@
+
+<view class="fx-card">
+    <view class="card">
+        <view class="name">{{data.openBank}}</view>
+        <view class="set" data-type="set" data-user="{{data.openName}}" data-card-name="{{data.openBank}}" data-num="{{card_number}}" bindtap="nav">修改银行卡</view>
+        <view class="card-hao">卡号</view>
+        <view class="card-num">
+            <block wx:for="{{card_number}}" wx:key="{{index}}">
+                <view class="zi-num">{{item}}</view>
+            </block>
+        </view>
+        <image src="/images/card-bg.png"></image>
+    </view>
+
+    <!-- <image class="fx-add" src="/images/fx-add.png" data-type="add" bindtap="nav"></image> -->
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

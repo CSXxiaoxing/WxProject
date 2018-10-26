@@ -1,0 +1,13 @@
+<block wx:for="{{allObj}}" wx:key="{{item.index}}">
+
+    <button 
+        class="btnText"
+        style="border:0 none;{{item.style}}line-height:{{height[index]*2}}rpx;box-sizing: content-box;"
+        open-type="{{item.openT}}"
+        data-phone="{{item.phone}}" 
+        data-url="{{item.link}}" 
+        data-urlT="{{item.webview}}" 
+        bindtap='btn'
+        open-type="{{item.openT}}">{{item.con}}</button>
+    
+</block>

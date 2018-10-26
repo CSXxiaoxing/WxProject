@@ -1,0 +1,5 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "navigationBarTitleText": "预定订单详情"
+}
+

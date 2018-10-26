@@ -1,0 +1,49 @@
+/* pages/goods_evaluate/goods_evaluate.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.evaluate-item{
+  background-color: #fff;
+  margin-bottom: 10rpx;
+}
+.evaluate-head{
+  display: flex;
+  padding: 30rpx 20rpx 20rpx 20rpx;
+  line-height: 70rpx;
+}
+.evaluate-head image{
+  display: block;
+  width: 70rpx;
+  height: 70rpx;
+  margin: 0 20rpx 10rpx 0;
+  border-radius: 50%;
+}
+.evaluate-head view{
+  font-size: 28rpx;
+  color: #4d4d4d;
+  flex: 1;
+}
+.evaluate-head text{
+  font-size: 24rpx;
+  color: #999;
+}
+.eval-text{
+  color: #4d4d4d;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  padding: 0 20rpx 20rpx 20rpx;
+}
+.eval-images{
+  flex-wrap: wrap;
+  display: flex;
+  padding: 0 25rpx 30rpx 25rpx;
+}
+.eval-images image{
+  width: 220rpx;
+  height: 160rpx;
+  margin-bottom: 10rpx;
+  display: block;
+}
+.eval-images view:nth-child(3n-1){
+  margin: 0 20rpx;
+}

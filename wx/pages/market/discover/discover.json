@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "navigationBarTitleText": "资讯",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+}

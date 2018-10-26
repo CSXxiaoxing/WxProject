@@ -1,0 +1,99 @@
+/* pages/index/coupon/coupon.wxss */
+
+page {
+  padding-top: 100rpx;
+  min-height: 1125rpx;
+}
+
+.title_container {
+  background-color: #fff;
+  position: fixed;
+  font-size: 28rpx;
+  top: 0;
+  display: flex;
+  width: 100%;
+  z-index: 100;
+  line-height: 100rpx;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  color: #adadad;
+}
+
+.text_select {
+  font-size: 30rpx;
+  color: #91a3ff;
+  position: relative;
+  border-bottom: 1px #91a3ff solid;
+}
+
+/*第二套优惠券*/
+
+.coupon_item_container {
+  padding: 30rpx 30rpx 0 30rpx;
+  color: #fff;
+}
+
+.couponItem {
+  position: relative;
+  margin-bottom: 18rpx;
+}
+
+.coupon_desc {
+  height: 330rpx;
+}
+.position{
+  position: absolute;
+  left: 0;
+  padding-left: 50rpx;
+  width: 640rpx;
+  z-index: 98;
+}
+
+.shopName {
+  font-size: 24rpx;
+  line-height: 50rpx;
+  border-bottom: 1px dashed #fff;
+  width: 590rpx;
+  top: 0;
+  padding-right: 50rpx;
+}
+
+.coupon_val {
+  max-width: 500rpx;
+  top: 50rpx;
+}
+.coupon_bottom_desc{
+  display: flex;
+  align-items: center;
+  top: 192rpx;
+}
+.coupon_val text{
+  font-size: 72rpx;
+  line-height: 142rpx;
+  padding-bottom: 20rpx;
+}
+.couponItem image {
+  width: 690rpx;
+  height: 330rpx;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 97;
+}
+.getCoupons{
+  font-size: 29rpx;
+  padding: 20rpx 43rpx 20rpx 20rpx;
+}
+.condition{
+  max-width: 400rpx;
+  font-size: 30rpx;
+  line-height: 60rpx;
+}
+.time_desc{
+  font-size: 24rpx;
+  line-height: 54rpx;
+}

@@ -1,0 +1,75 @@
+<!--pages/my/my_indent/my_indent.wxml-->
+<view class="title_container">
+  <view class="title text-limit1">
+    <view catchtap='type_select' data-typeid='0' style=" {{selected=='0'?'border-bottom:1px '+tColor+' solid;':''}}solid;color:{{selected=='0'?tColor:''}};">全部订单</view>
+  </view>
+  <view class="title  text-limit1">
+    <view catchtap='type_select' data-typeid='1' style=" {{selected=='1'?'border-bottom:1px '+tColor+' solid;':''}} color:{{selected=='1'?tColor:''}};">待支付</view>
+  </view>
+  <view class="title text-limit1">
+    <view catchtap='type_select' data-typeid='3' style=" {{selected=='3'?'border-bottom:1px '+tColor+' solid;':''}} color:{{selected=='3'?tColor:''}};">待发货</view>
+  </view>
+  <view class="title text-limit1">
+    <view catchtap='type_select' data-typeid='4' style=" {{selected=='4'?'border-bottom:1px '+tColor+' solid;':''}} color:{{selected=='4'?tColor:''}};">待收货</view>
+  </view>
+  <view class="title text-limit1">
+    <view catchtap='type_select' data-typeid='5' style=" {{selected=='5'?'border-bottom:1px '+tColor+' solid;':''}} color:{{selected=='5'?tColor:''}};">已完成</view>
+  </view>
+</view>
+
+<view class="indent_container" wx:if="{{indent_data.length>0}}">
+  <block wx:for="{{indent_data}}" wx:for-item="indent_item">
+    <view class="indent_item">
+      <view class="indent_head">
+        <view class="indent_state" style='color:{{tColor}}'>状态：
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==1}}">待支付</text>
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==2}}">待确认</text>
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==3}}">待发货</text>
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==4}}">已发货</text>
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==5}}">已完成</text>
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==6}}">已取消</text>
+          <text style='color:{{tColor}}' wx:if="{{indent_item.orderState==7}}">拼团中</text>
+        </view>
+        <view wx:if="{{indent_item.payType=='INTEGRAL'}}" class="indent_total">扣除积分：{{indent_item.integral}}</view>
+        <view wx:else class="indent_total">总价:￥{{indent_item.act_total}}</view>
+        <view data-isback="{{indent_item.backOrExchangeNum}}" data-indentid="{{indent_item.id}}" catchtap="jumpToIndentDetail" class="pay_btn act" data-ordertype='{{indent_item.orderType}}' style='background-color:{{tColor}}'>查看详情</view>
+
+      </view>
+      <view class="indent_goods_container">
+        <block wx:for="{{indent_item.orderGoods}}" wx:for-item="good">
+          <view class="indent_goods_child act" data-productid="{{good.id}}" catchtap="jumpToDetails">
+            <image src="{{good.img}}"></image>
+            <view class="goods_desc_content">
+              <view class="goods_name">
+                {{good.name}}
+              </view>
+              <view class="classname">
+                {{good.count}}件
+              </view>
+            </view>
+          </view>
+        </block>
+
+      </view>
+
+      <view class="indent-desc" wx:if="{{indent_item.orderType==1}}">订单类型：普通订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==2}}">订单类型：限时抢购订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==3}}">订单类型：团购订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==4}}">订单类型：竞价定金订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==5}}">订单类型：竞价尾款订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==6}}">订单类型：积分商城订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==7}}">订单类型：拼团订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==8}}">订单类型：预约订单</view>
+      <view class="indent-desc" wx:if="{{indent_item.orderType==9}}">订单类型：砍价订单</view>
+
+    </view>
+
+  </block>
+
+</view>
+<view class="noData-container" wx:if="{{indent_data.length<=0 && control}}">
+  <image class="noData-logo" src="/images/cry.png"></image>
+  <text>暂时木有内容呀~~</text>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

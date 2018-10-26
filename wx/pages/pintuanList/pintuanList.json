@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+            "navigationBarTitleText": "拼团活动",
+            "enablePullDownRefresh": true,
+            "backgroundTextStyle": "dark"
+}

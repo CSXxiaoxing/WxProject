@@ -1,0 +1,48 @@
+<!--pages/news/news.wxml-->
+
+<scroll-view scroll-x="true" scroll-y="false" class="news-titles" wx:if="{{newTitleList.length>0}}">
+
+  <block wx:for="{{newTitleList}}">
+    <view catchtap="changeTab" data-id="{{item.id}}" class="news-title-item">
+
+      <view class="news-title text-limit1" style="{{selId==item.id?'color:'+tColor+'; border-bottom: 4px solid '+tColor+';':''}}">{{item.title}}</view>
+
+    </view>
+
+  </block>
+</scroll-view>
+
+<view class="mask-left"></view>
+<view class="line"></view>
+<block wx:for="{{newTitleList}}">
+  <view class="newList1-container" hidden="{{selId!=item.id}}">
+
+    <view class="newList1-item-container" wx:if="{{item.newList.length>0}}">
+      <block wx:for="{{item.newList}}" wx:for-item="new">
+        <view class="newList1-item" data-newid="{{new.id}}" catchtap="jumpToNewDetail">
+          <image src="{{config+new.image}}" class="newList1-newsImg"></image>
+          <view class="newList1-item-title text-limit2">
+            {{new.title}}
+          </view>
+          <view class="newList1-item-desc">
+            <view class="newList1-item-time">{{new.createTime}}</view>
+            <image src="/images/yanj.png" class="newList1-item-eyes"></image>
+            <view class="newList1-item-desc-text">阅读</view>
+            <view class="newList1-num-text text-limit1 ">{{new.browseCount}}</view>
+            <image src="/images/dianza.png" class="newList1-item-like"></image>
+            <view class="newList1-item-desc-text">喜欢</view>
+            <view class="newList1-num-text text-limit1">{{new.collectionCount}}</view>
+          </view>
+        </view>
+      </block>
+      
+    </view>
+    <view class="noData-container" wx:if="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+  </view>
+</block>
+
+
+<tool bind:toolFun="onToolFun"></tool>

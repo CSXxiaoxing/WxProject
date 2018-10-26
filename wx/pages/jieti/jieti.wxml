@@ -1,0 +1,154 @@
+
+<view class="act_head">
+    
+    <view class="act_type">
+    <view class="line"></view>
+        <view catchtap="sel_actType" style="{{actId==0?'background-color:'+tColor+';color:#fff;':''}}" data-actid="0" class="act_type_item act3 ">已结束</view>
+        <view catchtap="sel_actType" style="{{actId==1?'background-color:'+tColor+';color:#fff;':''}}" data-actid="1"  class="act_type_item act3  margin">疯抢中</view>
+        <view catchtap="sel_actType" style="{{actId==2?'background-color:'+tColor+';color:#fff;':''}}" data-actid="2" class="act_type_item act3  margin">即将开始</view>
+    </view>
+    <!--标题栏-->
+<view class="goods_titles_container">
+
+ <block wx:for="{{jieti_data.titles}}" wx:for-item="title">
+  <view style="{{title.selected?'color:'+tColor+';':''}}" catchtap="sel_title" data-titleid="{{title.id}}">{{title.name}}</view>
+  </block>
+  <block wx:if="{{hideOrShow}}">
+  <image src="/images/hide.png" class="border_left" catchtap="hideOrShowType"></image>
+  </block>
+  <block wx:else>
+  <image src="/images/display.png" class="border_left"  catchtap="hideOrShowType"></image>
+  </block>
+</view>
+<view class="title_more" hidden="{{hideOrShow}}">
+  <block wx:for="{{jieti_data.hideTitles}}" wx:for-item="hidetitle">
+   <view style="{{hidetitle.selected?'color:'+tColor+';':''}}"  catchtap="sel_title" data-titleid="{{hidetitle.id}}">{{hidetitle.name}}</view>
+  </block>
+</view>
+
+</view>
+<view class="history_container">
+<block wx:for="{{jieti_data.goods}}"  wx:for-item="good">
+  <view class="history_item">
+    <image src="{{good.img}}"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        {{good.name}}
+      </view>
+      <view class="goods_price" style="color:{{tColor}};">预付款￥{{good.firstPrice}}
+        <text>最低可至￥{{good.lowestPrice}}</text>
+      </view>
+      <view class="buy_container">
+        <view wx:if="{{actId==0}}" data-productid="{{good.productId}}" data-goodid="{{good.id}}" catchtap="jumpToJietiDetail"  class="buy_btn color_gray act">
+          已结束
+        </view>
+           <view style="background-color:{{tColor}};" data-productid="{{good.productId}}" data-goodid="{{good.id}}" catchtap="jumpToJietiDetail" wx:elif="{{actId==1}}" class="buy_btn act">
+          马上抢
+        </view>
+        <view data-productid="{{good.productId}}" data-goodid="{{good.id}}" catchtap="jumpToJietiDetail"  wx:elif="{{actId==1}}" class="buy_btn act">
+          敬请期待
+        </view>
+        <text>已售{{good.saleCount}}件</text>
+      </view>
+
+    </view>
+  </view>
+  </block>
+  <!-- <view class="history_item">
+    <image src="/images/banner.png"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+      </view>
+      <view class="goods_price">￥1238.00
+        <text>￥1238.00</text>
+      </view>
+      <view class="buy_container">
+        <view class="buy_btn act">
+          立即抢购
+        </view>
+        <text>已售56斤</text>
+      </view>
+
+    </view>
+  </view>
+   <view class="history_item">
+    <image src="/images/banner.png"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+      </view>
+      <view class="goods_price">￥1238.00
+        <text>￥1238.00</text>
+      </view>
+      <view class="buy_container">
+        <view class="buy_btn act">
+          马上抢
+        </view>
+        <text>已售56斤</text>
+      </view>
+
+    </view>
+    
+  </view>
+  <view class="history_item">
+    <image src="/images/banner.png"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+      </view>
+      <view class="goods_price">￥1238.00
+        <text>￥1238.00</text>
+      </view>
+      <view class="buy_container">
+        <view class="buy_btn act">
+          马上抢
+        </view>
+        <text>已售56斤</text>
+      </view>
+
+    </view>
+    
+  </view>
+  <view class="history_item">
+    <image src="/images/banner.png"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+      </view>
+      <view class="goods_price">￥1238.00
+        <text>￥1238.00</text>
+      </view>
+      <view class="buy_container">
+        <view class="buy_btn act">
+          马上抢
+        </view>
+        <text>已售56斤</text>
+      </view>
+
+    </view>
+    
+  </view>-->
+  <!--<view class="history_item">
+    <image src="/images/banner.png"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+      </view>
+      <view class="goods_price">￥1238.00
+        <text>￥1238.00</text>
+      </view>
+      <view class="buy_container">
+        <view class="buy_btn act">
+          马上抢
+        </view>
+        <text>已售56斤</text>
+      </view>
+
+    </view>
+    
+  </view>-->
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

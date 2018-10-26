@@ -1,0 +1,79 @@
+<view wx:if="{{indentData}}">
+  <view class="info-container">
+    <view>状态：
+      <!--0.未付款 1.未确认 2.已确认待使用 3.已使用 4.预约失败 5.已取消  -->
+      <text wx:if="{{indentData.state==0}}" style="color:{{tColor}};">未付款</text>
+      <text wx:elif="{{indentData.state==1}}" style="color:{{tColor}};">商家未确认</text>
+      <text wx:elif="{{indentData.state==2}}" style="color:{{tColor}};">商家已确认待使用</text>
+      <text wx:elif="{{indentData.state==3}}" style="color:{{tColor}};">已使用</text>
+      <text wx:elif="{{indentData.state==4}}" style="color:{{tColor}};">预约失败</text>
+      <text wx:elif="{{indentData.state==5}}" style="color:{{tColor}};">已取消</text>
+    </view>
+    <view>订单编号：{{indentData.orderId}}</view>
+
+    <view>下单时间：{{indentData.createTime}}</view>
+    <view wx:if="{{indentData.state==4}}">原因：
+      <view style="flex:1">
+        {{indentData.reason}}
+      </view>
+    </view>
+    <view class="btns" style="display:block;" wx:if="{{indentData.state==0}}">
+      <view class="act" style="background-color:{{tColor}};color:#fff" catchtap='rePay'>立即支付</view>
+      <view class="act" catchtap='cancelOrder'>取消订单</view>
+    </view>
+  </view>
+  <view class="info-container">
+    <view>预约金额：
+      <text style="color:{{tColor}};">￥{{indentData.totolPrice}}</text>（在线支付）
+    </view>
+    <view>预约人：{{indentData.name}}</view>
+    <view>联系方式：{{indentData.phone}}</view>
+    <view>预约时间：{{indentData.startTime}} ~ {{indentData.endTime}}</view>
+    <block wx:for="{{indentData.infoList}}">
+      <view>
+        <view>{{item.title}}：</view>
+        <view style="flex:1;">{{item.content}}</view>
+      </view>
+    </block>
+    <view>其他信息：
+      <view style="flex:1;">{{indentData.other}}</view>
+    </view>
+  </view>
+
+  <view class="goods-msg-container">
+    <view class="goods-msg-head">
+      <view class="text-limit1">{{indentData.sellerName}}</view>
+      <view style="display:flex;">共计
+        <view class="text-limit1">{{indentData.number}}</view>件商品</view>
+    </view>
+    <view class="goods-content">
+      <image src="{{indentData.img}}"></image>
+      <view class="goods-info">
+        <view class="text-limit2 goods-name">{{indentData.goodsName}}</view>
+        <view class="text-limit1 norm">{{indentData.norm}}</view>
+        <view class="text-limit1">{{indentData.number}} 件</view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="info-container">
+    <view class="info-item">
+      <text>商品金额：</text>
+      <view class="text-limit1" style="color:{{tColor}}">￥{{indentData.totolOriginalPrice}}</view>
+    </view>
+    <view class="info-item">
+      <text>预约金额：</text>
+      <view class="text-limit1" style="color:{{tColor}}">￥{{indentData.totolPrice}}</view>
+    </view>
+      <view class="info-item">
+      <text>需补差价：</text>
+      <view class="text-limit1" style="color:{{tColor}}">￥{{indentData.finalPayment}}</view>
+    </view>
+  </view>
+  <view class="bottom" style="color:{{tColor}}">
+    实付款：￥{{indentData.totolPrice}}
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

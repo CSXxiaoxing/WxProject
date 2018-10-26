@@ -1,0 +1,135 @@
+{
+    "pages": [
+        "pages/index0/index0",
+        "pages/index1/index1",
+        "pages/index2/index2",
+        "pages/index3/index3",
+        "pages/index4/index4",
+        "pages/carrier/carrier",
+        "pages/my/my",
+        "pages/category/category",
+        "pages/my_indent/my_indent",
+        "pages/shopCart/shopCart",
+        "pages/joinUs/joinUs",
+        "pages/goodList/goodList",
+        "pages/goods_type/goods_type",
+        "pages/news/news",
+        "pages/intergral_shop/intergral_shop",
+        "pages/coupon/coupon",
+        "pages/sellerList/sellerList",
+        "pages/shop_detail/shop_detail",
+        "pages/tuangou/tuangou",
+        "pages/jieti/jieti",
+        "pages/newDetail/newDetail",
+        "pages/goods_detail/goods_detail",
+        "pages/reserveList/reserveList",
+        "pages/bargainList/bargainList",
+        
+        
+        "pages/pintuanList/pintuanList",
+        "pages/logistic/logistic",
+        "pages/shareBargain/shareBargain",
+        "pages/myBargain/myBargain",
+        "pages/myReserve/myReserve",
+        "pages/my_coupon/my_coupon",
+        "pages/goods_evaluate/goods_evaluate",
+        "pages/goods_search/goods_search",
+        "pages/hot_shop/hot_shop",
+        "pages/inTime/inTime",
+        "pages/contact/contact",
+        "pages/partner/partner",
+        "pages/products/products",
+        "pages/productDetail/productDetail",
+        
+        
+        "pages/discover_detail/discover_detail",
+        "pages/indent_details/indent_details",
+        "pages/intergral_detail/intergral_detail",
+        "pages/companys/companys",
+        "pages/hotGoods/hotGoods",
+        "pages/inTime_detail/inTime_detail",
+        
+        "pages/jieti_detail/jieti_detail"
+    ],
+    "subPackages": [
+        {
+            "name": "fx",
+            "root": "pages/fx/",
+            "pages": [
+                "fx_my/fx_my",
+                "fx_rule/fx_rule",
+                "fx_newCard/fx_newCard",
+                "fx_myCard/fx_myCard",
+                "fx_setCard/fx_setCard",
+                "fx_tiXianYes/fx_tiXianYes",
+                "fx_tiXianNo/fx_tiXianNo",
+                "fx_tiXian/fx_tiXian",
+                "fx_myUser/fx_myUser",
+                "fx_apply/fx_apply",
+                "fx_detail/fx_detail",
+                "fx_record/fx_record",
+                "fx_QR/fx_QR"
+            ]
+        },
+        {
+            "name": "marketing",
+            "root": "pages/market",
+            "pages": [
+                "aboutUs/aboutUs",
+                "add_indent/add_indent",
+                "add_pintuanIndent/add_pintuanIndent",
+                "add_singleIndent/add_singleIndent",
+                "add_tuan_indent/add_tuan_indent",
+                "add_consult/add_consult",
+                "add_bargainIndent/add_bargainIndent",
+                "add_address/add_address",
+                "add_evaluate/add_evaluate",
+                "add_integral_indent/add_integral_indent",
+                "add_jieti_indent/add_jieti_indent",
+                "add_qj_indent/add_qj_indent",
+                "back_goods/back_goods",
+                "myPintuan/myPintuan",
+                "tuan_detail/tuan_detail",
+                "sucCase/sucCase",
+                "pintuanDetail/pintuanDetail",
+                "reserveGoodsDetail/reserveGoodsDetail",
+                "sharePintuan/sharePintuan",
+                "reserveIndentDetail/reserveIndentDetail",
+                "my_history/my_history",
+                "caseDetail/caseDetail",
+                "eval_detail/eval_detail",
+                "my_collection/my_collection",
+                "evaluate/evaluate",
+                "bargainDetail/bargainDetail",
+                "brand_goods/brand_goods",
+                "my_backGoods/my_backGoods",
+                "bindPhone/bindPhone",
+                "partnerDetail/partnerDetail",
+                "levMessage/levMessage",
+                "discover/discover",
+                "change_goods/change_goods",
+                "my_address/my_address",
+                "consult/consult", 
+                "submitReserve/submitReserve"
+            ]
+        }
+    ],
+    "preloadRule": {
+        "pages/index0/index0": {
+            "network": "all",
+            "packages": ["pages/market"]
+        }
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "white",
+        "networkTimeout": {
+            "request": 8000,
+            "connectSocket": 8000,
+            "uploadFile": 8000,
+            "downloadFile": 8000
+        }
+    }
+}
