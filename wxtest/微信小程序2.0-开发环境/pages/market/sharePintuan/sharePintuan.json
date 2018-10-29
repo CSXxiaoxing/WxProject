@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "navigationBarTitleText": "拼团商品分享",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark"
+}

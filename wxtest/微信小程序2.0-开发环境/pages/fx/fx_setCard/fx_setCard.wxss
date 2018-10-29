@@ -1,0 +1,205 @@
+page{
+    height: 100%;
+    width: 100%;
+}
+
+.set-card,.ying {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.set-card {
+    width: 100%;
+    height: 304rpx;
+    box-shadow: 0px 10rpx 40rpx 0px 
+        rgba(34, 138, 242, 0.4);
+    border-radius: 10rpx;
+    margin-bottom: 80rpx;
+    padding: 58rpx 60rpx;
+    box-sizing: border-box;
+    position: relative;
+    background: rgba(255, 255, 255, 0);
+}
+.set-card>view {
+	font-family: PingFang-SC-Regular;
+	font-size: 30rpx;
+    color: #ffffff;
+    z-index: 1;
+}
+.set-card image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+.fx-card {
+    padding: 40rpx;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    font-family: PingFang-SC-Bold;
+}
+
+.tip {
+    width: 592rpx;
+	height: 45rpx;
+    font-size: 48rpx;
+    line-height: 48rpx;
+    margin: 40rpx 0 40rpx;
+	color: #4d4d4d;
+}
+.min-tip {
+    font-size: 24rpx;
+	line-height: 36rpx;
+    color: #f22222;
+    position: absolute;
+    bottom: -46rpx;
+    left: 2rpx;
+    z-index: 2;
+}
+.xia {
+    width: 670rpx;
+    height: 88rpx;
+    background-color: #2196f3;
+    border-radius: 10rpx;
+	font-size: 30rpx;
+	line-height: 88rpx;
+    color: #ffffff;
+    position: absolute;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.2;
+}
+
+.ying {
+    width: 670rpx;
+    height: 136rpx;
+    margin-top: 80rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+.ying image {
+    height: 40rpx;
+    width: 42rpx; 
+    position: absolute;
+    right: 30rpx;
+    bottom: 24rpx;
+    z-index: 10;
+}
+.text {
+    height: 30rpx;
+    display: block;
+    color: #4c4c4c;
+    font-size: 30rpx;
+    line-height: 28rpx;
+}
+.ipt {
+    width: 100%;
+	height: 88rpx;
+	background-color: rgba(245, 245, 245, 0);
+    border-radius: 10rpx;
+    padding: 0 29rpx;
+    box-sizing: border-box;
+    color: #80808000;
+    line-height: 88rpx;
+}
+.ipt-show {
+    width: 100%;
+	height: 88rpx;
+	background-color: #f5f5f5;
+    border-radius: 10rpx;
+    padding: 0 29rpx;
+    box-sizing: border-box;
+    color: #808080;
+    line-height: 88rpx;
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+
+/* 蒙层 */
+.mark {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+}
+.mark-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+.mark-center {
+    width: 513rpx;
+	height: 340rpx;
+	background-color: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.mark-center text{
+	line-height: 28rpx;
+    color: #333333;
+    position: absolute;
+    top: 56rpx;
+    left: 78rpx;
+    /* transform: translateX(-50%); */
+    white-space: nowrap;
+    font-size: 28rpx;
+	color: #999999;
+}
+.mark-btn {
+    height: 84rpx;
+	line-height: 84rpx;
+    width: 100%;
+    text-align: center;
+	font-size: 28rpx;
+    color: #228af2;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.mark-btn view {
+    flex: 1;
+}
+.mark-fuzhu {
+    flex-shrink: 0;
+    height: 28rpx;
+    width: 4rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background: #eee;
+}
+.mark-n {
+    color: #333333;
+}
+.mark-title {
+    font-size: 28rpx;
+    color: #333333;
+    position: absolute;
+    left: 50%;
+    top: 24rpx;
+    transform: translateX(-50%);
+}

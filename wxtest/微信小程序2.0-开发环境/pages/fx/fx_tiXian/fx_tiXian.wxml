@@ -1,0 +1,27 @@
+
+<view class="fx-ti-xian">
+    <view class="ti-height">
+        <view class="center">
+        <view class="">可提金额</view>
+        <view class="">￥{{money}}</view>
+        <button 
+        class="btn" bindtap="iptMsg" data-ele="money"
+        hover-class="btn-hover" type="default">
+            全部提取
+        </button>
+        </view>
+    </view>
+
+    <view class="ying">
+        <input class="ipt" type="digit" style="border: solid 2rpx {{iptType!=1 ?'#f22222;background-color:#fff;':'#eee;'}};"
+        placeholder="{{pla || '输入需要提现的金额'}}"
+        confirm-type="done" bindinput="iptMsg" bindfocus="iptFocus"></input>
+        <image hidden="{{iptType!=1 ? false : true}}" class="fx-cuo" src="/images/fx_cuo.png" mode="scaleToFill"></image>
+        
+        <view class="text" style="{{iptType==1 ? '':'color:#f22222;'}}">{{iptType==1 ? '本次提现最多可提现 '+money+' 元':iptType==0?'单次提现额度不可低于 100 元':'提现金额已超出可提现额度'}}</view>
+    </view>
+
+    <button class="xia" style="{{iptValue>=100 && iptType==1 ? 'opacity: 1;':''}}" bindtap="submit">发起提现</button>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

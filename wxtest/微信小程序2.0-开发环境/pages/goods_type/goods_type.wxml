@@ -1,0 +1,46 @@
+<!--tab2.wxml-->
+
+<!--顶级页面-->
+<view class="Integral_container">
+  <view class="devide_title_container">
+    <view id="0" bindtap="type_select" style="{{selected=='0' ? 'color:'+tColor+';'+'border-bottom:1px '+tColor+' solid' : ''}}" class="devide_title_str">默认</view>
+    <view id="1" bindtap="type_select" style="{{selected=='1' ? 'color:'+tColor+';'+'border-bottom:1px '+tColor+' solid' : ''}}" class="devide_title_str">销量</view>
+    <view id="2" bindtap="type_select" style="{{selected=='2' ? 'color:'+tColor+';'+'border-bottom:1px '+tColor+' solid' : ''}}" class="devide_title_str">评论</view>
+    <view id="4" bindtap="type_select" style="{{selected=='4' ? 'color:'+tColor+';'+'border-bottom:1px '+tColor+' solid' : ''}}" class="devide_title_str">价格</view>
+    <!--<view id="5" bindtap="type_select" class="devide_title_str title_margin {{selected=='5' ? 'selected_title' : ''}}">赛选</view>-->
+  </view>
+  <view class="goods_container">
+    <block wx:for="{{Integeral_datas.goods_items}}" wx:for-item="goods">
+      <view id="{{goods.id}}" class="goods_item_container" bindtap="JumpToDetail">
+        <image src="{{goods.imgUrl}}" class="goods_img"></image>
+        <view class="goods_text_desc">
+          <view class="goods_name text-limit2">{{goods.name}}</view>
+          <view class="goods_price">￥{{goods.price}}
+
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!--底部加载更多-->
+  <view class="load-more-wrap" wx:if="{{Integeral_datas.goods_items.length>0}}">
+    <block wx:if="{{has_more}}">
+      <view class="load-content">
+        <text class="weui-loading" />
+        <text class="loading-text">加载中</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="load-content" catchtap='onReachBottom'>
+        <text>{{bottom_desc}}</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="noData-container" wx:elif="{{control}}">
+    <image class="noData-logo" src="/images/cry.png"></image>
+    <text>暂时木有内容呀~~</text>
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

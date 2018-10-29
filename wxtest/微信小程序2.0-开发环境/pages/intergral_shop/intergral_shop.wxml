@@ -1,0 +1,50 @@
+<!--pages/index/intergral_shop/intergral_shop.wxml-->
+<view class="sign_head">
+  <view class="sign_container">
+    <view class="sign_view" style="background: -webkit-linear-gradient(-45deg, {{tColor}}, {{tColorHelp}});" >
+      <text>可用积分：{{Integeral_datas.integral}}</text>
+      <view class="sign_btn act" catchtap="sign_up">
+        <image src="/images/qiandao.png"></image>
+        <text style="color:{{tColor}};" wx:if="{{Integeral_datas.isSign==0}}">签到</text>
+        <text style="color:{{tColor}};" wx:else>已签到</text>
+      </view>
+    </view>
+  </view>
+  <view class="goods_titles">
+    <text data-tabid="0" style="{{tabId==0?'color:'+tColor+';':''}}" catchtap="changeTab" class="{{tabId==0?'color_blue':''}}">全部</text>
+    <text data-tabid="1" style="{{tabId==1?'color:'+tColor+';':''}}" catchtap="changeTab" class="{{tabId==1?'color_blue':''}}">最新</text>
+    <text data-tabid="2" style="{{tabId==2?'color:'+tColor+';':''}}" catchtap="changeTab" class="{{tabId==2?'color_blue':''}}">销量</text>
+    <text data-tabid="3" style="{{tabId==3?'color:'+tColor+';':''}}" catchtap="changeTab" class="{{tabId==3?'color_blue':''}}">价格</text>
+  </view>
+</view>
+
+<view class="history_container" wx:if="{{Integeral_datas.goods_items.length>0}}">
+  <block wx:for="{{Integeral_datas.goods_items}}" wx:for-item="goods">
+    <view class="history_item">
+      <image class="act" data-productid="{{goods.productId}}" data-goodid="{{goods.id}}" catchtap="JumpToDetail" mode="aspectFit" src="{{goods.imgUrl}}"></image>
+      <view class="goods_desc_content">
+        <view class="goods_name">
+          {{goods.name}}
+        </view>
+        <view class="goods_price" style="color:{{tColor}};">{{goods.integral}}
+          <text class="intergral_text">积分</text>
+          <text class="del_price">￥{{goods.price}}</text>
+        </view>
+        <view class="buy_container">
+          <view style="background-color:{{tColor}};" data-productid="{{goods.productId}}" class="buy_btn act" data-goodid="{{goods.id}}" catchtap="JumpToDetail" >
+            兑换
+          </view>
+          <text>已售{{goods.saleNum}}件</text>
+        </view>
+      </view>
+
+    </view>
+  </block>
+ 
+</view>
+   <view class="noData-container"  wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

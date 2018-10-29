@@ -1,0 +1,128 @@
+
+
+/* img的默认样式 */
+switch{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.swiper2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.swiper2>view{
+    flex-shrink:0;
+}
+
+.swiper{
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.swiper image {
+    height: 100%;
+    width: 100%;
+}
+/* 标题 */
+.bt {
+    height: 72rpx;
+    line-height: 72rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20rpx;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: inherit;
+}
+/* 1 */
+.bt1 {
+    background: rgba(0,0,0,0.3);
+}
+/* 2 */
+.bt2 {
+    position: relative;
+    padding: 0 30rpx;
+}
+/* 样式2 */
+.box1{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.box2 { 
+    background: #fff;
+    width: 260rpx !important;
+    height: 310rpx !important;
+    margin: 20rpx 0rpx;
+    margin-left: 0;
+    margin-right: 10rpx;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box !important;
+    position: relative;
+    
+}
+.box2 image {
+    background: #e4e7ed;
+    height: 220rpx;
+    width: 100%;
+    flex:1;
+    margin: auto;
+    /* margin-right: 20rpx; */
+}
+
+
+/* old */
+
+/* 轮播图 */
+swiper-item{
+    text-align: center;
+}
+  .swiper-two{
+    position:relative;
+    overflow: hidden;
+    background:#f8f8f8;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+  }
+  .swiper-two .swiperlist{
+    width: 50%;
+    float:left;
+    margin:0;
+    padding: 20rpx 20rpx 0 0;
+    box-sizing: border-box;
+    background:initial;
+  }
+  .swiper-two .box3{
+    background:#fff;
+    padding:20rpx;
+    box-sizing: border-box;
+    
+  }
+
+.box3 {
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+.box3 image {
+    height: 304rpx;
+    /* width: 304rpx; */
+    width: 100%;
+    margin: auto;
+}
+
+
+.butZJ {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    background: rgba(255,255,255,0);
+}

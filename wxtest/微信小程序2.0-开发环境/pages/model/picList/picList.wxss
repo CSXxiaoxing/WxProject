@@ -1,0 +1,27 @@
+
+/* .imageTacitly image{
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+} */
+.zj-pic {
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.zj-pic image{
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    
+}
+.butZJ {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    background: rgba(255,255,255,0);
+}

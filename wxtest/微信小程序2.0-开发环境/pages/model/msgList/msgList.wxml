@@ -1,0 +1,34 @@
+<block wx:for="{{allObj}}" wx:key="{{item.classnm}}">
+
+<view class="msg {{item.classnm}}" style="{{item.style}}width:100%;">
+
+    <form bindsubmit="formSubmit">
+    
+    <block wx:for="{{inputText}}" wx:for-item="label" wx:key="{{label.index}}" >
+    <label class="msg_t mess_box">
+        <view class="megText"> {{label}} </view>
+        <input 
+        class="mess_input" 
+        wx:if="{{label!='内容'}}" 
+        placeholder="请输入{{label}}" 
+        bindinput="input" 
+        value="{{inputValue[index]}}"
+        data-idx="{{label}}"/>
+        <textarea 
+        class="mess_input" 
+        wx:if="{{label=='内容'}}" 
+        placeholder="请输入{{label}}" 
+        bindinput="input" 
+        value="{{inputValue[index]}}"
+        data-idx="{{label}}"></textarea>
+    </label>
+    </block>
+
+    <view class="mess_btn"> 
+        <button formType="submit" style="{{item.btn[0].style}}" >{{item.btn[0].con}}</button>
+    </view>
+
+    </form>
+</view>
+
+  </block>

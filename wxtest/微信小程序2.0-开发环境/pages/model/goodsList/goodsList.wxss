@@ -1,0 +1,251 @@
+@import "../../../tabBarWxss/style/iconShop.wxss";
+
+.goods {
+    padding: 20rpx;
+    padding-top: 0rpx;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.goods_box {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    /* justify-content: center; */
+    justify-content: space-between;
+    align-items: center;
+    padding: 18rpx;
+    overflow: hidden;
+    width: 49%;
+} 
+/* 描述部分 */
+.goods .g_msg {
+    flex: 1;
+    /* background: #fff; */
+    font-size: 28rpx;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* justify-content: center; */
+    height: auto;
+    /* min-height: 200rpx; */
+}
+
+
+.g_name {
+    color: #4d4d4d;
+    font-size: 28rpx;
+    line-height: 200%;
+    vertical-align: super;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+.g_describe {
+    font-size: 26rpx;
+    /* line-height: 170%; */
+    /* padding: 10rpx 0; */
+    color: #999999;
+    width: 100%;
+    /* height: 80rpx; */
+    margin-bottom: 10rpx;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    box-sizing: border-box;
+    /* margin-bottom: 10rpx; */
+}
+.g_price {
+    /* padding-bottom: 40rpx; */
+    font-size: 32rpx;
+    display: flex;
+    align-items: flex-end;
+}
+.g_price text:nth-of-type(1){
+    font-size: 24rpx;
+}
+.g_price text:nth-of-type(2){
+    font-size: 32rpx;
+}
+.g_price text:nth-of-type(3){
+    font-size: 24rpx;
+}
+
+.g_btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+/* 图片部分 */
+.g_img {
+    position: relative;
+    width: 100%;
+}
+.g_img image {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 355X250 */
+.imgSize1 {
+    height: 500rpx;
+    width: 100%;
+}
+/* 152X152 */
+.imgSize2 {
+    height: 304rpx;
+    width: 100%;
+}
+/* 110X110 */
+.imgSize3 {
+    height: 220rpx;
+    width: 100%;
+}
+.goods4 .imgSize3 {
+    height: 220rpx;
+    width: 220rpx;
+}
+
+/* 按钮 */
+.buyBtn {
+    width: 50px;
+    height: 20px;
+    border-radius: 2px;
+    /* background: #ff4848; */
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #fff;
+    display: inline-block;
+}
+.buy {
+    border-radius: 20rpx;
+    color: #fff !important;
+}
+.buy3 {
+    border-radius: 40rpx;
+    color: #fff !important;
+}
+.buy4 {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4rpx;
+}
+.icon-gouwuche-copy {
+    font-size: 40rpx;
+}
+
+/* goods1 */
+.goods1.goods_box {
+    width: 100%;
+}
+.goods1 .g_msg {
+    padding: 0 10rpx;
+}
+/* goods2 */
+.goods_box.goods2{
+    width: 49%;
+}
+/* goods3 */
+.goods3.goods_box {
+    /* width: auto; */
+    width: 262rpx;
+    margin: 0;
+    margin-right: 20rpx;
+}
+
+.goods .goods3{
+    /* margin-right: 20rpx; */
+    flex-shrink: 0;
+}
+.goods3 .g_msg {
+    justify-content: space-around;
+}
+.goods3 .g_describe {
+    -webkit-line-clamp: 2;
+}
+/* goods4 */
+.goods .goods4{
+    width: 100%;
+    flex-direction: row;
+}
+.goods_box.goods4{
+    margin: 0 0 20rpx;
+}
+.goods4 .g_msg{
+    padding-left: 20rpx;
+    height: 100%;
+    justify-content: space-between;
+}
+/* goods5 */
+.goods5 .goods6-bottom{
+    width: auto;
+}
+
+
+/* goods6 */
+.goods6.goods_box {
+    /* padding: 18rpx 0; */
+    width: 49%;
+}
+.goods6 .g_name{
+    width: 100%;
+   text-align: center;
+}
+.goods6-bottom{
+    width: 100%;
+    position: relative;
+}
+.goods6 .g_price {
+    font-weight: 600;
+}
+
+.xian{
+    width: 100%;
+    height: 1px;
+    top: 30px;
+    padding: 20rpx 0;
+}
+
+/* 角标 -√ */
+.g_hot {
+    height: 72rpx;
+    width: 72rpx;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 36px;
+}
+.g_hot image{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    overflow: auto;
+}
+/* 字体图标 */
+.g_hot icon{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -13rpx;
+    left: 4rpx;
+    font-size:60rpx;
+}

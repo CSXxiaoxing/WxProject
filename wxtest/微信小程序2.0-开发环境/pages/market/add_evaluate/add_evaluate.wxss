@@ -1,0 +1,137 @@
+/* pages/test_addEval/test_addEval.wxss */
+
+page {
+  background-color: #f3f3f3;
+}
+
+.eval-container {
+  background-color: #fff;
+  margin: 10rpx 0 15rpx 0;
+  padding: 30rpx 0 0 0;
+}
+
+.goods-msg, .desc-item {
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.goods-msg image {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin-right: 30rpx;
+}
+
+.goods-msg view {
+  line-height: 45rpx;
+  font-size: 28rpx;
+  color: #4d4d4d;
+  flex: 1;
+  padding-right: 30rpx;
+}
+
+.desc-item {
+  height: 61rpx;
+  font-size: 24rpx;
+}
+
+.desc-item image {
+  margin-right: 20rpx;
+  width: 36rpx;
+  height: 31rpx;
+  display: block;
+}
+
+.desc-item text {
+  margin-left: 40rpx;
+}
+
+/*输入框区域*/
+
+.input-container {
+  padding: 30rpx;
+}
+
+.input-contents {
+
+  border-radius: 6rpx;
+  border: 1px solid #ccc;
+  padding: 30rpx;
+}
+
+.text-input {
+  color: #808080;
+  font-size: 24rpx;
+  height: 225rpx;
+    width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.imgs {
+  display: flex;
+}
+
+.photo {
+  width: 102rpx;
+  height: 102rpx;
+  display: block;
+}
+
+.add-photo {
+  width: 102rpx;
+  height: 102rpx;
+  box-sizing: border-box;
+  border: 1px dashed #ccc;
+  border-radius: 2rpx;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  color: #b3b3b3;
+  font-size: 20rpx;
+  line-height: 53rpx;
+  position: relative;
+}
+
+.camera {
+  margin-top: 15rpx;
+  width: 40rpx;
+  height: 34rpx;
+  display: block;
+}
+
+.img {
+  position: relative;
+  margin-right: 30rpx;
+}
+.del-btn{
+  padding: 20rpx;
+  position: absolute;
+  right: -35rpx;
+  top: -35rpx;
+}
+.del-btn image {
+  width: 30rpx;
+  height: 30rpx;
+  display: block;
+
+}
+
+.bottom-container {
+  position: relative;
+  height: 288rpx;
+  padding-top: 22rpx;
+  background-color: #fff;
+}
+.submit-btn{
+  line-height: 90rpx;
+  font-size: 36rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 6rpx;
+  width: 690rpx;
+  position: absolute;
+  left: 30rpx;
+  bottom: -45rpx;
+}

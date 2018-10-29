@@ -1,0 +1,64 @@
+<!--pages/index/inTime/inTime.wxml-->
+<view class="head" wx:if="{{naviTitles.length>0}}">
+<scroll-view scroll-x="true" >
+  <block wx:for="{{naviTitles}}" wx:for-index="tabid" wx:for-item="title">
+  <view class="act_item {{naviTitles.length>2?'right-line':(naviTitles.length!=(tabid+1)?'right-line':'')}}" data-tabid="{{tabid}}" catchtap="changeTab" >
+    <view style="{{title.navType==1?'background-color:'+tColor+';':''}}" class="time {{title.navType==1?'selected':''}}">{{title.time}}:00</view>
+    <view wx:if="{{title.navType==0}}" class="state">已结束</view>
+    <view wx:if="{{title.navType==1}}" style='color:{{tColor}}'  class="state color_blue">正在进行</view>
+    <view wx:if="{{title.navType==2}}" class="state">即将开始</view>
+  </view>
+  </block>
+  <!--<view class="act_item">
+    <view class="time selected">
+      123
+    </view>
+    <view class="state ">已结束</view>
+  </view>-->
+  
+</scroll-view>
+<!--倒计时-->
+<view class="countTime">
+  距离结束剩：
+  <text>{{timepos1}}</text>
+  <text>{{timepos2}}</text>：
+  <text>{{timepos3}}</text>
+  <text>{{timepos4}}</text>：
+  <text>{{timepos5}}</text>
+  <text>{{timepos6}}</text>
+</view>
+</view>
+    <view class="noData-container" wx:if="{{naviTitles.length==0 && control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂无抢购活动呀~~</text>
+    </view>
+<view class="history_container">
+  <block wx:for="{{productList}}" wx:for-item="good">
+ <view class="history_item">
+    <image src="{{good.img}}"></image>
+    <view class="goods_desc_content">
+      <view class="goods_name">
+        {{good.name}}
+      </view>
+      <view class="goods_price" style='color:{{tColor}}'>抢购价￥{{good.price}}
+        <text>市场价:￥{{good.marketPrice}}</text>
+      </view>
+     
+      <view class="buy_container">
+        <view wx:if="{{good.navType==1}}" style='background-color:{{tColor}}' data-productid="{{good.productId}}" data-goodid="{{good.goodId}}" catchtap="jumpToDetail" class="buy_btn act {{good.navType!=1?'color_gray':''}}">
+          立即抢购
+        </view>
+         <view wx:elif="{{good.navType==0}}" data-productid="{{good.productId}}" data-goodid="{{good.goodId}}"  class="buy_btn act {{good.navType!=1?'color_gray':''}}">
+          已结束
+        </view>
+         <view wx:if="{{good.navType==2}}" data-productid="{{good.productId}}" data-goodid="{{good.goodId}}" class="buy_btn act {{good.navType!=1?'color_gray':''}}">
+          即将开始
+        </view>
+      </view>
+
+    </view>
+  </view>
+  </block>
+  </view>
+
+<tool bind:toolFun="onToolFun"></tool>

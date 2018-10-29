@@ -1,0 +1,66 @@
+/* pages/levMessage/levMessage.wxss */
+.head{
+  font-size: 32rpx;
+  padding: 30rpx 22rpx;
+  color: #1b1d1e;
+}
+.head-line{
+  margin-bottom: 14rpx;
+    background-color: #5b6266;
+    width: 64rpx;
+    height: 3px;
+}
+/*输入框  */
+.input-container{
+  padding: 0 22rpx;
+}
+.input-item{
+ margin-bottom: 20rpx;
+ display: flex;
+   font-size: 28rpx;
+    color: #1b1d1e;
+     line-height: 80rpx;
+      box-sizing: border-box;
+     border: 1px #c0c8cc solid;
+}
+.input-name{
+color: #a8afb3;
+width: 112rpx;
+padding: 0 30rpx 0 22rpx;
+}
+.msg-input{
+  flex: 1;
+ 
+  padding-right:20rpx;
+  /* font-size: 28rpx; */
+  height: 80rpx;
+
+  border-radius: 4rpx;
+  
+}
+.ta-holder{
+   font-size: 28rpx;
+  color: #a8afb3;
+  line-height: 40rpx;
+}
+.ta-input{
+  margin-bottom: 20rpx;
+  padding: 20rpx 22rpx;
+  width: 100%;
+    border-radius: 4rpx;
+  border: 1px #c0c8cc solid;
+  box-sizing: border-box;
+  font-size: 28rpx;
+   color: #1b1d1e;
+   line-height: 40rpx;
+}
+/*提交按钮  */
+.sb-btn{
+  box-sizing: border-box;
+  border-radius: 4rpx;
+
+  line-height: 88rpx;
+  height: 88rpx;
+  color: #fff;
+  font-size: 36rpx;
+}

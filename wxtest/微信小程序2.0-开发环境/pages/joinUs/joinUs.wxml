@@ -1,0 +1,59 @@
+<!--pages/joinUs/joinUs.wxml-->
+<view class="all">
+  <view class="head"  style="background: -webkit-linear-gradient(90deg, {{tColor}}, {{tColorHelp}});">
+      <image class="head-icon" src="/images/ap-icon.png"/>
+      <image class="head-bg" src="/images/quan1.png"/>
+      <view>我要加盟</view>
+</view>
+<!--需要提交数据的表单  -->
+<form bindsubmit="submitMsg">
+  <view class="input-container">
+
+    <view class="input-item" style="border-color: {{tColor}};">
+      <view class="input-name">公司名称</view>
+      <input  maxlength="32" value="{{cpName}}"  name="cpName" placeholder-class="input-holder" class="msg-input" />
+    </view>
+      <view class="input-item" style="border-color: {{tColor}};">
+      <view class="input-name">您的姓名</view>
+    <input  maxlength="32" value="{{name}}" name="name" placeholder-class="input-holder" maxlength="7"  class="msg-input" />
+     </view>
+      <view class="input-item" style="border-color: {{tColor}};">
+      <view class="input-name">联系电话</view>
+    <input value="{{phone}}" name="phone" placeholder-class="input-holder"  class="msg-input" type="number" maxlength="11" />
+       </view>
+       <view class="input-item" style="border-color: {{tColor}};">
+      <view class="input-name">邮箱</view>
+    <input  maxlength="32" value="{{email}}" name="email" placeholder-class="input-holder"  class="msg-input" />
+     </view>
+           <view class="input-item" style="border-color: {{tColor}};">
+      <view class="input-name">地址</view>
+    <input  maxlength="100" value="{{address}}" name="address" placeholder-class="input-holder"  class="msg-input" />
+  </view>
+
+    <button class="sb-btn act" form-type="submit" style="background: -webkit-linear-gradient(-90deg,{{tColorHelp}},{{tColor}})" >提交申请</button>
+  </view>
+
+</form>
+</view>
+<view class="head" wx:if="{{data.news.length>0}}">
+  <view class="head-line"></view>
+  <view class="classname">
+    加盟信息
+  </view>
+</view>
+
+
+<view class="shops_container" wx:if="{{com_data.length!=0}}">
+<block wx:for="{{com_data}}" >
+  <view class="shop_item act" catchtap="jumpToShop" data-shopid="{{item.id}}">
+     <image   src="{{item.img}}" class="shop_image"></image>
+     <view class="shop_msgs">
+       <image src="{{item.logo}}" class="shop_icon"></image>
+       <view>{{item.name}}</view>
+       <image src="/images/go.png" class="go_icon"></image>
+     </view>
+  </view>
+  </block>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

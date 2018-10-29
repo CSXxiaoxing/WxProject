@@ -1,0 +1,6 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "评价中心",
+    "navigationBarTextStyle": "black"
+}

@@ -1,0 +1,45 @@
+
+/*成功案例展示  */
+.case1-container {
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+
+.case1-head {
+  padding: 30rpx 0 30rpx 22rpx;
+  color: #1b1d1e;
+  font-size: 32rpx;
+}
+
+.case1-line {
+  margin-bottom: 14rpx;
+  width: 60rpx;
+  height: 1px;
+  background-color: #5b6266;
+}
+
+.case1-item-container {
+  
+  padding: 0 13rpx 10rpx 13rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.case1-item {
+  margin-bottom: 22rpx;
+  padding: 0 11rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 28rpx;
+}
+.case1-item:nth-child(3n-1){
+  padding: 0 12.5rpx;
+  /* background: red; */
+}
+.case1-item image {
+  width: 220rpx;
+  height: 220rpx;
+  display: block;
+}
+.case1-item view{
+  width: 220rpx;
+}

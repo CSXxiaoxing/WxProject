@@ -1,0 +1,30 @@
+<!--pages/partnerDetail/partnerDetail.wxml-->
+<view class="head">
+    <view class="head-title">{{data.partner.company}}</view>
+    <image mode='widthFix' catchtap="previewImage" data-imgurl="{{data.config.image_resource+data.partner.banner}}"  wx:if="{{data.partner.banner!=undefined}}" class="head-img" src="{{data.config.image_resource+data.partner.banner}}"></image>
+
+    <view class="partner-desc-title" style="color:{{tColor}};">
+      详细介绍
+    <view class="partner-line" style="background-color:{{tColor}};"></view>
+    </view>
+</view>
+
+<view class="partner-detail">
+
+    
+      <block wx:for="{{passage}}">
+    <block wx:if="{{item.type==0}}">
+      <image  mode='widthFix'  class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}"  src="{{item.str}}"></image>
+    </block>
+    <block wx:else>
+      <view class="paragraph">
+        {{item.str}}
+      </view>
+    </block>
+
+  </block>
+
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

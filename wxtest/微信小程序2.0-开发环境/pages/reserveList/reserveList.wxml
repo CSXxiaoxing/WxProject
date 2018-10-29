@@ -1,0 +1,22 @@
+<view class="bargins-container" wx:if="{{list.length>0}}">
+<block wx:for="{{list}}">
+    <view class="bargin-item act" catchtap='jumpToActPage' data-productid='{{item.productId}}' data-actid='{{item.id}}'>
+          <image src="{{item.img}}"></image>
+          <view class="goods-content" style="flex:1;">
+             <view class="goodsName text-limit2">{{item.name}}</view>
+             <view style="color:{{tColor}}">￥{{item.price}}</view>
+          </view>
+    </view>
+    </block>
+</view>
+     <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+    <view class="bottom" wx:if="{{total!=0 && list.length == total}}">
+      <view />
+      <view>到底了</view>
+      <view />
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

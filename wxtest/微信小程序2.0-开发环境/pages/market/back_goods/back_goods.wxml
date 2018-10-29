@@ -1,0 +1,59 @@
+<view wx:if="{{orders.length>0}}">
+<block wx:for="{{orders}}" wx:for-index="index">
+  <view class="add-comment-box">
+    <view class="goods_detail_container">
+      <image src="{{imgUrl}}{{item.productLeadLittle}}" class="goods_img"></image>
+      <!--商品文字描述-->
+      <view class="goods_detail_text_container">
+        <view class="goods_name">{{item.productName}}</view>
+        <view class="goods_msg_container">
+          <view class="btn_view">
+            <view class="buy-time">
+              <text>购买日期:</text>
+              <text>{{item.createTime}}</text>
+            </view>
+          </view>
+          <view class=" btn_view ">
+             <view class="red_text_style " style="color:{{tColor}};" catchtap="toComment" data-info="{{item}}" data-index="{{index}}">退换货</view> 
+             <!-- <view class="red_text_style " catchtap="toComment" data-info="{{item}}" data-index="{{index}}">退货</view> -->
+           
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{cFlag == index}}" class="comment-star">
+      <view class="tips"></view>
+      <view class="star-box">
+        <text>服务类型：</text>
+        <view class="service">
+          <text style="{{returns=='on'?'color:'+tColor+';border-color:'+tColor+';':''}}" class="{{returns}}" data-id="1" catchtap="checkS">退货</text>
+           <text style="{{huan=='on'?'color:'+tColor+';border-color:'+tColor+';':''}}" class="{{huan}}" data-id="2" catchtap="checkS">换货</text> 
+        </view>
+      </view>
+       <view class="star-box">
+        <text>服务数量：</text>
+        <view class="star">
+           <input class="numBox" type="number" value="{{num}}" bindinput="numInput" /> 
+          <text style="margin-left:20rpx; color:#999">可退换{{canNum}}件</text>
+         
+        </view>
+      </view> 
+      <view class="message-box">
+        <text>问题描述：</text>
+        <form bindsubmit="message">
+          <textarea class="messageContent" placeholder="描述商品相关的问题" name="textarea" />
+          <button class="messageSubmit" form-type="submit" data-goodsid="item.productGoodsId" style="background-color:{{tColor}};"> 提交 </button>
+        </form>
+      </view>
+
+    </view>
+  </view>
+</block>
+</view>
+   <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png" ></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

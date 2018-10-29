@@ -1,0 +1,97 @@
+
+<block wx:for="{{allObj}}" wx:key="{{shop.index}}" wx:for-item="shop">
+    
+    <view wx:if="{{shop.classnm == 'goods3'}}" style="{{shop.style}}">
+        <scroll-view scroll-x >
+            <template is="goods" data="{{shop, imageSrc, imgsize, icon}}"/>
+        </scroll-view>
+    </view>
+
+    <template is="goods" wx:if="{{shop.classnm != 'goods3'}}" data="{{shop, imageSrc, imgsize, icon}}"/>
+</block>
+
+
+<template name="goods">
+<view 
+    class="goods"  
+    style="{{shop.classnm == 'goods3' ? '' : shop.style}}{{shop.classnm == 'goods3' ? 'flex-wrap: nowrap;':''}}">
+
+    <view 
+    wx:for="{{shop.shopLists}}" 
+    wx:key="{{item.index}}" 
+    class="goods_box {{shop.classnm}}" 
+    data-url="{{item.id}}" 
+    bindtap="btn" 
+    style="{{shop.sonli[0].style}}{{shop.pdd[0].style}}">
+    
+        <view class="imgSize{{imgsize}} g_img ">
+
+            <image src="{{imageSrc + item.masterImg}}" mode lazy-load style="{{shop.sonli[0].style}}"></image>
+
+            <view class="g_hot" wx:if="{{shop.hot[0].showhot}}" style="z-index: 10;">
+                <block wx:if="{{shop.hot[0].hoturl}}">
+                    <image src="{{shop.hot[0].hoturl}}" style="{{shop.hot[0].style}}" mode="aspectFill" lazy-load></image>
+                </block>
+                <block wx:else>
+                    <icon class="iconfont2 {{icon[shop.hot[0].hottype]}}"></icon>
+                </block>
+            </view>
+
+        </view>
+    
+        <view class="imgSize{{imgsize}} g_msg" style="align-items:{{shop.classnm!='goods5' ? 'flex-start' : 'center'}}">
+
+            <view class="g_name" style="{{shop.titlesty[0].style}}">
+                <text>{{item.name1}}</text>
+            </view>
+            
+            <view 
+            class="g_describe" 
+            wx:if="{{shop.dessty[0].showdesc && shop.classnm!='goods5' && shop.classnm!='goods6'}}" 
+            style="{{shop.dessty[0].style}}">
+                <text>{{item.name2}}</text>
+            </view>
+            
+
+            <image 
+            lazy-load
+            src="../../../images/xian.png"
+            mode="aspectFit" 
+            class="xian"
+            wx:if="{{shop.classnm=='goods6'}}">
+            </image>
+
+            <view class="goods6-bottom">
+                <view class="g_price">
+                <text hidden="{{shop.classnm=='goods5'}}">￥</text>
+                <text>{{item.malMobilePrice}}</text>
+                <!-- <view class="goods6"  wx:if="{{shop.classnm=='goods6'}}">
+                    <text>{{item.malMobilePrice[0]}}.</text>
+                    <text>{{item.malMobilePrice[1]}}</text>
+                </view> -->
+                <text wx:if="{{shop.classnm=='goods5'}}">RMB</text>
+                </view>
+                
+                <view 
+                wx:if="{{shop.btn[0].showbtn && shop.btn[0].btntype!=5}}"
+                class="g_btn iconfont2 {{shop.btn[0].btntype == '1' ? icon[0] : ' buyBtn buy'+ shop.btn[0].btntype }}" 
+                style="{{shop.btn[0].style}}{{shop.classnm=='goods5'?'position:static;':''}}{{shop.btn[0].btntype == '2' || shop.btn[0].btntype == '3' ? 'background: '+shop.btn[0].coo : 'color:'+shop.btn[0].coo+';border-color:'+shop.btn[0].coo}}" >
+                    {{shop.btn[0].btntype == '1' ? '' : '购买'}}
+                </view>
+
+                <image 
+                lazy-load
+                wx:if="{{shop.btn[0].showbtn && shop.btn[0].btntype==5}}"
+                src="{{shop.btn[0].btnurl}}"
+                class="g_btn iconfont2 {{shop.btn[0].btntype == '1' ? icon[0] : ' buyBtn buy'+ shop.btn[0].btntype }}" 
+                style="{{shop.btn[0].style}}{{shop.classnm=='goods5'?'position:static;':''}}{{shop.btn[0].btntype == '2' || shop.btn[0].btntype == '3' ? 'background: '+shop.btn[0].coo : 'color:'+shop.btn[0].coo+';border-color:'+shop.btn[0].coo}}"
+                mode="aspectFill" >
+                </image>
+            </view>
+
+        </view>
+    
+    </view>
+
+</view>
+</template>

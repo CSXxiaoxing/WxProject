@@ -1,0 +1,71 @@
+<view class="back_goods_container" wx:if="{{goods_msg_item.length>0}}">
+  <view class="bg_indent_item_container">
+    <block wx:for="{{goods_msg_item}}" wx:for-index="idx" wx:for-item="goods_item">
+      <view class="goods_msg">
+        <view class="inden_text_container">
+          订单编号：{{goods_item.indent_id}}
+          <text style='color:{{tColor}};' class="color_red" wx:if="{{goods_item.bg_state==1}}">未处理</text>
+          <text style='color:{{tColor}};' class="color_red" wx:elif="{{goods_item.bg_state==2}}">商家审核通过待收货</text>
+          <text style='color:{{tColor}};' class="color_red" wx:elif="{{goods_item.bg_state==3}}">商家已收货</text>
+          <text style='color:{{tColor}};' class="color_red" wx:elif="{{goods_item.bg_state==4}}">发货处理完成</text>
+          <text style='color:{{tColor}};' class="color_red" wx:elif="{{goods_item.bg_state==5}}">不予处理原件退还</text>
+          <text style='color:{{tColor}};' class="color_red" wx:elif="{{goods_item.bg_state==6}}">不处理</text>
+        </view>
+        <view class="inden_text_container">
+          申请时间：{{goods_item.app_time}}
+        </view>
+        <view class="hor_line"></view>
+        <!--退货的商品图文信息-->
+        <block wx:for="{{goods_item.bg_goods}}" wx:for-item="item">
+          <!-- <view class="goods_msg_item" bindtap="jumpToDetail" id="{{item.id}}"> -->
+          <view class="goods_msg_item" id="{{item.id}}">
+            <!--a-->
+            <image src="{{item.img}}" class="goods_img"></image>
+            <view class="goods_text_desc">
+              <view class="goods_name">{{item.name}}</view>
+              <view class="goods_count">X{{item.count}}
+                <text data-pos="{{idx}}" catchtap="hide_orShow" style='color:{{tColor}};' class="color_red">查看</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class="goods_detail" hidden="{{goods_item.detail_hidden}}">
+          <!-- <view class="text_item">
+          问题描述：{{goods_item.ques_desc}}
+        </view> -->
+          <view class="text_item" wx:if="{{goods_item.ques_desc!=null}}">
+            <view class="text_item_name" >问题描述：</view>{{goods_item.ques_desc}}
+            </view>
+          <view class="text_item" >
+            换货数量：{{goods_item.bg_count}}
+          </view>
+          <view class="text_item">
+            <view class="text_item_name">处理意见：</view><text  wx:if="{{goods_item.bg_option!=null}}">{{goods_item.bg_option}}</text>
+            <text wx:else></text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="load-more-wrap">
+    <block wx:if="{{has_more}}">
+      <view class="load-content">
+        <text class="weui-loading" />
+        <text class="loading-text">加载中</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="load-content">
+        <text>{{bottom_desc}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+ <view class="noData-container"   wx:elif="{{control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

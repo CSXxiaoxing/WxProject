@@ -1,0 +1,63 @@
+<view wx:if="{{commentInfos.length>0}}">
+<block wx:for="{{commentInfos}}" wx:for-index="index">
+  <view class="add-comment-box">
+    <view class="goods_detail_container">
+      <image src="{{imgUrl}}{{item.productLeadLittle}}" class="goods_img"></image>
+      <!--商品文字描述-->
+      <view class="goods_detail_text_container">
+        <view class="goods_name">{{item.productName}}</view>
+        <view class="goods_msg_container">
+       
+          
+            <view class="red_text_style " style='color:{{tColor}};' catchtap="toComment" data-info="{{item}}" data-index="{{index}}">查看咨询</view>
+          </view>
+        
+      </view>
+    </view>
+    <view wx:if="{{cFlag == index}}" class="comment-star">
+      <view class="tips"></view>
+      <view class="askMain">
+        <view class="user">
+          <view class="cMain-nav">
+            <image  class="nav-img" src="{{item.profilePhoto}}"></image>
+            <view class="com-user">
+              <text class="fontH">{{item.nickname}}</text>
+              <text class="fontB">{{item.askContent}}</text>
+              <text>{{item.createTime}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="kefu" wx:if="{{item.sellerName}}">
+          <view class="cMain-nav">
+            <image mode="aspectFill" class="nav-img" src="{{imgUrl + item.sellerLogo}}"></image>
+            <view class="com-user">
+              <text class="fontH"  >{{item.sellerName}}</text>
+              <text class="fontRed color_blue" style='color:{{tColor}};'  wx:if="{{item.replyContent}}">{{item.replyContent}}</text>
+              <text  wx:if="{{item.replyTime}}">{{item.replyTime}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+</view>
+   <view class="noData-container" hidden="{{hidden2}}"  wx:if="{{commentInfos.length==0 && control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+<!--<view class="load-more-wrap">
+  <block wx:if="{{has_more}}">
+    <view class="load-content">
+      <text class="weui-loading" />
+      <text class="loading-text">加载中</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="load-content">
+      <text>{{bottom_desc}}</text>
+    </view>
+  </block>
+</view>-->
+
+<tool bind:toolFun="onToolFun"></tool>

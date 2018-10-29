@@ -1,0 +1,43 @@
+page{
+    height: 100%;
+    width: 100%;
+}
+.fx-rule {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(34, 138, 242, 0);
+    padding-left: 81rpx;
+    padding-top: 120rpx;
+    box-sizing: border-box;
+}
+.fx-rule-image {
+    position: absolute;
+    left: 0;top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+.fx-rule-box {
+    position: absolute;
+    left: 80rpx;top: 250rpx;
+    width: 80rpx;
+	height: 8rpx;
+	background-color: #1461ae;
+	opacity: 0.75;
+}
+.fx-rule view {
+    font-family: PingFang-SC-Bold;
+    font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+    color: #ffffff;
+}
+.h1 {
+	font-size: 60rpx;
+    margin-bottom: 100rpx;
+}
+
+.h6 {
+    font-size: 28rpx;
+    margin-top: 45rpx;
+}

@@ -1,0 +1,7 @@
+{
+    "usingComponents": { "tool": "/pages/model/tool/tool" },
+    "navigationBarTitleText": "店铺列表",
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f1f0fa"
+}

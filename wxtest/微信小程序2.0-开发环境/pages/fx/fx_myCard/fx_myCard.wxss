@@ -1,0 +1,85 @@
+page{
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    width: 670rpx;
+	height: 380rpx;
+    /* background-color: #228af2; */
+    background: rgba(255, 255, 255, 0);
+    border-radius: 30rpx;
+    position: absolute;
+    top: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: PingFang-SC-Bold;
+}
+.card image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    border-radius: 30rpx;
+}
+.name {
+    font-size: 36rpx;
+	line-height: 36rpx;
+    color: #ffffff;
+    font-weight: 500;
+    position: absolute;
+    top: 60rpx;
+    left: 60rpx;
+}
+.set {
+    font-family: PingFang-SC-Regular;
+	text-decoration: underline;
+	font-size: 28rpx;
+	line-height: 36rpx;
+    color: #f5f3f3;
+    position: absolute;
+    top: 60rpx;
+    right: 58rpx;
+}
+.card-hao {
+    font-family: PingFang-SC-Regular;
+	font-size: 26rpx;
+	line-height: 36rpx;
+	color: #ffffff;
+    opacity: 0.8;
+    position: absolute;
+    left: 58rpx;
+    bottom: 130rpx;
+}
+.card-num {
+    width: 100%;
+	font-family: PingFang-SC-Bold;
+    opacity: 0.8;
+    position: absolute;
+    bottom: 70rpx;
+    padding: 0 59rpx;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+.zi-num {
+    font-size: 40rpx;
+    line-height: 36rpx;
+    font-weight: 500;
+    color: #ffffff;
+    
+}
+.fx-add {
+    width: 159rpx;
+    height: 159rpx;
+    border-radius: 50%;
+	background-color: #2196f3;
+    box-shadow: 0px 0px 32rpx 0px rgba(34, 138, 242, 0.4);
+    position: fixed;
+    bottom: 43rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}

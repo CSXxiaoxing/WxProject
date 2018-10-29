@@ -1,0 +1,41 @@
+<!--pages/levMessage/levMessage.wxml-->
+<view class="head">
+  <view class="head-line"></view>
+  <view class="classname">
+    在线留言
+  </view>
+</view>
+<!--需要提交数据的表单  -->
+<form bindsubmit="submitMsg">
+  <view class="input-container">
+
+    <view class="input-item">
+      <view class="input-name">公司名称</view>
+      <input maxlength="32" name="cpName" placeholder-class="input-holder" class="msg-input" />
+    </view>
+    <view class="input-item">
+      <view class="input-name">您的姓名</view>
+      <input maxlength="32"  name="name" placeholder-class="input-holder" class="msg-input" />
+    </view>
+    <view class="input-item">
+      <view class="input-name">联系电话</view>
+      <input name="phone" placeholder-class="input-holder" class="msg-input" type="number" maxlength="11" />
+    </view>
+    <view class="input-item">
+      <view class="input-name">邮箱</view>
+      <input maxlength="32" name="email" placeholder-class="input-holder" class="msg-input" />
+    </view>
+    <view class="input-item">
+      <view class="input-name">地址</view>
+      <input maxlength="50" name="address" placeholder-class="input-holder" class="msg-input" />
+    </view>
+    <textarea name="content" maxlength="180" placeholder-class="ta-holder" placeholder="留言内容" class="ta-input" />
+
+    <button style="background-color:{{tColor}}" class="sb-btn" form-type="submit">提交留言</button>
+  </view>
+
+
+
+</form>
+
+<tool bind:toolFun="onToolFun"></tool>

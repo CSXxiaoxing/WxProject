@@ -1,0 +1,376 @@
+page {
+  background-color: #efefef;
+}
+
+.my2 .my-container {
+  position: relative;
+  margin-bottom: 20rpx;
+  height: 328rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.my2 .user-bg-img {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 328rpx;
+  width: 100%;
+  display: block;
+}
+
+.my2 .user-icon-bg {
+  -webkit-filter: blur(5px); /* Chrome, Opera */
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  opacity: 0.2 .2;
+  z-index: 97;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  height: 500rpx;
+  width: 100%;
+}
+
+.my2 .user-icon {
+  z-index: 100;
+  border: 4rpx #fff solid;
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 50rpx;
+  display: block;
+  border-radius: 50%;
+}
+
+.my2 .user-info-text {
+  width: 300rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: #fff;
+  z-index: 900;
+}
+
+.my2 .selItem {
+  background-color: #fff;
+  padding: 0 30rpx;
+  align-items: center;
+  display: flex;
+  line-height: 100rpx;
+  font-size: 26rpx;
+  color: rgb(50, 50, 50);
+  border-bottom: 1px rgb(210, 210, 210) solid;
+}
+
+.my2 .selItem-title, .my2 .Img-btn-item {
+  flex: 1;
+}
+
+.my2 .jump-logo {
+  margin-left: 12rpx;
+  width: 20rpx;
+  height: 20rpx;
+  display: block;
+}
+
+.my2 .selItem text {
+  font-size: 24rpx;
+  color: rgb(92, 92, 92);
+}
+
+.my2 .Img-btn-container {
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    display: flex;
+    font-size: 24rpx;
+    color: rgb(50, 50, 50);
+    border-bottom:1px rgb(210, 210, 210) solid;
+}
+
+.my2 .Img-btn-item {
+  padding: 24rpx 0 23rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 52rpx;
+}
+
+.my2 .Img-btn-item image {
+  display: block;
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.my2 .icon {
+  margin-right: 15rpx;
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+}
+
+.my2 button {
+  border: 0;
+  text-align: left;
+  border-radius: 0;
+}
+.my2 button::after{
+  border: 0;
+}
+
+
+.my1 .head {
+    z-index: 99999;
+    background-color: #fff;
+    /* position: fixed; */
+    display: flex;
+    /* top: 0; */
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .my1 .bg_img {
+    width: 100%;
+    height: 300rpx;
+   
+  }
+  
+  /*个人资料*/
+  
+  .my1 .info_container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 50rpx;
+    color: #fff;
+    
+    display: flex;
+    font-size: 28rpx;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .my1 .icon {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border: 2px #fff solid;
+  }
+  
+  .my1 .name {
+    line-height: 58rpx;
+    font-weight: 600;
+  }
+  
+/*待收货-代付款*/
+.statu {
+    display: flex;
+    color: #4d4d4d;
+    position: relative;
+}
+.statu::after{
+    position: absolute;
+    content: '';
+    background-color: #91a3ff;
+    width: 1px;
+    height: 40%;
+    left: 50%;
+    top: 30%;
+}
+.statu_item {
+    text-align: center;
+    flex: 1;
+    height: 130rpx;
+    display: flex;
+    line-height: 45rpx;
+    flex-direction: column;
+}
+.statu_item view:first-child {
+    margin-top: 30rpx;
+    margin-bottom: 19rpx;
+    line-height: 30rpx;
+    font-size: 30rpx;
+}
+.statu_item view:last-child{
+    font-size: 28rpx;
+}
+
+  /*下拉选择框*/
+  .my1 .user_choice{
+    z-index: -1;
+  }
+  .my1 .layer1{
+    margin-bottom: 1px;
+    line-height: 100rpx;
+    display: flex;
+    font-size: 30rpx;
+    color: #4d4d4d;
+    background-color: #fff;
+    padding-left: 30rpx;
+    position: relative;
+  }
+  .my1 .layer1 view{
+    border-bottom: 1px #e6e6e6 solid;
+  }
+  .my1 .layer1 image{
+    width: 20rpx;
+    height: 11rpx;
+    position: absolute;
+    top: 44.5rpx;
+    right: 40rpx;
+  }
+  .my1 .spreads_items{
+  
+    color: #666;
+    line-height: 100rpx;
+    font-size: 30rpx;
+  }
+  .my1 .spreads_items navigator{
+      padding-left: 60rpx;
+    border-bottom: 1px #e6e6e6 solid;
+  }
+  .my1 .spreads_items .navi{
+    padding-left: 60rpx;
+    border-bottom: 1px #e6e6e6 solid;
+ }
+  .my1 .kefu_btn{
+     color: #666;
+     line-height: 100rpx;
+      font-size: 30rpx;
+        padding-left: 60rpx;
+      
+    border-bottom: 1px #e6e6e6 solid;
+    display: flex;
+    background-color: #f0f1fa;
+  }
+  .my1 .kefu_btn::after{
+    border: 0;
+  }
+
+
+
+/* 蒙层 */
+.mark {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+}
+
+.mark-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+}
+.mark-center {
+    width: 513rpx;
+	height: 340rpx;
+	background-color: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.mark1 {
+    width: 641rpx;
+	height: 386rpx;
+}
+.mark-center image{
+    width: 80rpx;
+    height: 94rpx;
+    position: absolute;
+    top: 38rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mark-center .wenzi{
+    font-size: 30rpx;
+    font-weight: 600;
+	line-height: 36rpx;
+    color: #282828;
+    position: absolute;
+    top: 160rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.wenzi-ms {
+    font-size: 28rpx;
+    font-weight: 500;
+	line-height: 36rpx;
+    color: #333333;
+    position: absolute;
+    bottom: 134rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.mark1 .wenzi-ms text {
+    color: #cc3333;
+}
+.mark2 .wenzi{
+    font-weight: 400;
+    font-size: 28rpx;
+}
+.mark2 .wenzi-ms{
+    bottom: 102rpx;
+}
+.mark3 {
+    width: 645rpx;
+    height: 1096rpx;
+    position: absolute;
+    top: 48.5%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.mark3 text {
+    display: block;
+    width: 575rpx;
+    height: 863rpx;
+    font-size: 24rpx;
+    color: #333;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.mark-btn {
+    height: 84rpx;
+	line-height: 84rpx;
+    width: 100%;
+    text-align: center;
+	font-size: 28rpx;
+    color: #228af2;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.mark-btn view {
+    flex: 1;
+}
+
+.mark-title {
+    font-size: 30rpx;
+    font-weight: 600;
+    color: #333333;
+    position: absolute;
+    left: 50%;
+    top: 24rpx;
+    transform: translateX(-50%);
+}

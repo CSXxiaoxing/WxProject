@@ -1,0 +1,21 @@
+<view class="page">
+    <view class="weui-msg">
+        <view class="cen">
+            <image class="head-img" src="{{QRinit.avatarUrl}}" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            <text class="txt1" selectable="false" space="false" decode="false">推荐一家我超喜欢的店铺给你
+            快来一起欢乐剁手啊~
+            </text>
+            <image class="qr" src="" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload=""></image>
+            <view class="txt2">
+                长按识别小程序码 即可买买买~
+            </view>
+        </view>
+
+        <view class="weui-msg__opr-area">
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" style="background-color: #2196f3;font-size:30rpx;line-height:88rpx;" open-type="share">分享本店</button>
+                <button class="weui-btn" type="primary" style="background-color: #2196f3;font-size:30rpx;line-height:88rpx;" bind:tap="bao">保存海报图</button>
+            </view>
+        </view>
+    </view>
+</view>

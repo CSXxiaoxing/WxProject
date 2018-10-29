@@ -1,0 +1,90 @@
+
+<view class="box">
+    <!-- 上 -->
+    <view class="head">
+    <view class="header">
+        <view class="header-l" hidden="{{iconShow}}">
+            <view class="head-btn {{color=='all'?'blue':''}}" data-ele="all" bind:tap="btnTy">
+                ￥{{total}}
+            </view>
+        </view>
+        <view class="header-r" hidden="{{!iconShow}}">
+
+            <picker class="r-date {{dateStart ? 'r-blue' : ''}}" mode="date" value="{{date}}" end="{{dateEnd ? dateEnd:''}}" data-ele="Start" bindchange="bindDateChange">
+                <view>
+                {{dateStart? dateStart:'开始日期'}}
+                </view>
+            </picker>
+
+            <view class="zhi" hover-class="none" hover-stop-propagation="false">
+                至
+            </view>
+
+            <picker class="r-date {{dateEnd ? 'r-blue' : ''}}" mode="date" value="{{date}}" start="{{dateStart ? dateStart:''}}" data-ele="End" bindchange="bindDateChange">
+                <view>
+                {{dateEnd? dateEnd:'结束日期'}}
+                </view>
+            </picker>
+
+        </view>
+
+        <view class="head-date" data-ele="fx-date" bind:tap="btnTy">
+            <image src="/images/fx-date0{{iconShow?2:1}}.png"></image>
+        </view>
+    </view>
+    <view class="axt"  wx:if="{{iconShow}}">
+        <view bind:tap="bindDateChange" style="color: #4d4d4d;">重置</view>
+    </view>
+    </view>
+
+
+    <!-- 下 -->
+    <view class="conten">
+    <block wx:for="{{users}}" wx:key="{{index}}">
+        <view class="title">
+            <text>{{item.time}}</text>
+            <text>提现￥{{item.money}}</text>
+        </view>
+
+        <block wx:for="{{item.data}}" wx:key="{{index}}" wx:for-item="data">
+            <view class="axt-user" data-ele="{{data.code}}" bind:tap="btnT">
+
+            <view class="failure{{data.status==3 ? '2':'1'}}" style="color: {{btnTx[data.code] ?'':'#4d4d4d;'}}">提现<image src="/images/fx-record0{{btnTx[data.code] ? data.status==3 ? 2:1:0}}.png"></image></view>
+
+            <view>{{data.createTime}}</view>
+            <view>+{{data.money}}</view>
+            <view class="failure{{data.status==3 ? '2':'1'}}">{{data.status==3 ? '提现失败' : data.status==2 ? '已到账' : '已申请'}}</view>
+            </view>
+            <view hidden="{{!btnTx[data.code]}}" style="overflow: hidden;">
+                <view class="getWay"><text>提现方式</text><text>{{data.type == 3 ? '银联转账' : data.type == 1 ? '微信转账' : '支付宝转账'}}</text></view>
+                <view class="progress">
+                    <text>提现进度</text>
+                    <view class="pro-box">
+                        <view class="gang">
+                            <view hidden="{{!data.progress[0]}}" class="{{data.progress[0].type=='true'?'gangY':''}}"></view>
+                            <view hidden="{{!data.progress[1]}}" class="{{data.progress[1].type=='true'?'gangY':'gangN'}}"></view>
+                            <view hidden="{{!data.progress[1]}}" class="{{data.progress[1].type=='true'?'gangY':''}}"></view>
+                            <view hidden="{{!data.progress[2]}}" class="{{data.progress[2].type=='true'?'gangY':'gangN'}}"></view>
+                        </view>
+                        <block wx:for="{{proName}}" wx:for-item="pro" wx:key="{{pro.index}}">
+                            <view class="buzou">
+                                <view class="img">
+                                    <image wx:if="{{data.progress[index]}}" src="/images/{{data.progress[index].type=='true'?'fx_dui':'fx_cuo'}}.png" ></image>
+                                    <view wx:else></view>
+                                </view>
+                                <view class="pro-name">{{pro}}</view>
+                                <!-- <view class="pro-time" style="z-index:{{data.progress[index]?3:-100}};">{{data.progress[index].time || '00-00 00:00'}}</view> -->
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view class="getWay way-num"><text>提现单号</text><text>{{data.code}}</text></view>
+            </view>
+        </block>
+    </block>
+    <view class="mask" hidden="{{!iconShow}}"></view>
+    </view>
+
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

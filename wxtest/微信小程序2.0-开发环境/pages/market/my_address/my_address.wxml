@@ -1,0 +1,31 @@
+<!--pages/my/my_address/my_address.wxml-->
+<view class="address_container">
+ <block wx:for="{{address_data}}" wx:for-item="data">
+  <view class="address_item">
+    <view class="selIcon-container">
+    <image  data-addid="{{data.id}}" style="background-color:{{tColor}};" wx:if="{{pagetype==2}}" src="{{data.isSel? '/images/x_x.png' : '/images/x.png' }}" catchtap="check_address"></image>
+    </view>
+    <view class="user_desc {{pagetype==2?'':'marginLeft'}}">
+      <view class="user_info">
+        <text>{{data.name}} <text class="phone">{{data.phone}}</text></text>
+      </view>
+      <view class="address_info">
+        <text>{{data.addAll}} {{data.addressInfo}}</text>
+      </view>
+    </view>
+    
+    <view class="btns">
+ 
+      <view data-id="{{data.id}}" class="edit_btn" catchtap="jumpToEdit" style='color:{{tColor}};'>编辑</view>
+    </view>
+
+  </view>
+ </block>
+</view>
+
+
+<view  class="add_address" catchtap="jumpToAdd" style='color:{{tColor}};' >
+  新增地址
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

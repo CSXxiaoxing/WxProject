@@ -1,0 +1,578 @@
+<import src="../../wxParse/wxParse.wxml"/>
+
+<block wx:if="{{template==1}}">
+<view class="goodsD1">
+    <scroll-view style="width:100%;height:100%" scroll-y="{{!showDialog}}" scroll-top="{{scroll_pos}}">
+    <swiper class="banner" indicator-dots="true" indicator-color="rgba(0, 0, 0, .5)" indicator-active-color="#000">
+    <block wx:for="{{newData.pic}}" wx:for-item="img" wx:key="{{index}}">
+        <swiper-item class="banner_item">
+        <image catchtap="preImage" data-imgurl="{{imgHead+img}}" src="{{imgHead+img}}"></image>
+        </swiper-item>
+    </block>
+    </swiper>
+    <!--商品价格-->
+    <view class="goods_text_desc">
+    <view class="goods_name">
+        {{newData.name1}}
+    </view>
+    <view class="goods_price_desc" style='color:{{tColor}};'>
+        ￥{{newData.price}}
+        <text>市场价:￥{{newData.marketPrice}}</text>
+    </view>
+    </view>
+
+
+    <!--选择配置hideOrShowConfig-->
+    <view class="margin_bottom20">
+    <view class="desc_item margin_bottom0 act3" catchtap="onClickdiaView" data-dltype='0'>
+        <text class="desc_name">已选配置   </text>
+        <view style="font-size:30rpx;max-width:400rpx;" class="text-limit1">“{{good_data.selGoodsInfo.normName!='' &&good_data.selGoodsInfo.normName!=undefined?good_data.selGoodsInfo.normName:'默认规格'}}”</view>
+        <image src="{{hideOrShowConfig?'/images/hide.png':'/images/display.png'}}"></image>
+    </view>
+    <view class="goods_style_container" hidden="{{hideOrShowConfig}}">
+        <block wx:for="{{good_data.goods_styles}}" wx:for-item="style" wx:for-index="pos" wx:key="{{pos}}">
+        <view class="goods_styles">
+            <view class="style_name">{{style.name}}</view>
+            <view class="selecteds_container">
+            <block wx:for="{{style.attrList}}" wx:for-item="style_item">
+                <view catchtap="sel_Style" data-pos="{{pos}}" data-normid="{{style_item.id}}" class="selected_item {{style_item.sel?'selected':''}}" style="{{style_item.sel?'background-color:'+tColor+';':''}}">{{style_item.name}}</view>
+            </block>
+            </view>
+        </view>
+
+        </block>
+
+        <view class="goods_styles">
+        <view class="style_name">数量</view>
+        <view class="selecteds_container">
+            <view catchtap="sub" class="border1 act">-</view>
+            <view class="border2">{{sel_num}}</view>
+            <view catchtap="add" class="border1 act">+</view>
+        </view>
+        <view class="stock">剩余库存：{{good_data.stock}}</view>
+        </view>
+    </view>
+    </view>
+    <view class="desc_item" hidden="{{good_data==undefine}}">
+    <text class="desc_name">{{good_data.shopName}}</text>
+    <text class="col_btn" wx:if="{{good_data.isCshops}}"  catchtap="Cshop">取消收藏店铺</text>
+    <text wx:else class="col_btn" catchtap="Cshop">收藏店铺</text>
+    </view>
+
+    <view class="goods_detail">
+    <view class="goods_detail_head">
+        <!--当前点击的选项卡-->
+        <view data-tabnum="0" style="{{currentTab==0?'color:'+tColor+';':''}}" class="goods_title act3 " catchtap="change_tab">商品介绍</view>
+        <view data-tabnum="1" style="{{currentTab==1?'color:'+tColor+';':''}}" class="goods_title act3 " catchtap="change_tab">规格参数</view>
+        <view data-tabnum="2" style="{{currentTab==2?'color:'+tColor+';':''}}" class="goods_title act3 " catchtap="change_tab">商品咨询</view>
+    </view>
+    </view>
+
+    <!--商品图片-->
+    <!-- <view class="goods_imgs_content" hidden="{{currentTab!=0}}">
+    <block wx:for="{{GoodDetailImg}}" wx:key="{{item.index}}">
+        <image src="{{item}}" data-imgurl="{{item}}" catchtap="preDetailImage" class="detail_imgs" mode="widthFix"></image>
+    </block>
+    </view> -->
+
+    <!-- <block wx:for="{{passage}}">
+        <block wx:if="{{item.type==0}}">
+        <image mode='widthFix' class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}"  src="{{item.str}}"></image>
+        </block>
+
+        <block wx:else>
+        <view class="paragraph">
+            {{item.str}}
+        </view>
+        </block>
+    </block>  -->
+        
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+
+    <!--商品规格-->
+    <view class="goods_para_content" hidden="{{currentTab!=1}}">
+    <view class="spec">
+        <block wx:for="{{goodpara}}" wx:key="{{index}}">
+        <view class="specs">
+            <text>{{item.name}} : {{item.value}}</text>
+        </view>
+        </block>
+    </view>
+    </view>
+    
+    <!--商品咨询-->
+    <view class="goods_quest" hidden="{{currentTab!=2}}">
+    <form bindsubmit="Askquest">
+        <textarea value="{{askContent}}" name="content" class="txt_area" placeholder="请输入咨询内容(至少输入3个字符)" placeholder-class="txt_area_holder" />
+        <view class="ctr_text_area">
+        <button catchtap="clearInput">清空</button>
+        <button form-type="submit" class="color_blue" style='color:{{tColor}};'>提交</button>
+        </view>
+    </form>
+    <view class="chat_history">
+        <block wx:for="{{askList}}" wx:for-item="askItem">
+        <view class="chat_item">
+            <image src="{{askItem.askUserImg}}" class="chat_icon"></image>
+            <view class="chat_msg">
+            <view class="chat_name">{{askItem.name}}</view>
+            <view class="chat_content">{{askItem.content}}</view>
+            <view class="chat_time">{{askItem.time}}</view>
+            </view>
+        </view>
+        <view class="chat_item">
+            <image src="{{askItem.sellerLogo}}" class="chat_icon sellerLogo"></image>
+            <view class="chat_msg">
+            <view class="chat_name">{{askItem.replyName}}:回复</view>
+            <view class="chat_content">{{askItem.replyContent}}</view>
+            <view class="chat_time">{{askItem.replyTime}}</view>
+            </view>
+        </view>
+        </block>
+    </view>
+
+    </view>
+
+    <view style="height:118rpx;">
+
+    </view>
+    
+
+    </scroll-view>
+
+    <!--  //此区域自定义视图 
+
+        
+        -->
+
+    <view style=" position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 10;background: rgba(0, 0, 0, 0.5);display: none;{{ showDialog ? 'display: block;' : '' }}"  catchtap="onClickdiaView" >
+        </view>
+    <view>
+    <view class="dialog-btn-container " style="background-color: #fff;position: fixed;bottom: 0;width: 750rpx; transform: translateY(150%);transition: all 0.4s ease;z-index: 14;height:950rpx;color: #323232;{{showDialog?'transform: translateY(0);':''}}"  catch:touchstart="touchStartEvent" catch:touchend='touchEndEvent' >
+        <view class="position:relative;">
+        <view style="display:flex;">
+            <view style="z-index:10;transform: translate(0,0);transition: all 0.4s ease;{{flag?'transform: translate(86%,30%);':''}}">
+            <view style="background-color:#fff;padding:9rpx;border-radius:12rpx;margin:-44rpx 25rpx 22rpx 20rpx;position: relative;box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);transform: scale(1,1);transition: all 0.4s ease;{{flag?'transform: scale(1.5,1.5);':''}}">
+                <image src="{{good_data.selGoodsInfo.images}}" capture-catch:touchstart='preSingleImage' data-imgurl='{{good_data.selGoodsInfo.images}}' style="width:225rpx;height:225rpx;display:block;':''}}" class="act"></image>
+            </view>
+            </view>
+            <view style="z-index:9;padding-top:29rpx;width:295rpx;transform: translate(0,0);transition: all 0.6s ease;{{flag?'transform: translate(-15%,150%);text-align:center;':''}}" class="text-limit1">
+            <text style="font-size:32rpx;color:#ff0000;line-height:50rpx;color:{{tColor}};">￥{{good_data.selGoodsInfo.mallMobilePrice}}
+            </text>
+            <text style="font-size:26rpx;line-height:44rpx;" class="text-limit1">库存{{good_data.selGoodsInfo.productStock}}件
+            </text>
+            <text style="font-size:20rpx;line-height:1.56666;" class="text-limit2">“{{good_data.selGoodsInfo.normName!='' &&good_data.selGoodsInfo.normName!=undefined?good_data.selGoodsInfo.normName:'默认规格'}}”</text>
+            </view>
+            
+        </view>
+        <view style="transform: translateY(0);transition: all 0.4s ease;{{flag?'transform: translateY(50%);':''}}">
+            <scroll-view scroll-y="true" style="height:638rpx;width:750rpx;" upper-threshold='0' bindscrolltoupper="scrolltopEvent" scroll-top="{{disTop}}">
+            <block wx:if="{{good_data.goods_styles.length>0}}">
+                <block wx:for="{{good_data.goods_styles}}" wx:for-item="style" wx:for-index="pos" wx:key="{{pos}}">
+                <view style="border-bottom:1px solid #e3e3e3;margin:0 20rpx 0 30rpx;padding-bottom:10rpx;">
+                    <view style="font-size:32rpx;line-height:68rpx;margin-bottom:20rpx;">{{style.name}}</view>
+                    <view style="display:flex;flex-wrap:wrap;">
+                    <block wx:for="{{style.attrList}}" wx:for-item="style_item">
+                        <view style="line-height:60rpx;font-size:28rpx;border-radius:10rpx;background-color:#ff0000;padding:0 30rpx;margin:0 30rpx 20rpx 0;{{clickType==index ?'background-color:#ff0000;color:#fff;'+'background-color:'+tColor+';':'background-color:#efefef;color:#323232'}}"
+                        capture-bind:touchstart="clickType" 
+                        data-pos="{{pos}}" 
+                        data-idx="{{index}}"
+                        data-normid="{{style_item.id}}">
+                        {{style_item.name}}
+                        </view>
+                    </block>
+
+                    </view>
+                </view>
+
+            
+                </block>
+
+            </block>
+
+            <block wx:else>
+                <view style="border-bottom:1px solid #e3e3e3;margin:0 20rpx 0 30rpx;padding-bottom:10rpx;">
+                <view style="font-size:32rpx;line-height:68rpx;margin-bottom:20rpx;">规格</view>
+                <view style="display:flex;flex-wrap:wrap;">
+
+                    <view style="line-height:60rpx;font-size:28rpx;border-radius:10rpx;background-color:#ff0000;padding:0 30rpx;margin:0 30rpx 20rpx 0;background-color:#ff0000;color:#fff;background-color:{{tColor}}">
+                    默认规格
+                    </view>
+
+
+                </view>
+                </view>
+            </block>
+
+            <view style="display:flex;align-items:center;height:118rpx;padding: 0 20rpx 0 30rpx;">
+                <view style="flex:1;font-size:32rpx;">购买数量:</view>
+                <view style="display:flex;">
+                <view style="width:80rpx;height:60rpx;line-height:60rpx;background-color:#efefef;text-align:center;font-size:40rpx;border-radius:6rpx;color:#979797;" class="act" capture-catch:touchstart="sub">-</view>
+                <input style="color:#323232;width:100rpx;margin:0 5rpx;text-align:center;font-size:32rpx;line-height:60rpx;height:60rpx;" class="text-limit1" value="{{sel_num}}" type="number" bindinput="onInputEvent" bindblur="onblurEvent"></input>
+                <view style="width:80rpx;height:60rpx;line-height:60rpx;background-color:#efefef;text-align:center;font-size:40rpx;color:#979797;border-radius:6rpx;" class="act" capture-catch:touchstart="add">+</view>
+                </view>
+            </view>
+
+            </scroll-view>
+        </view>
+
+        <form report-submit="true" capture-catch:touchstart="addToCart">
+        <button formType="submit" style="line-height:90rpx;color:#fff;text-align:center;font-size:32rpx;position:absolute;bottom:0;left:0;background-color:#ff0000;width:100%;background-color:{{tColor}}">加入购物车</button>
+        </form>
+
+        </view>
+    </view>
+    </view>
+</view>
+</block>
+
+<block wx:else>
+<view class="goodsD2">
+    <scroll-view wx:if="{{good_data}}" style="width:100%;height:100%" scroll-y="{{!showDialog}}" scroll-top="{{scroll_pos}}">
+    <swiper class="banner" indicator-dots="true" indicator-color="rgba(0, 0, 0, .5)" indicator-active-color="#000">
+
+        <block wx:for="{{newData.pic}}" wx:for-item="img" wx:key="{{index}}">
+            <swiper-item class="banner_item">
+            <image catchtap="preImage" data-imgurl="{{imgHead+img}}" src="{{imgHead+img}}"></image>
+            </swiper-item>
+        </block>
+
+    </swiper>
+
+    <!--商品价格-->
+    <view class="goods-info" wx:if="{{good_data}}">
+        <view class="goods_text_desc text-limit2">
+        <view class="goods_name text-limit2">
+            {{newData.name1}}
+        </view>
+        <view class="goods_price_desc" style='color:{{tColor}};'>
+            ￥{{newData.price}}
+            <text>市场价:￥{{newData.marketPrice}}</text>
+        </view>
+        </view>
+        <view class="col-btns" catchtap='Cgood'>
+        <image src="{{good_data.isCgoods?'/images/icon_scxz.png':'/images/icon_sc.png'}}"></image>
+        <view>收藏</view>
+        </view>
+    </view>
+
+    <!--选择配置hideOrShowConfig-->
+    <view class="margin_bottom20" wx:if="{{good_data}}">
+        <view class="desc_item margin_bottom0 act3" catchtap="onClickdiaView" data-dltype='0'>
+        <text class="desc_name">已选 </text>
+        <view style="font-size:28rpx;max-width:400rpx;color:#4d4d4d" class="text-limit1">“{{good_data.selGoodsInfo.normName!='' &&good_data.selGoodsInfo.normName!=undefined?good_data.selGoodsInfo.normName:'默认规格'}}”</view>
+        <image src="{{hideOrShowConfig?'/images/hide.png':'/images/display.png'}}"></image>
+        </view>
+
+    </view>
+    <!--商品评论  -->
+    <view class="consult-container" style="background: transparent;margin-bottom:0;" wx:if="{{allCommentList.length>0}}">
+        <view class="consult_head" style="background-color:#fff;">
+        <view class="head-name">
+            <image style="background-color:{{tColor}}; transform: translateX(-5%);" src="/images/title_bg_img.png"></image>
+            <view>商品评价</view>
+        </view>
+        </view>
+
+    <scroll-view scroll-x="true" style="background-color:#f2f2f2;white-space: nowrap;height: 245rpx;padding-top:3rpx;">
+
+        <block wx:for="{{allCommentList}}">
+    
+            <view class="evaluate-item">
+        <view class="evaluate-head">
+        <image src="{{item.profilePhoto==null?item.aliProfilePhoto:item.profilePhoto}}"></image>
+        <view class="text-limit1">{{item.nickname == null?item.aliNickname:item.nickname}}</view>
+        <text>{{item.createTime}}</text>
+        </view>
+
+        <view class="eval-text text-limit2">{{item.content}}</view>
+
+        <view>
+
+        </view>
+
+    </view>
+        </block>
+
+        </scroll-view>
+        <view class="more-consult act" catchtap='jumpToGoodsEval' style="color:{{tColor}};">
+        <text>更多评价</text>
+        <view style="border-color:{{tColor}}"></view>
+        </view>
+
+    </view>
+    <!--商品咨询  -->
+    <view class="consult-container">
+        <view class="consult_head">
+        <view class="head-name">
+            <image style="background-color:{{tColor}}; transform: translateX(-5%);" src="/images/title_bg_img.png"></image>
+            <view>商品咨询</view>
+        </view>
+        </view>
+
+        <view class="consult-contens">
+        <block wx:if="{{askList.length>0}}">
+            <block wx:for="{{askList}}" wx:key="{{index}}">
+            <view class="cons-item" wx:if="{{index<2}}">
+                <view>
+                <view class="ask-text" style="background-color:{{tColor}};">问</view>
+                <view class="text-limit1">{{item.content}}</view>
+                </view>
+
+                <view class="answer">
+                <text style="color:{{tColor}};">商家回复：</text>
+                <view class="text-limit1">{{item.replyContent}}</view>
+                </view>
+            </view>
+            </block>
+        </block>
+        <block wx:else>
+            <view class="cons-item">
+            <view>
+                <view class="ask-text" style="background-color:{{tColor}};">问</view>
+                <view class="text-limit1" style="max-width:450rpx;">若对该商品有疑问，可在此咨询商家</view>
+            </view>
+            </view>
+        </block>
+        </view>
+        <view class="more-consult act" catchtap='jumpToConsult' style="color:{{tColor}}">
+        <text>{{askList.length>0?'更多咨询':'我要提问'}}</text>
+        <view style="border-color:{{tColor}}"></view>
+        </view>
+
+    </view>
+
+
+    <view class="shop_container" wx:if="{{good_data && fromType!=1}}">
+        <view class="shop_head">
+        <view class="shop-name">
+            <image style="background-color:{{tColor}}; transform: translateX(-5%);" src="/images/title_bg_img.png"></image>
+            <view>店铺</view>
+        </view>
+        </view>
+        <view class="shop-info-container">
+        <image src="{{good_data.shopIcon}}" class="shop-icon"></image>
+        <view class="shop-info-text">
+            <view class="text-limit1">{{good_data.shopName}}</view>
+            <view style="color:#4d4d4d;" class="text-limit1">在售商品{{good_data.productNumber}}件</view>
+        </view>
+        <view class="shop-btns">
+            <view class="shop-col-btn act" style="background-color:{{tColor}};" catchtap="Cshop">
+            <image class="shop-col-icon" src='/images/like-icon-small.png'></image>
+            <view class="text-no-wrap">{{good_data.isCshops?'已关注':'关注店铺'}}</view>
+            </view>
+            <view class="shop-enter-btn act" style="border: 1px solid {{tColor}};color:{{tColor}};" catchtap='jumpToShopDetail'>
+            <image class="shop-enter-icon" style="background-color:{{tColor}}" src='/images/dianp_h.png'></image>
+            <view  class="text-no-wrap">进入店铺</view>
+            </view>
+        </view>
+
+        </view>
+        <scroll-view scroll-x="true" style=" white-space: nowrap;height: 345rpx;" wx:if="{{good_data.recommandList.length>0}}">
+
+        <block wx:for="{{good_data.recommandList}}" wx:key="{{item.index}}">
+            <view style="text-align: center;display: inline-block;width: 170rpx;padding: 30rpx 15rpx 0 15rpx;" data-productid="{{item.id}}" catchtap="jumpToGoodsDetail" class="act">
+            <image src="{{config+item.masterImg}}" style="display: block;width: 170rpx;height: 170rpx;"></image>
+            <view class="text-limit2" style="white-space: pre-wrap;width: 170rpx; margin: 10rpx 0;color: #4d4d4d;font-size: 24rpx;line-height:34rpx;">{{item.name1}}</view>
+            <view style="font-size:24rpx;color:#ff004e;line-height:34rpx;color:{{tColor}}" class="text-limit1">￥{{item.malMobilePrice}}
+
+            </view>
+            </view>
+        </block>
+
+        </scroll-view>
+    </view>
+
+
+
+    <view class="info_container" wx:if="{{goodpara.length>0}}">
+        <view class="info_head">
+        <view class="info-name">
+            <image style="background-color:{{tColor}}; transform: translateX(-5%);" src="/images/title_bg_img.png"></image>
+            <view>产品参数</view>
+        </view>
+        </view>
+        <view class="bottom-line">
+        <view style="background-color:{{tColor}};height:3rpx;width:100%;border-radius:2px;position:relative;">
+            <view style="background-color:{{tColor}};height:6rpx;width:3rpx;border-radius:2px;border-radius:2rpx;position:absolute;left:0;"></view>
+            <view style="background-color:{{tColor}};height:6rpx;width:3rpx;border-radius:2px;border-radius:2rpx;position:absolute;right:0"></view>
+        </view>
+        </view>
+
+        <view class="para-container">
+        <block wx:for="{{goodpara}}" wx:key="item.index">
+            <view class="para-item text-limit1">{{item.name}} : {{item.value}}</view>
+        </block>
+        </view>
+
+    </view>
+    <!--商品图片-->
+    <!-- <view class="goods_imgs_content" wx:if="{{GoodDetailImg.length>0 && good_data}}">
+        <view class="info_head" style="background-color: #fff;">
+        <view class="info-name">
+            <image style="background-color:{{tColor}}; transform: translateX(-5%);" src="/images/title_bg_img.png"></image>
+            <view>商品详情</view>
+        </view>
+        </view>
+        <block wx:for="{{GoodDetailImg}}" wx:key="{{item.index}}">
+        <image src="{{item}}" data-imgurl="{{item}}" catchtap="preDetailImage" class="detail_imgs" mode="widthFix"></image>
+        </block>
+    </view>  -->
+    
+    <!-- 介入待确认 -->
+    <!-- <block wx:for="{{passage}}">
+        <block wx:if="{{item.type==0}}">
+        <image mode='widthFix' class="passage-img" catchtap="previewImage" data-imgurl="{{item.str}}"  src="{{item.str}}"></image>
+        </block>
+
+        <block wx:else>
+        <view class="paragraph">
+            {{item.str}}
+        </view>
+        </block>
+    </block> 
+
+    <view style="height:108rpx;"></view> -->
+
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <!--商品咨询-->
+
+    <!-- <view class="bottom_btns">
+        <view class="btn-items">
+        <view class="btn-item act" catchtap='makePhone'>
+            <image src="/images/chat-icon.png"></image>
+            <view>联系卖家</view>
+        </view>
+        <view class="btn-item act" catchtap='jumpToShopDetail'>
+            <image src="/images/shop-icon-big.png"></image>
+            <view>店铺</view>
+        </view>
+        <view class="btn-item act" catchtap='jumpToScart'>
+            <image src="/images/scart-icon.png"></image>
+            <view>购物车</view>
+        </view>
+        </view>
+        <view class="bottom_btn act" catchtap="onClickdiaView" data-dltype='1' style="background-color:{{tColorHelp}}">加入购物车</view>
+        <view class="bottom_btn act" style="background-color:{{tColor}}" catchtap="addToIndent">立即购买</view>
+
+    </view> -->
+
+    </scroll-view>
+
+    <!--  //此区域自定义视图 
+
+        
+        -->
+
+    <view style=" position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 10;background: rgba(0, 0, 0, 0.5);display: none;{{ showDialog ? 'display: block;' : '' }}" catchtap="onClickdiaView">
+    </view>
+    <view>
+    <view class="dialog-btn-container " style="background-color: #fff;position: fixed;bottom: 0;width: 750rpx; transform: translateY(150%);transition: all 0.4s ease;z-index: 14;height:950rpx;color: #323232;{{showDialog?'transform: translateY(0);':''}}" catchtouchstart="touchStartEvent"
+        catchtouchend='touchEndEvent'>
+        <view class="position:relative;">
+        <view style="display:flex;">
+            <view style="z-index:10;transform: translate(0,0);transition: all 0.4s ease;{{flag?'transform: translate(86%,30%);':''}}">
+            <view style="background-color:#fff;padding:9rpx;border-radius:12rpx;margin:-44rpx 25rpx 22rpx 20rpx;position: relative;box-shadow: 0 1px 1px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.19);transform: scale(1,1);transition: all 0.4s ease;{{flag?'transform: scale(1.5,1.5);':''}}">
+                <image src="{{good_data.selGoodsInfo.images}}" catchtap='preSingleImage' data-imgurl='{{good_data.selGoodsInfo.images}}' style="width:225rpx;height:225rpx;display:block;':''}}" class="act"></image>
+            </view>
+            </view>
+            <view style="z-index:9;padding-top:29rpx;width:295rpx;transform: translate(0,0);transition: all 0.6s ease;{{flag?'transform: translate(-15%,150%);text-align:center;':''}}" class="text-limit1">
+            <text style="font-size:32rpx;color:#ff0000;line-height:50rpx;color:{{tColor}};">￥{{good_data.selGoodsInfo.mallMobilePrice}}
+            </text>
+            <text style="font-size:26rpx;line-height:44rpx;" class="text-limit1">库存{{good_data.selGoodsInfo.productStock}}件
+            </text>
+            <text style="font-size:20rpx;line-height:1.56666;" class="text-limit2">“{{good_data.selGoodsInfo.normName!='' &&good_data.selGoodsInfo.normName!=undefined?good_data.selGoodsInfo.normName:'默认规格'}}”</text>
+            </view>
+
+        </view>
+        <view style="transform: translateY(0);transition: all 0.4s ease;{{flag?'transform: translateY(50%);':''}}">
+            <scroll-view scroll-y="true" style="height:638rpx;width:750rpx;" upper-threshold='0' bindscrolltoupper="scrolltopEvent" scroll-top="{{disTop}}">
+            <block wx:if="{{good_data.goods_styles.length>0}}">
+                <block wx:for="{{good_data.goods_styles}}" wx:for-item="style" wx:for-index="pos" wx:key="{{pos}}">
+                <view style="border-bottom:1px solid #e3e3e3;margin:0 20rpx 0 30rpx;padding-bottom:10rpx;">
+                    <view style="font-size:32rpx;line-height:68rpx;margin-bottom:20rpx;">{{style.name}}</view>
+                    <view style="display:flex;flex-wrap:wrap;">
+                    <block wx:for="{{style.attrList}}" wx:for-item="style_item">
+                        <view style="line-height:60rpx;font-size:28rpx;border-radius:10rpx;background-color:#ff0000;padding:0 30rpx;margin:0 30rpx 20rpx 0;{{clickType==index?'background-color:#ff0000;color:#fff;'+'background-color:'+tColor+';':'background-color:#efefef;color:#323232'}}"
+
+                        capture-bind:touchstart="clickType"
+                        data-idx="{{index}}"
+
+                        data-pos="{{pos}}" 
+                        data-normid="{{style_item.id}}">
+                        {{style_item.name}}
+                        </view>
+                    </block>
+
+                    </view>
+                </view>
+
+
+                </block>
+
+            </block>
+
+            <block wx:else>
+                <view style="border-bottom:1px solid #e3e3e3;margin:0 20rpx 0 30rpx;padding-bottom:10rpx;">
+                <view style="font-size:32rpx;line-height:68rpx;margin-bottom:20rpx;">规格</view>
+                <view style="display:flex;flex-wrap:wrap;">
+
+                    <view style="line-height:60rpx;font-size:28rpx;border-radius:10rpx;background-color:#ff0000;padding:0 30rpx;margin:0 30rpx 20rpx 0;background-color:#ff0000;color:#fff;background-color:{{tColor}}">
+                    默认规格
+                    </view>
+
+
+                </view>
+                </view>
+            </block>
+
+            <view style="display:flex;align-items:center;height:118rpx;padding: 0 20rpx 0 30rpx;">
+                <view style="flex:1;font-size:32rpx;">购买数量:</view>
+                <view style="display:flex;">
+                <view style="width:80rpx;height:60rpx;line-height:60rpx;background-color:#efefef;text-align:center;font-size:40rpx;border-radius:6rpx;color:#979797;" class="act" capture-catch:touchstart="sub">-</view>
+                <input style="color:#323232;width:100rpx;margin:0 5rpx;text-align:center;font-size:32rpx;line-height:60rpx;height:60rpx;" class="text-limit1" value="{{sel_num}}" type="number" bindinput="onInputEvent" bindblur="onblurEvent"></input>
+                <view style="width:80rpx;height:60rpx;line-height:60rpx;background-color:#efefef;text-align:center;font-size:40rpx;color:#979797;border-radius:6rpx;" class="act" capture-catch:touchstart="add">+</view>
+                </view>
+            </view>
+
+            </scroll-view>
+        </view>
+        <view style="line-height:90rpx;color:#fff;text-align:center;font-size:32rpx;position:absolute;bottom:0;left:0;background-color:#ff0000;width:100%;background-color:{{tColor}}" capture-catch:touchstart="addToCart">加入购物车</view>
+        
+        </view>
+    </view>
+    </view>
+</view>
+<view style="height: 98rpx;background: rgba(255, 255, 255, 0);"></view>
+</block>
+
+
+<!-- 底部按钮 1 -->
+<view  wx:if="{{template==1}}" class="btm-btn goodsD1">
+    <text wx:if="{{good_data.isCgoods}}" class="compare act3" catchtap="Cgood">取消收藏</text>
+    <text wx:else class="compare act3" catchtap="Cgood">添加收藏</text>
+    <text  catchtap="onClickdiaView" data-dltype='1' class="addcart act3" style='background-color:{{tColorHelp}};'>加入购物车</text>
+    <form report-submit="true" bindsubmit="addToIndent">
+    <button formType="submit"  class="join_in act3"  style='background-color:{{tColor}};'>立即购买</button>
+    </form>
+</view>
+<!-- 底部提取 2 -->
+<view wx:else class="bottom_btns goodsD2">
+    <view class="btn-items">
+    <view class="btn-item act" catchtap='makePhone'>
+        <image src="/images/chat-icon.png"></image>
+        <view>联系卖家</view>
+    </view>
+    <view class="btn-item act" catchtap='jumpToShopDetail'>
+        <image src="/images/shop-icon-big.png"></image>
+        <view>店铺</view>
+    </view>
+    <view class="btn-item act" catchtap='jumpToScart'>
+        <image src="/images/scart-icon.png"></image>
+        <view>购物车</view>
+    </view>
+    </view>
+    <view class="bottom_btn act" catchtap="onClickdiaView" data-dltype='1' style="background-color:{{tColorHelp}}">加入购物车</view>
+    <view class="bottom_btn act" style="background-color:{{tColor}}" catchtap="addToIndent">立即购买</view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

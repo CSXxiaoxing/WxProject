@@ -1,0 +1,39 @@
+<block wx:for="{{allObj}}" wx:key="{{item.classnm}}">
+
+    <view 
+    style="{{item.style}}" 
+    class="mtxt {{item.classnm=='title1' ? 'f01':''}}" >
+    <!-- 背景图 -->
+    <image  src="{{item.imgurl}}" lazy-load="true" class="bgImg" mode="scaleToFill"></image>
+    
+    <!-- 图片 -->
+    <block 
+    wx:for="{{item.text}}" 
+    wx:for-item="son"  
+    wx:key="{{son.index}}">
+
+        <image  src="{{son.iconbg}}" lazy-load="false" 
+        wx:if="{{item.classnm != 'title1'}}"
+        class="{{item.classnm == 'title2' ? 'l_c' : 'z_c'}}"
+        style="{{son.style}}" mode="scaleToFill">
+        </image>
+        
+        <view wx:if="{{item.classnm=='title100'}}" class="f01_lr"></view>
+        <text>{{son.con}}</text>
+        <text wx:if="{{item.classnm=='title100'}}" class="f01_lr"></text>
+        
+        <text wx:if="{{item.showmore==0}}" class="more"> 更多 ></text>
+    </block>
+
+    <!-- 功能 -->
+    <button 
+        data-url="{{item.link}}" 
+        data-urlT="{{item.webview}}" 
+        data-phone="{{item.phone}}" 
+        bindtap="jump"
+        class="butZJ" 
+        open-type="{{item.openT}}"></button>
+
+    </view>
+
+</block>

@@ -1,0 +1,133 @@
+<!--pages/my/indent_details/indent_details.wxml-->
+<view wx:if="{{indent_data}}">
+  <view class="indent_msg">
+    <view class="indent_state">状态：
+      <text style='color:{{tColor}}' wx:if="{{indent_data.state==1}}">待支付</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==2}}">待商家确认</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==3}}">待发货</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==4}}">已发货</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==5}}">已完成<text wx:if="{{indent_data.orderType==4}}" style='color:{{tColor}}'>（等待竞价尾款结算）</text></text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==6}}">已取消</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==7}}">拼团中</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==8}}">已完成</text>
+      <text style='color:{{tColor}}' wx:elif="{{indent_data.state==9}}">已完成</text>
+    </view>
+    <view class="indent_id">订单编号：{{indent_data.num}}</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==1}}">订单类型：普通订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==2}}">订单类型：限时抢购订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==3}}">订单类型：团购订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==4}}">订单类型：竞价定金订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==5}}">订单类型：竞价尾款订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==6}}">订单类型：积分商城订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==7}}">订单类型：拼团订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==8}}">订单类型：预约订单</view>
+    <view class="indent_id" wx:if="{{indent_data.orderType==9}}">订单类型：砍价订单</view>
+    <view class="indent_time">下单时间：{{indent_data.time}}</view>
+    <view catchtap="pay" style='background-color:{{tColor}}' wx:if="{{indent_data.state==1}}" class="pay_btn act">去支付</view>
+
+    <view catchtap="sure_GetGoods" style='background-color:{{tColor}}' wx:if="{{indent_data.state==4}}" class="pay_btn act">确认收货</view>
+
+    <view catchtap="jumpToBackUp" style='background-color:{{tColor}}' wx:if="{{indent_data.state==5 && indent_data.backOrExchangeNum!=0 &&indent_data.orderType!=4}}" class="pay_btn act">申请退换货</view>
+
+    <view catchtap='logistics' wx:if="{{(indent_data.state==4 || indent_data.state==5 )&& indent_data.orderType!=4 && indent_data.orderType != 8}}" class='cancel_btn act'>查看物流</view>
+
+    <view wx:if="{{indent_data.state==1}}" class="cancel_btn act" catchtap="cancel_order">取消订单</view>
+  </view>
+
+
+  <view class="indent_goods_item">
+    <view wx:if="{{indent_data.paymentCode=='INTEGRAL'}}">
+      商品金额：
+      <text class="color_blue" style='color:{{tColor}}'>{{indent_data.integral}}积分 </text>({{indent_data.paymentName}})
+    </view>
+    <view wx:else>
+      商品金额：
+      <text class="color_blue" style='color:{{tColor}}'>￥{{indent_data.total}} </text>({{indent_data.paymentName}})
+    </view>
+
+    <view>
+      收货地址：
+      <text class="color_black">{{indent_data.address}}</text>
+    </view>
+    <view>
+      收货人：
+      <text class="color_black">{{indent_data.consignee}} {{indent_data.phone}}</text>
+    </view>
+    <view>
+      发票信息：
+      <text class="color_black">{{indent_data.invoiceStatus==0?'不开发票':'发票抬头 个人'}} <text wx:if="{{indent_data.invoiceTitle!=null}}"> {{indent_data.invoiceTitle}}</text>
+      <text wx:if="{{indent_data.invoiceType!=null}}">  {{indent_data.invoiceType}}</text></text>
+    </view>
+
+  </view>
+
+  <view class="indent_goods">
+    <!--<view class="indent_goods_head">
+    <text>MM行业品牌店铺</text>
+    <text>共计 1 件商品</text>
+  </view>-->
+
+    <view class="indent_goods_container">
+      <block wx:for="{{indent_data.goods}}" wx:for-item="good">
+        <view class="indent_goods_child">
+          <image src="{{good.img}}"></image>
+          <view class="goods_desc_content">
+            <view class="goods_name">
+              {{good.name}}
+            </view>
+            <view class="classname">
+              {{good.count}}件
+              <text wx:if="{{good.style!=''}}">({{good.style}})</text>
+            </view>
+          </view>
+          <view wx:if="{{indent_data.orderType!=4}}">
+            <view class="eval-btn act" style="border-color:{{tColor}};color:{{tColor}}" data-goodsimg='{{good.img}}' data-goodsname='{{good.name}}' data-ordersn='{{good.ordersSn}}' data-productid='{{good.productId}}' data-productgoodsid='{{good.productGoodsId}}'
+              data-ordersproductid='{{good.ordersProductId}}' catchtap='jumpToAddEval' wx:if="{{good.isEvaluate==0 && indent_data.state == 5}}">
+              去评价
+            </view>
+            <view wx:if="{{good.isEvaluate==1 && indent_data.state == 5}}" class="eval-btn act" style="border-color:{{tColor}};color:{{tColor}}" data-goodsimg='{{good.img}}' data-goodsname='{{good.name}}' data-ordersn='{{good.ordersSn}}' data-productid='{{good.productId}}'
+              data-productgoodsid='{{good.productGoodsId}}' data-ordersproductid='{{good.ordersProductId}}' catchtap='jumpToEvalDetail'>
+              查看评价
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="indent_desc">
+    <view class="desc_item">
+      <text>付款方式</text>
+      <text class="price" style='color:{{tColor}}'>{{indent_data.paymentName}}</text>
+    </view>
+    <view class="desc_item">
+      <text>优惠券优惠</text>
+      <text class="price" style='color:{{tColor}}'>￥{{indent_data.moneyCoupon}}</text>
+    </view>
+    <view wx:if="{{indent_data.paymentCode!='INTEGRAL'}}" class="desc_item">
+      <text>积分优惠</text>
+      <text class="price" style='color:{{tColor}}'>￥{{indent_data.moneyIntegral}}</text>
+    </view>
+    <view wx:if="{{indent_data.paymentCode!='INTEGRAL'}}" class="desc_item">
+      <text>优惠金额</text>
+      <text class="price" style='color:{{tColor}}'>￥{{indent_data.moneyDiscount}}</text>
+    </view>
+    <view wx:if="{{indent_data.paymentCode!='INTEGRAL'}}" class="desc_item">
+      <text>商品金额</text>
+      <text class="price" style='color:{{tColor}}'>￥{{indent_data.goods_price}}</text>
+    </view>
+    <view class="desc_item">
+      <text>运费</text>
+      <text class="price" style='color:{{tColor}}'>+￥{{indent_data.moneyLogistics}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{indent_data.paymentCode!='INTEGRAL'}}" class="act_pay" style='color:{{tColor}}'>
+    实付款：￥{{indent_data.total}}
+  </view>
+  <view wx:if="{{indent_data.paymentCode=='INTEGRAL'}}" class="act_pay" style='color:{{tColor}}'>
+    实扣积分：{{indent_data.integral}}
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

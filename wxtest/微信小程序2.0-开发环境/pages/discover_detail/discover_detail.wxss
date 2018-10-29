@@ -1,0 +1,26 @@
+/* pages/discover/discover_detail/discover_detail.wxss */
+.text_container{
+  padding: 21rpx 40rpx 100rpx 40rpx;
+}
+.title{
+
+  overflow: hidden;
+  color: #1a1a1a;
+  font-size: 36rpx;
+  line-height: 48rpx;
+
+  font-weight: 600;
+  margin-bottom: 28rpx;
+}
+.time{
+    line-height: 28rpx;
+  color: #808080;
+
+  font-size: 28rpx;
+}
+.content{
+    word-wrap: break-word;
+    color: #666;
+    font-size: 28rpx;
+    line-height: 40rpx;
+}

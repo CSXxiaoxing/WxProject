@@ -1,0 +1,127 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.3",
+	"appid": "wx470064507b39c701",
+	"projectname": "%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%B5%8B%E8%AF%95%E7%89%88",
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 11,
+			"list": [
+				{
+					"id": 0,
+					"name": "fx_my  我的分销",
+					"pathName": "pages/fx/fx_my/fx_my",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "提现记录",
+					"pathName": "pages/fx/fx_record/fx_record",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 2,
+					"name": "goodList",
+					"pathName": "pages/goodList/goodList",
+					"query": "url=5626",
+					"scene": "1011"
+				},
+				{
+					"id": 3,
+					"name": "fx_apply  分销申请 完成",
+					"pathName": "pages/fx/fx_apply/fx_apply",
+					"query": "type=我的用户",
+					"scene": "1011"
+				},
+				{
+					"id": 4,
+					"name": "fx_myUser（我的用户/代理）缺样式",
+					"pathName": "pages/fx/fx_myUser/fx_myUser",
+					"query": "type=2",
+					"scene": "1001"
+				},
+				{
+					"id": 5,
+					"name": "fx_myCard 我的银行卡",
+					"pathName": "pages/fx/fx_myCard/fx_myCard",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 6,
+					"name": "fx_newCard  设置银行卡",
+					"pathName": "pages/fx/fx_newCard/fx_newCard",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 7,
+					"name": "提现",
+					"pathName": "pages/fx/fx_tiXian/fx_tiXian",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 8,
+					"name": "个人中心",
+					"pathName": "pages/my/my",
+					"query": "productId=124733",
+					"scene": "1001"
+				},
+				{
+					"id": 9,
+					"name": "商品详情",
+					"pathName": "pages/goods_detail/goods_detail",
+					"query": "productId=124690",
+					"scene": "1001"
+				},
+				{
+					"id": 10,
+					"name": "埋点用",
+					"pathName": "pages/market/submitReserve/submitReserve",
+					"query": "",
+					"scene": "1011"
+				},
+				{
+					"id": 11,
+					"name": "idx4",
+					"pathName": "pages/index4/index4",
+					"query": "QRcode=123456",
+					"scene": "1011"
+				}
+			]
+		}
+	}
+}

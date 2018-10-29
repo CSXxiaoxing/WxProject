@@ -1,0 +1,25 @@
+<block wx:for="{{allObj}}" wx:key="{{item.classnm}}">
+
+    <view class="mf {{item.classnm}}" 
+    style="{{item.style}}">
+        <!-- 背景图片 -->
+        <image class="cub-img" src="{{item.imgurl}}" lazy-load ></image>
+
+        <block wx:for="{{item.cubeLists}}" wx:key="{{item.index}}">
+        <view class="hang">
+
+            <image src="{{item.imgurl}}" lazy-load="{{true}}" ></image>
+            <view class="cub-txt">{{item.tt}}</view>
+
+            <button 
+            data-url="{{item.link}}" 
+            data-url-t="{{item.webview}}" 
+            data-phone="{{item.phone}}" 
+            bindtap="cubFn"
+            class="butZJ" 
+            open-type="{{item.openT}}"></button>
+        </view>
+        </block>
+    </view>
+    
+</block>

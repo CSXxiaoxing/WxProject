@@ -1,0 +1,55 @@
+
+<form bindsubmit="submitEvent">
+<view class="address_container">
+  <view class="address_infoItem">
+    <text class="info_name">收货人</text>
+    <input value="{{val_name}}" maxlength="10" name="name" placeholder="姓名" />
+  </view>
+  <view class="address_infoItem">
+    <text class="info_name">联系方式</text>
+    <input maxlength="11" value="{{val_num}}" name="phone" type="number" placeholder="手机号码" />
+  </view>
+  <view class="address_infoItem">
+    <text class="info_name">省</text>
+    <!--选择器-->
+          <picker name="province" mode="selector" bindchange="ProvinceChange" value="{{index}}" range="{{province_Names}}">
+        <view class="select_container">
+
+          <text class="{{index!=0?'color_black':'color_gray'}}">{{province_Names[index]}}</text>
+
+        </view>
+      </picker>
+  </view>
+  <view class="address_infoItem">
+    <text class="info_name">市</text>
+     <picker name="city" mode="selector" bindchange="CityChange" value="{{index_city}}" range="{{city_Names}}">
+        <view class="select_container">
+
+          <text class="{{index!=0?'color_black':'color_gray'}}">{{city_Names[index_city]}}</text>
+
+        </view>
+      </picker>
+  </view>
+  <view class="address_infoItem">
+    <text class="info_name">区/县</text>
+    <picker name="street" mode="selector" bindchange="regionChange" value="{{index_str}}" range="{{street_Names}}">
+        <view class="select_container">
+
+          <text class="{{index!=0?'color_black':'color_gray'}}">{{street_Names[index_str]}}</text>
+
+        </view>
+      </picker>
+  </view>
+  <view  class="address_infoItem">
+    <text class="info_name">详细地址</text>
+    <input value="{{val_address}}" name="address_detail" placeholder="请输入详细地址" />
+  </view>
+</view>
+<!--删除按钮-->
+<view class="btns">
+   <button class="sure_btn act" style='background-color:{{tColor}};' formType="submit">确认</button>
+   <button wx:if="{{!adId}}" class="del_btn act" catchtap="del_address">删除</button>
+</view>
+</form>
+
+<tool bind:toolFun="onToolFun"></tool>

@@ -1,0 +1,45 @@
+<!--pages/goods_evaluate/goods_evaluate.wxml-->
+
+<view class="evaluate-container" wx:if="{{comment}}">
+
+  <view class="evaluate-item">
+    <view class="evaluate-head">
+      <image src="{{comment.profilePhoto==null?comment.aliProfilePhoto:comment.profilePhoto}}"></image>
+      <view class="text-limit1">
+        <text>{{comment.nickname == null?comment.aliNickname:comment.nickname}}</text>
+        <view class="grade-imgs">
+          <block wx:for="{{[1,2,3,4,5]}}">
+          <view  class="g-img">
+            <view style="background-color:{{tColor}};width:{{avg_grade-index>0?(avg_grade-index<1?(avg_grade-index)*100:100):100}}%;"></view>   
+             
+           <image  src="{{index+1<=avg_grade?'/images/icon_xina.png':(index+1-avg_grade<1?'/images/icon_xina.png':'/images/icon_xinb.png')}}" />      
+            <!-- <image src="/images/icon_xinb.png" style="z-index:2;background-color:{{tColor}};transform:scale(0.9,0.9);"></image>  -->
+           </view>
+          </block>
+         
+
+        </view>
+      </view>
+      <text>{{comment.createTime}}</text>
+    </view>
+
+    <view class="eval-text">{{comment.content}}</view>
+
+    <view>
+
+      <view class="eval-images">
+
+        <!-- wx:if="{{item.images.length>0}}"-->
+        <block wx:for="{{comment.images}}" wx:for-item="img" wx:for-index="i">
+          <view catchtap='preDetailImage' data-imgurl='{{img}}' wx:if="{{img!=''}}"><image src="{{img}}"/></view>
+
+        </block>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

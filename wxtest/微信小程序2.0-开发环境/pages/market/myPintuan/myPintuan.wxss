@@ -1,0 +1,105 @@
+/* pages/myReserve/myReserve.wxss */
+page{
+  background-color: #fafafa;
+}
+.reserve-item{
+  background-color: #fff;
+  margin-top: 17rpx;
+  font-size: 28rpx;
+
+  color: #4c4c4c;
+}
+.reserve-item>view{
+  display: flex;
+  }
+.item-head{
+
+  padding: 0 40rpx 0 30rpx;
+  color: #4d4d4d;
+  line-height: 100rpx;
+  border-bottom: 1px solid #e6e6e6;
+  box-sizing: border-box;
+}
+.item-head :first-child{
+  flex: 1;
+}
+.goods-info{
+  height: 250rpx;
+
+  padding: 0 25rpx 0 20rpx;
+  align-items: center;
+   border-bottom: 1px solid #e6e6e6;
+}
+.goods-info > image{
+  width: 190rpx;
+  height: 190rpx;
+  display: block;
+  margin-right: 45rpx;
+}
+.goods-info>view{
+  flex: 1;
+}
+.goodsName{
+  font-weight: 600;
+  line-height: 48rpx;
+  height: 96rpx;
+}
+.item-foot{
+  height: 100rpx;
+  align-items: center;
+  padding: 0 32rpx;
+  justify-content: flex-end;
+  font-size: 26rpx;
+}
+
+.item-foot>.btn:last-child{
+  margin-left: 17rpx;
+}
+
+button{
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  margin: 0;
+  padding: 0;
+  box-sizing:unset;
+}
+button:active{
+  border:0;
+}
+button::after{
+  border:0;
+}
+.goodsNorm{
+  line-height: 48rpx;
+  max-width: 400rpx;
+  font-size: 28rpx;
+  color: #4c4c4c;
+}
+.btn {
+  border:1px solid #ccc;
+  color: #4c4c4c;
+  width: 172rpx;
+  line-height: 62rpx;
+  text-align: center;
+  border-radius: 30rpx
+}
+
+/*底部  */
+.bottom{
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  color: #4d4d4d;
+  font-size: 26rpx;
+  padding: 0 18rpx;
+}
+.bottom :nth-child(2n-1){
+  background-color: #cccccc;
+  height: 1px;
+  width: 255rpx;
+}
+.bottom :nth-child(2){
+  flex: 1;
+  text-align: center;
+}

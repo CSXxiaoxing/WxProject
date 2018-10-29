@@ -1,0 +1,36 @@
+<!-- <import src="/pages/template/t_goodslist/t_goodslist.wxml" /> -->
+
+  <view class="newlist">
+    <!--商品详情列表template  跳转方法 goodsDetails-->
+    <view class="goodslist">
+      <block wx:for="{{products}}">
+        <template is="goodslist" data="{{...item}}"></template>
+      </block>
+    </view>
+  </view>
+  <view class="load-more-wrap">
+    <view wx:if="{{!loading && !noMsg}}" class="load-content">
+      <text class="loading-text">上拉加载更多</text>
+    </view>
+    <view wx:if="{{loading}}" class="load-content">
+      <text class="weui-loading" />
+      <text class="loading-text">加载中</text>
+    </view>
+    <view wx:if="{{noMsg}}" class="load-content">
+      <text>没有更多内容了</text>
+    </view>
+  </view>
+<template name="goodslist">
+  <view class="goods act" data-type="1" data-id="{{id}}" catchtap="goodsDetails">
+    <view class="img-box">
+      <image class="img" mode="aspectFill" src="{{imgUrl}}"></image>
+      <image class="loading" src="/images/loading.gif"></image>
+    </view>
+    <view class="goodsInfo">
+      <text class="title">{{name}}</text>
+      <view class="price">
+        <text>￥{{price}}</text>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,47 @@
+
+page{
+  background-color: #f1f0fa;
+}
+.address_container{
+  margin-top: 20rpx;
+  background-color: #fff;
+  line-height: 90rpx;
+  color: #4d4d4d;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.address_infoItem{
+  border-bottom: 1px #e6e6e6 solid;
+  display: flex;
+  padding-left: 30rpx;
+}
+.info_name{
+  width: 150rpx;
+}
+input{
+  height: 90rpx;
+  font-size: 28rpx;
+  color: #4d4d4d;
+}
+.btns{
+  padding: 0 30rpx 0 30rpx;
+}
+button{
+  border-radius: 50rpx;
+  font-size: 30rpx;
+  line-height: 100rpx;
+}
+.sure_btn{
+  color: #fff;
+  background-color: #91a3ff;
+  margin-bottom: 20rpx;
+}
+.del_btn{
+  color: #808080;
+  box-shadow: 0px 0px 1rpx #888888;
+}
+/*选择框*/
+.select_container{
+  width: 540rpx;
+  height: 90rpx;
+}

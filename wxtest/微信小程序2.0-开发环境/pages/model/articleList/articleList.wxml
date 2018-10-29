@@ -1,0 +1,79 @@
+<block 
+    wx:for="{{allObj}}" 
+    wx:for-item="items" 
+    wx:key="{{items.index}}" >
+
+<!-- 文章类型 -->
+<view class="newslist"  wx:if="{{items.classnm != 'article2'}}" style="{{items.pdd[0].style}}">
+<block wx:for="{{items.articleLists}}" wx:key="{{item.index}}">
+
+    <view class="" style="position: relative;">
+        
+    <view 
+    class="cells {{items.classnm}}" 
+    style="{{items.style}}border-radius: {{bdr}}rpx;"
+    data-url="{{item.id}}"
+    data-url-t="{{item.webview}}"
+    bindtap="news">
+
+    <view class="article1-box box" hover-class="none" hover-stop-propagation="false">
+    <view class="cells_txt" >
+        <text style="{{items.titlesty[0].style}}">{{item.title}}</text>
+        <text style="{{items.dessty[0].style}}">{{item.newsSummary?item.newsSummary:''}}</text>
+        <text>{{item.createTime}}</text>
+    </view>
+
+    <view class="cells_img" style="border-radius: {{bdr}}rpx;">
+        <block wx:if="{{items.classnm == 'article1'}}">
+            <image 
+            lazy-load src="{{hostSrc+item.image  + '?x-oss-process=image/resize,m_mfit,h_'+ ~~(80/size[1]*size[4]) + ',w_' + ~~(80/size[1]*size[4]) + size[0] }}" 
+            style="border-radius: {{bdr}}rpx;"/>
+        </block>
+        <block wx:else>
+            <image lazy-load src="{{hostSrc+item.image}}" style="border-radius: {{bdr}}rpx;"/>
+        </block>
+    </view>
+    </view>
+
+    </view>
+
+    <view wx:if="{{items.classnm == 'article4'}}" class="aafter" ></view>
+    </view>
+
+</block>
+</view>
+
+<scroll-view
+    scroll-x
+    class="newsscroll"
+    wx:if="{{items.classnm == 'article2'}}"  
+    style="{{items.pdd[0].style}}" >
+<view class="scroll">
+<block wx:for="{{items.articleLists}}"  wx:key="{{item.index}}">
+
+    <view 
+    class="cells {{items.classnm}}" 
+    style="{{items.style}}border-radius: {{bdr}}rpx;"
+    data-url="{{item.id}}" 
+    data-url-t="{{item.webview}}"  
+    bindtap="news">
+        
+    <view class="cells_img" style="border-radius: {{bdr}}rpx;">
+        <image 
+        lazy-load 
+        src="{{hostSrc + item.image + '?x-oss-process=image/resize,m_mfit,h_'+ ~~(150/size[1]*size[5]) + ',w_' + ~~(230/size[1]*size[5]) + size[0] }}" 
+        style="border-radius: {{bdr}}rpx;"/>
+    </view>
+
+    <view class="cells_txt" >
+        <text style="{{items.titlesty[0].style}}">{{item.title}}</text>
+        <text style="{{items.dessty[0].style}}">{{item.newsSummary?item.newsSummary:''}}</text>
+        <text >{{}}</text>
+    </view>
+    
+    </view>
+</block>
+</view>
+</scroll-view>
+
+</block>

@@ -1,0 +1,51 @@
+@import "../../tabBarWxss/tabBarWxss.wxss";
+/* @import "../../tabBarWxss/style/iconfont.wxss"; */
+@import "../../tabBarWxss/style/iconShop.wxss";
+
+page{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+button::after{ border: none; }
+.itSupport {
+    text-align: center;
+    z-index: 1000;
+    position: relative;
+
+    /* font-size:20rpx; */
+    color:#b8b4b4;
+    /* line-height:47rpx; */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.itSupport text {
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    overflow: hidden;
+}
+
+/* 通栏 */
+.ef {
+    position:relative;
+    z-index:100;
+    box-sizing:border-box;
+    overflow: hidden;
+}
+.efbg {
+    height:100%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    border:0 none !important;
+    margin:0 !important;
+    z-index: -1;
+}

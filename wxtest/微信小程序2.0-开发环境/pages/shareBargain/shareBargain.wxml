@@ -1,0 +1,109 @@
+<!--  -->
+<scroll-view class="all-container" wx:if="{{registrations}}" scroll-y="true" scroll-with-animation="true" scroll-top="{{posY}}" bindscroll="scroll">
+  <view class="head-bg" style="background-color:{{tColor}}">
+   <view class="refresh" catchtap='refresh'>
+        <image src="/images/icon_sx.png"></image>
+        <view>刷新信息</view>
+    </view>
+    <view catchtap='showOrhideBarginRule' class="ruleBtn">活动规则</view>
+  </view>
+  <view class="goodsInfo-container">
+    <image class="user-icon" catchtap='preSingleImage' data-imgurl='{{registrations.profilePhoto?registrations.profilePhoto:registrations.aliProfilePhoto}}' src="{{registrations.profilePhoto?registrations.profilePhoto:registrations.aliProfilePhoto}}"></image>
+    <view class="text-limit1">{{registrations.nickname?registrations.nickname:registrations.aliNickname}}</view>
+    <view class="g-detail-contain">
+      <image catchtap='preSingleImage' data-imgurl='{{registrations.image}}' src="{{registrations.image}}"></image>
+      <view>
+        <view class="text-limit2 g-name">{{registrations.name}}</view>
+        <view class="normName text-limit1">1件,“{{registrations.normName?registrations.normName:'默认规格'}}”</view>
+        <view class="goodsprice">原价￥<text class="del">{{registrations.productPrice}}</text></view>
+      </view>
+    </view>
+    <view class="act-price text-limit1">
+      当前价:
+      <text>￥<text>{{registrations.productNewPrice}}</text></text>
+    </view>
+  </view>
+<!--1 表示为自己发的砍价信息，2表示帮砍的砍价信息（未砍），3表示帮砍的砍价信息（已砍）,4表示已经生成订单，但未付款，5表示已经付款  -->
+  <view class="btns" >
+    <view wx:if="{{status==1}}" style="background-color:{{tColor}};color:#fff" class="act" catchtap='jumpToIndent'>立即购买</view>
+    <view wx:if="{{status==2}}" style="background-color:{{tColor}};color:#fff" class="act" catchtap='startBargin'>帮砍一刀</view>
+     <view wx:if="{{status==3}}" style="background-color:#e6e6e6;" >已帮助好友砍价</view> 
+     <view wx:if="{{status==6}}" style="background-color:#e6e6e6;" >订单已取消</view> 
+    <view  wx:if="{{status==2 || status==3}}" style="color:{{tColor}};" class="act" catchtap='toBarginList'>我也来试试</view> 
+   <view wx:if="{{status==4}}" style="background-color:{{tColor}};color:#fff" class="act" catchtap='jumpToIndentDetail'>已生成订单,立即支付</view>
+    <button  wx:if="{{status==1}}" open-type="share" style="color:{{tColor}}" class="shareBtn act">邀请小伙伴帮砍</button>
+
+  </view>
+
+
+  <view class="bar-info-container" >
+    <view style="height:88rpx;" class="bar-info-item">
+      <image class="bar-icon" src="/images/bar-ic1.png"></image>
+      <view class="text-limit1">砍价记录</view>
+      <text>累计砍下</text>
+      <view class="text-limit1 price" style="color:{{tColor}}">{{cutTotal}}</view>
+      <text>元</text>
+    </view>
+    <block wx:if="{{bargainRecords.length>0}}">
+      <block wx:for="{{bargainRecords}}">
+        <view class="bar-info-item underline">
+          <image class="f-icon" src="{{item.profilePhoto?item.profilePhoto:item.aliProfilePhoto}}"></image>
+          <view class="text-limit1">{{item.nickname?item.nickname:item.aliNickname}}</view>
+          <text>砍下</text>
+          <view class="text-limit1 price" style="color:{{tColor}}">{{item.cutPrice}}</view>
+          <text>元</text>
+        </view>
+        </block>
+      </block>
+      <block wx:else>
+        <view class="noRecord">
+          <view>暂无帮砍记录，赶紧召集小伙伴吧!</view>
+        </view>
+      </block>
+      <view class="more" catchtap='reqMore' wx:if="{{bargainRecords.length==10 && bargainRecords.length != total}}">更多记录 ></view>
+      <view class="more" wx:if="{{bargainRecords.length == total}}">已展示全部帮砍记录</view>
+  </view>
+</scroll-view>
+
+<view class="return-top act" catchtap='backTop' style="transform: translateX(-100%);{{showRet?'transform: translateX(0);':''}}">
+  返回顶部
+</view>
+
+<view class="dark-bg" style="{{ showBarginMsg || showRule? 'display: block;' : '' }}" catchtap='hideDialog' />
+<!-- 砍价后提示信息-->
+<view class="bargin-msg" style="transform: translateY(200%);{{showBarginMsg?'transform: translateY(0);':''}}">
+
+  <view class="bargin-title">温馨提示</view>
+  <view class="bargin-info">
+    <view>
+      你帮
+      <view style="color:{{tColor}}" class="text-limit1 bgin-info-text">{{registrations.nickname?registrations.nickname:registrations.aliNickname}}</view>
+    </view>
+
+    <view>
+      砍掉了
+      <view style="color:{{tColor}}" class="text-limit1 bgin-info-text">{{afterCutPrice}}</view>元
+
+    </view>
+  </view>
+  <image src="/images/bar-ic2.png" class="act" catchtap="hideDialog"></image>
+</view>
+
+<!-- 活动规则 -->
+<view class="bargin-rule" style="transform: translateY(200%);{{showRule?'transform: translateY(0);':''}}">
+  <view class="bargin-title">活动规则</view>
+  <scroll-view scroll-y="{{true}}" class="rule-scroll">
+    <view>1. 在活动时间内,可邀请好友一起砍价；</view>
+    <view>2. 每次砍价金额随机,参与好友越多越容易成功；</view>
+    <view>3. 对于同一个砍价，只能帮助砍价一次；</view>
+    <view>4. 帮砍至对应商品底价时，则不能再砍；</view>
+    <view>5. 用户发起砍价时，会对活动商品自砍一次；</view>
+    <view>6. 用户发起砍价后，在该次砍价活动时间内，可随时对活动商品进行购买，而非必须砍至底价；</view>
+
+    <view>7. 本商城可在法律法规允许范围内对活动规则解释；</view>
+
+  </scroll-view>
+  <image src="/images/bar-ic2.png" class="act" catchtap="hideDialog"></image>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

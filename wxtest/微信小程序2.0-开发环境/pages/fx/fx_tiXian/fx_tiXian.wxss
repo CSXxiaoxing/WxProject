@@ -1,0 +1,114 @@
+page{
+    height: 100%;
+    width: 100%;
+}
+
+.fx-ti-xian {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    font-family: PingFang-SC-Bold;
+}
+.ti-height {
+    width: 100%;
+	height: 350rpx;
+    background-color: #228af2;
+    position: relative;
+}
+.ying,.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.center {
+    width: 291rpx;
+    height: 229rpx;
+    position: absolute;
+    bottom: 50rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+}
+.center view:nth-of-type(1) {
+    font-family: PingFang-SC-Regular;
+	font-size: 28rpx;
+	color: #ffffff;
+}
+.center view:nth-of-type(2) {
+	font-family: PingFang-SC-Bold;
+    font-size: 72rpx;
+    font-weight: 500;
+    color: #ffffff;
+    white-space: nowrap;
+}
+.center .btn {
+    width: 180rpx;
+	height: 60rpx;
+	border-radius: 6rpx;
+    border: solid 1px #b4dcff;
+    font-size: 28rpx;
+    line-height: 56rpx;
+    color: #ffffff;
+    background: rgba(246, 200, 163, 0);
+}
+.center .btn-hover {
+    background: rgba(241, 181, 131, 0.328);
+    color: #ffffff;
+}
+
+
+
+
+.xia {
+    width: 670rpx;
+    height: 88rpx;
+    background-color: #2195f3;
+    opacity: 0.2;
+    border-radius: 10rpx;
+	font-size: 28rpx;
+	line-height: 88rpx;
+    color: #ffffff;
+    position: absolute;
+    bottom: 40rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ying {
+    width: 670rpx;
+    height: 136rpx;
+    margin-bottom: 50rpx;
+    position: relative;
+    top: 80rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.text {
+    font-family: PingFang-SC-Regular;
+	font-size: 28rpx;
+	line-height: 36rpx;
+    color: #4d4d4d;
+    margin-top: 30rpx;
+}
+.ipt {
+    width: 100%;
+	height: 88rpx;
+	background-color: #f5f5f5;
+    border-radius: 10rpx;
+    padding: 0 29rpx;
+    box-sizing: border-box;
+    color: #808080;
+    line-height: 88rpx;
+    flex-shrink: 0;
+}
+
+.fx-cuo {
+    height: 40rpx;
+    width: 42rpx; 
+    position: absolute;
+    right: 30rpx;
+    top: 24rpx;
+    z-index: 10;
+}

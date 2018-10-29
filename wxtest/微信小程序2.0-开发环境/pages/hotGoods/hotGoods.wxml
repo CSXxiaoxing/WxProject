@@ -1,0 +1,38 @@
+
+<!--tab2.wxml-->
+
+<!--顶级页面-->
+<view class="goods_type_container" wx:if="{{goods_datas.length>0}}">
+  <!--<view class="title">{{goods_type}}</view>-->
+  <view class="goods_item_container">
+    <block wx:for="{{goods_datas}}" wx:for-item="datas">
+      <view class="goods_item" bindtap="jumpToDetail" data-id="{{datas.id}}">
+          <image src="{{datas.goods_img}}" class="goods_img"></image>
+          <view class="goods_text"><view class = "name_text">{{datas.goods_name}}</view></view>
+          <view class="goods_text">￥{{datas.goods_price}}</view>
+      </view>
+      </block>
+  </view>
+   <!--底部加载更多-->
+  <view class="load-more-wrap" wx:if="{{goods_datas.length>0}}">
+    <block wx:if="{{has_more}}">
+      <view class="load-content">
+        <text class="weui-loading" />
+        <text class="loading-text">加载中</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="load-content">
+        <text>{{has_more_goods_detail}}</text>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+ <view class="noData-container"   wx:if="{{goods_datas.length<=0 && control}}">
+      <image class="noData-logo" src="/images/cry.png"></image>
+      <text>暂时木有内容呀~~</text>
+    </view>
+
+<tool bind:toolFun="onToolFun"></tool>

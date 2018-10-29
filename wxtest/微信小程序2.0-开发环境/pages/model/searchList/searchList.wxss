@@ -1,0 +1,35 @@
+@import "../../../tabBarWxss/style/iconfont.wxss";
+/* 搜索 */
+.searchList .icon {
+    height: 36rpx;
+    width: 36rpx;
+    margin-right: 20rpx;
+}
+
+.searchList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    margin-bottom: 8rpx;
+}
+
+/* 文字不换行 */
+.searchList text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sea-icon {
+    margin-top: 7rpx;
+    margin-bottom: 18rpx;
+    padding-right: 10rpx;
+    height: 46rpx;
+    overflow: hidden;
+}
+.search3 {
+    justify-content: center;
+}

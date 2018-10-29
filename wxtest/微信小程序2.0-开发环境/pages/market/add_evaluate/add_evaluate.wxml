@@ -1,0 +1,85 @@
+<!--pages/test_addEval/test_addEval.wxml-->
+<view class="eval-container">
+  <view class="goods-msg">
+    <image src="{{goodsImg}}"></image>
+    <view class="text-limit2">{{goodsName}}</view>
+  </view>
+
+  <view class="desc-item" style="height:91rpx;border-bottom:1px solid #e6e6e6;">
+    <view>商品评价：</view>
+    <block wx:for="{{score}}">
+          <view catchtap='selScore' data-types='0' data-value="{{index}}">
+          <image src="{{index<=goodsScore-1?'/images/icon_xina.png':'/images/icon_xinb.png'}}" style="background-color:{{tColor}}"   />
+          </view>
+    </block>
+    <text style="color:{{tColor}}">{{goodsScore==1?'非常差':(goodsScore==2?'差':(goodsScore==3?'一般':(goodsScore==4?'好':'非常好')))}}</text>
+  </view>
+  <!--输入框区域  -->
+  <view class="input-container">
+    <view class="input-contents">
+      <textarea disabled='{{evluated}}' value='{{content}}' bindinput="inputEvent" maxlength='200' class="text-input" placeholder='该商品用得怎么样?说说它的优点和美中不足处吧!' />
+      <view class="imgs">
+        <block wx:for="{{photos}}">
+            <view class="img" catchtap='preImages' data-index='{{index}}' style="{{index==4?'margin-right:0':''}}">
+          <image class="photo" src="{{item}}"></image>
+          <view class="del-btn"  catchtap='removePhoto' data-index="{{index}}">
+          <image class="act" src="/images/icon_quxiao.png" />
+          </view>
+        </view>
+        </block>
+
+        <view class="act add-photo" wx:if="{{photos.length<5}}" catchtap="choosePhotos">
+          <image class="camera" src="/images/icon_shangctp.png" />
+
+          <text>{{photos.length}}/5</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="bottom-container">
+
+  <view class="desc-item" >
+    <view>描述相符：</view>
+     <block wx:for="{{score}}">
+          <view catchtap='selScore' data-types='1' data-value="{{index}}">
+          <image src="{{index<=goodsDescScore-1?'/images/icon_xina.png':'/images/icon_xinb.png'}}" style="background-color:{{tColor}}"   />
+          </view>
+    </block>
+
+    <text style="color:{{tColor}}">{{goodsDescScore==1?'非常差':(goodsDescScore==2?'差':(goodsDescScore==3?'一般':(goodsDescScore==4?'好':'非常好')))}}</text>
+  </view>
+
+
+  <view class="desc-item" >
+    <view>服务态度：</view>
+     <block wx:for="{{score}}">
+          <view catchtap='selScore' data-types='2' data-value="{{index}}">
+          <image src="{{index<=goodsServiceScore-1?'/images/icon_xina.png':'/images/icon_xinb.png'}}" style="background-color:{{tColor}}"   />
+          </view>
+    </block>
+
+    <text style="color:{{tColor}}">{{goodsServiceScore==1?'非常差':(goodsServiceScore==2?'差':(goodsServiceScore==3?'一般':(goodsServiceScore==4?'好':'非常好')))}}</text>
+  </view>
+
+
+    <view class="desc-item" >
+    <view>发货速度：</view>
+     <block wx:for="{{score}}">
+          <view catchtap='selScore' data-types='3' data-value="{{index}}">
+          <image src="{{index<=goodsSendScore-1?'/images/icon_xina.png':'/images/icon_xinb.png'}}" style="background-color:{{tColor}}"   />
+          </view>
+    </block>
+
+    <text style="color:{{tColor}}">{{goodsSendScore==1?'非常差':(goodsSendScore==2?'差':(goodsSendScore==3?'一般':(goodsSendScore==4?'好':'非常好')))}}</text>
+  </view>
+
+
+
+  <view class="submit-btn act" style="background-color:{{tColor}}" value="{{content}}" catchtap='addEvaluate'>
+        提交
+  </view>
+</view>
+
+<tool bind:toolFun="onToolFun"></tool>

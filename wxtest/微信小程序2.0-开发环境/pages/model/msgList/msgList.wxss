@@ -1,0 +1,153 @@
+/* 留言 */
+.msg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    box-sizing: border-box;
+}
+
+.msg input, .msg textarea {
+    border: #e0e0e0 solid 2rpx;
+    border-radius: 8rpx;
+    background: #fff;
+    width: 100%;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+}
+.msg button {
+    margin: 10rpx 0 10rpx;
+    height: 80rpx;
+    border: 2rpx solid #d8dce6;
+}
+
+/* 留言 */
+.megText{
+    font-size:28rpx;
+    padding:10rpx 0;
+    color:#4d4d4d;
+}
+.mess_input{
+    border:1rpx solid #e0e0e0;
+    padding:0 20rpx;
+    font-size:28rpx;
+    color:#4d4d4d;
+    height:initial;
+    border-radius: 8rpx;
+}
+
+  .mess_box{
+    padding-top:10rpx;
+  }
+  .mess_btn button{
+    margin-top:30rpx;
+    padding:4rpx 0;
+  }
+  
+  .messages.msg2{
+    border:none;
+  }
+  .msg2 .mess_box{
+    display:flex;
+    padding-top:20rpx;
+  }
+  .msg2 .mess_input{
+    flex:1;
+  }
+  .msg2 button{
+    flex:1;
+    margin-left:74rpx;
+  }
+  .msg2 .megText{
+   margin-right:20rpx;
+  }
+  
+  
+  .msg3 .mess_input{
+    flex:1;
+    border:none;
+  }
+  .msg3 button{
+    flex:1;
+  }
+
+/* 新 */
+input.mess_input {
+    height: 80rpx;
+}
+textarea.mess_input {
+    padding: 14rpx 10rpx;
+    height: 160rpx;
+}
+
+.msg3 .mess_box{
+    display:flex;
+    border: 2rpx solid #e0e0e0;
+    border-radius: 8rpx;
+    background: #fff;
+    /* align-items: center; */
+    justify-content: space-around;
+    margin-bottom:20rpx;
+    /* padding:10rpx 20rpx; */
+    padding: 0;
+    height: 84rpx;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+    font-size: 28rpx;
+    position: relative;
+}
+.msg3 .mess_box input, .msg3 .mess_box textarea{
+    padding-left: 15%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.msg3 .mess_box textarea {
+    padding-top: 16rpx;
+    padding-bottom: 10rpx;
+    height: 100%;
+}
+.msg3 .mess_box:nth-of-type(3){
+    height: 124rpx;
+    line-height: 28rpx;
+}
+.msg3 .mess_box:nth-of-type(3) .megText{
+    padding-top: 18rpx;
+    position: absolute;
+    line-height: 28rpx;
+    left: 20rpx;
+    top: 0;
+    transform: translateY(0);
+}
+.msg3 .megText{
+    width: 10%;
+    position: absolute;
+    transform: translateY(-50%);
+    left: 20rpx;
+    top: 50%;
+    text-align: left;
+    font-size: 28rpx;
+    line-height: 0;
+    padding: 0;
+    z-index: 5;
+}
+
+
+.msg3 textarea,.msg2 textarea {
+    /* padding-top: 24rpx; */
+}
+
+.msg2 .megText{
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0;
+}
+.msg2 .mess_box:nth-of-type(3) .megText{
+    line-height: 65rpx;    
+}
+
+.msg1 .mess_box {
+    margin-top: 16rpx;
+}

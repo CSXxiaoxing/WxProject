@@ -1,0 +1,132 @@
+page{
+  height: 100%;
+  width: 100%;
+}
+
+.height {
+    width: 100%;
+    height: 200rpx;
+    background-color: #228af2;
+    padding: 20rpx 50rpx 0 51rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.people {
+    /* font-size: 28rpx; */
+    /* color: #ffffff; */
+    font-size: 72rpx;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    white-space: nowrap;
+}
+.people::before {
+    content: "共  ";
+    font-size: 28rpx;
+}
+.people::after {
+    content: " 人";
+    font-size: 28rpx;
+}
+
+.axt,.axt-user {
+	height: 120rpx;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+.axt {
+    font-weight: 500;
+}
+
+.axt-user:nth-of-type(2n+1) {
+    background-color: #eeeeee;
+}
+
+.axt-user2 {
+    background-color: #eeeeee;
+    margin: 4rpx 0;
+    position: relative;
+}
+.record {
+    position: absolute;
+    top: 50%;
+    right: 20rpx;
+    transform: translate(-50%, -50%);
+    width: 24rpx;
+	height: 14rpx;
+}
+
+.axt view,.axt-user view {
+    flex: 1;
+	font-family: PingFang-SC-Bold;
+	font-size: 30rpx;
+    color: #333333;
+    margin: 0 5rpx;
+    box-sizing: border-box;
+}
+.axt-user view:nth-of-type(1) image {
+    width: 80rpx;
+	height: 80rpx;
+	background-color: #ffffff;
+    border: solid 1px #e5e5e5;
+    border-radius: 50%;
+}
+.axt-user view:nth-of-type(2) {
+    font-size: 30rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.axt-user view:nth-of-type(3) {
+    font-size: 26rpx;
+}
+
+/* 代理 */
+.agents {
+    width: 100%;
+	background-color: #ffffff;
+}
+.axt-agents {
+	height: 77rpx;
+    background-color: #ffffff;
+    display: flex;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 2rpx solid #ccc;
+    justify-content:space-around;
+    align-items:center;
+}
+.axt-agents:last-child{
+    border: 0 none;
+}
+.axt-agents view:nth-of-type(1){
+    width: 63rpx;
+    height: 63rpx;
+    margin-bottom: 4rpx;
+}
+.axt-agents view:nth-of-type(1) image {
+    width: 63rpx;
+	height: 63rpx;
+	background-color: #ffffff;
+    border: solid 1px #e5e5e5;
+    border-radius: 50%;
+}
+.axt-agents view:nth-of-type(2) {
+    font-size: 30rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.axt-agents view:nth-of-type(3) {
+    font-size: 26rpx;
+    padding-right: 30rpx;
+}

@@ -1,0 +1,17 @@
+<!--pages/discover/discover_detail/discover_detail.wxml-->
+<view class="text_container">
+    <view class="title">
+        {{title}}
+    </view>
+    <view class="time">
+        {{time}}
+    </view>
+    <block wx:for="{{contents}}">
+      <text wx:if="{{!(index<3 && item=='')}}"  class="content">
+      {{item}}</text>
+
+    </block>
+</view>
+
+
+<tool bind:toolFun="onToolFun"></tool>

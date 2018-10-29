@@ -1,0 +1,31 @@
+<!-- 元素组件 -->
+<!-- 文字组件 √ -->
+<text-list wx:if="{{item.textList}}" son-data="{{item.textList}}"></text-list>
+<!-- 图片组件 √ -->
+<pic-list wx:if="{{item.picList}}" son-data="{{item.picList}}"></pic-list>
+<!-- 按钮组件 √ -->
+<button-list wx:if="{{item.buttonList}}" son-data="{{item.buttonList}}"></button-list>
+
+
+<!-- 内容组件 -->
+<!-- 标题组件 √ -->
+<title-list wx:if="{{item.titleList}}" son-data="{{item.titleList}}"></title-list>
+<!-- 轮播多图组件 -->
+<swiper-list wx:if="{{item.swiperList}}" son-data="{{item.swiperList}}"></swiper-list>
+<!-- 魔法导航组件 √ -->
+<cube-list wx:if="{{item.cubeList}}" son-data="{{item.cubeList}}"></cube-list>
+<!-- 新闻列表 -->
+<article-list wx:if="{{item.articleList}}" son-data="{{item.articleList}}" host-src="{{hostSrc}}" style="overflow: hidden;"></article-list>
+<!-- 商品组件 -->
+<goods-list wx:if="{{item.shopList}}" son-data="{{item.shopList}}" host-src="{{hostSrc}}"></goods-list>
+
+
+<!-- 功能组件 -->
+<!-- 搜索组件 -->
+<search-list wx:if="{{item.searchList}}" son-data="{{item.searchList}}"></search-list>
+<!-- 地图组件 -->
+<map-list wx:if="{{item.mapList}}" son-data="{{item.mapList}}"></map-list>
+<!-- 在线留言 -->
+<msg-list wx:if="{{item.msgList}}" son-data="{{item.msgList}}"></msg-list>
+<!-- 视频组件 -->
+<video-list wx:if="{{item.videoList}}" son-data="{{item.videoList}}"></video-list>

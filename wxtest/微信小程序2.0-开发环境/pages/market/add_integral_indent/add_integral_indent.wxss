@@ -1,0 +1,301 @@
+/* pages/my/my_indent/add_indent/add_indent.wxss */
+page{
+  background: #f0f1fa;
+    color: #4d4d4d;
+}
+.address_container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 118rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 45rpx 0 30rpx 39rpx;
+  margin-bottom: 0rpx;
+}
+.address_text{
+  width: 600rpx;
+}
+.address_text view{
+   margin-bottom: 24rpx;
+   width: 100%;
+  font-size: 28rpx;
+  color: #4d4d4d;
+}
+.address_txt{
+    width: 100%;
+  height: 30rpx;
+  line-height: 30rpx;
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: #808080
+}
+.phone_txt{
+  font-size: 30rpx;
+  margin:0 22rpx 0 0rpx;
+}
+.address_container image{
+  position: absolute;
+  top: 86rpx;
+  right: 39rpx;
+  width: 11rpx;
+  height: 20rpx;
+}
+/*颜色*/
+.underline{
+  margin-bottom: 20rpx;
+  display: block;
+  width: 100%;
+  height: 10rpx;
+}
+/*商店样式*/
+.shops_container{
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.shop_head{
+  border-bottom: 1px #e6e6e6 solid;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+
+  color: #4d4d4d;
+  font-size: 26rpx;
+}
+.shop_head image{
+  margin: 0 20rpx 0 40rpx;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+}
+.goods_item{
+  display: flex;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+}
+.goods_item image{
+  display: block;
+  margin-right: 30rpx;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.goods_desc{
+  width: 440rpx;
+}
+.goods_name{
+     width: 100%;
+  color: #4d4d4d;
+  font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 23rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.goods_price{
+  margin: 0;
+  margin-bottom: 11rpx;
+  color: #4d4d4d;
+  font-size: 36rpx;
+}
+.goods_num{
+  font-size: 30rpx;
+}
+/*优惠券*/
+
+.coupon_container,.bill_container{
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+.coupon_head,.bill_head {
+  line-height:100rpx;
+  color: #4d4d4d;
+  font-size:  30rpx;
+  position: relative;
+}
+.coupon_head text,.bill_head text{
+  margin-left: 40rpx;
+}
+.coupon_head image,.bill_head image{
+  width: 20rpx;
+  height: 11rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 44.5rpx;
+}
+/*输入序列号*/
+.coupon_items_head{
+  display: flex;
+  color: #4d4d4d;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  text-align: center;
+  border-bottom: 1px #e6e6e6 solid;
+}
+.coupon_items_head view{
+  flex: 1;
+}
+.coupon_content{
+  padding: 50rpx 75rpx 50rpx 75rpx;
+}
+/*输入框*/
+.input_view{
+  text-align: center;
+  width: 600rpx;
+  background-color: #e6e6e6;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 35rpx;
+  color: #4d4d4d;
+  font-size: 30rpx;
+  margin-bottom: 50rpx;
+}
+.input_h{
+  color: #b3b3b3;
+}
+/*按钮*/
+.btns{
+  display: flex;
+}
+.btns button{
+  width: 48%;
+  font-size: 30rpx;
+  color: #fff;
+  border-radius: 35rpx;
+  background-color: #b3b3b3;
+}
+.btns button:first-child{
+  margin-right: 4%;
+  background-color: #91a3ff;
+}
+
+.sel_coupon{
+
+  height: 290rpx;
+  padding: 53rpx 0 3rpx 69rpx;
+  line-height: 30rpx;
+  width:610rpx;
+}
+.coupon_val{
+  font-size: 30rpx;
+  color: #91a3ff;
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+  border-right: 1px #b3b3b3 solid;
+}
+.coupon_txt{
+  width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.coupon_desc{
+
+  font-size: 30rpx;
+}
+.coupon_item{
+  margin-bottom: 50rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.use_btns{
+  position: absolute;
+  right: 0;
+}
+/*发票*/
+.bill_container{
+
+  line-height: 70rpx;
+}
+.bill_items{
+  color: #4d4d4d;
+  display: flex;
+  font-size: 30rpx;
+  margin-bottom: 5rpx;
+}
+.bill_contents{
+    padding: 40rpx 40rpx 50rpx 40rpx;
+}
+.bill_input{
+  flex: 1;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #e6e6e6;
+  padding-left: 13rpx
+}
+.bill_h{
+  color: #b3b3b3;
+}
+.sava_btn{
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #91a3ff;
+  border-radius: 35rpx;
+  height: 70rpx;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+.noBill_btn{
+    font-size: 30rpx;
+  color: #808080;
+  background-color: #e6e6e6;
+  border-radius: 35rpx;
+  
+  height: 70rpx;
+ 
+}
+.act_money{
+  font-size: 30rpx;
+  color: #91a3ff;
+  background-color: #fff;
+
+  text-align: center;
+  width: 100%;
+  line-height: 100rpx;
+}
+.indent_count{
+  margin-bottom: 18rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+  line-height: 66rpx;
+  padding: 35rpx 0 13rpx 40rpx;
+}
+.item-name{
+  flex: 1;
+}
+.indent_count view{
+  display: flex;
+  position: relative;
+}
+.right_text{
+ margin-right: 40rpx;
+}
+/*支付按钮*/
+.sel_pay{
+  padding: 20rpx 40rpx 20rpx 40rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.sel_pay view{
+  border-radius: 50rpx;
+}
+.paybtn{
+  background-color: #91a3ff;
+  color: #fff;
+  margin-bottom: 20rpx;
+}
+.Crash{
+  background-color: #fff;
+  color: #808080;
+}
+/*color_gray*/
+.color_gray{
+  background-color: #b3b3b3;
+  color: #fff;
+}

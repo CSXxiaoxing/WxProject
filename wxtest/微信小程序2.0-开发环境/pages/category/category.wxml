@@ -1,0 +1,103 @@
+<!--tab2.wxml-->
+<block wx:if="{{template==1}}">
+<view class="cateD1">
+    <view class="goods_title_head" wx:if="{{cate_data!=undefine}}">
+    <view class="goods_titles_container">
+        <scroll-view>
+        <view class="titles">
+
+        <block wx:for="{{cate_data.titles}}" wx:for-item="title">
+        <view catchtap="changeTab" style="{{title.id==tabId?'color:'+tColor+';':''}}" class="act3 title text-limit1" data-tabid="{{title.id}}">{{title.name}}
+        <view hidden='{{title.id!=tabId}}' class="underline" style='background-color:{{tColor}};'></view>
+        </view>
+
+        </block>
+        </view>
+        </scroll-view>
+
+        <block wx:if="{{hideOrShow}}">
+        <image src="/images/hide.png" catchtap="hideOrShowType"></image>
+        </block>
+        <block wx:else>
+        <image src="/images/display.png" catchtap="hideOrShowType"></image>
+        </block>
+    </view>
+    <block wx:if="{{hideOrShow}}">
+        <view class="title_more" >
+            <block wx:for="{{cate_data.hideTitles}}" wx:for-item="title">
+            <view style="{{title.id==tabId?'color:'+tColor+';':''}}" catchtap="changeTab" class="text-limit1 titleMore" data-tabid="{{title.id}}">{{title.name}}
+            <view hidden='{{title.id!=tabId}}' class="underline" style='background-color:{{tColor}};'></view>
+            </view>
+            </block>
+        </view>
+    </block>
+    
+    </view>
+    <view class="goods_item_container">
+    <block wx:for="{{goods}}" wx:for-item="good"> 
+    <view catchtap="jumpToCateDetail" class="goods_item act" data-cateid="{{good.id}}">
+        <image src="{{good.img}}"></image>
+        <view>{{good.name}}</view>
+    </view>
+    </block>
+
+
+    </view>
+    <view class="recommend" wx:if="{{randomtProducts.length!=0 && control}}">
+    <view class="rec_title">精品推荐</view>
+    <view class="rec_content">
+    <block wx:for="{{randomtProducts}}" wx:for-item="good">
+        <view catchtap="jumpToGoodDetail" class="rec_item act" data-productid="{{good.id}}">
+        <image src="{{good.img}}"></image>
+        <view class="rec_item_name">{{good.name}}</view>
+        <view class="rec_item_price" style="color:{{tColor}};">￥{{good.price}}</view>
+        </view>
+        </block>
+
+    </view>
+    </view>
+</view>
+</block>
+
+<block wx:else>
+<view class="cateD2">
+    <!--顶级页面-->
+    <view class="tab2_parent_container" wx:if="{{load_complete?true:false}}">
+    <scroll-view class="goods_title_container" scroll-y="true">
+        <!--选项卡标题-->
+        <block wx:for="{{card_datas}}" wx:for-item="title_datas">
+        <view data-id="{{title_datas.id}}" style="{{title_datas.id==selectId?'color:'+tColor+';':''}}" class="act title_text text-limit1 {{title_datas.id==selectId?'selected':''}}"  bindtap="title_click">
+        {{title_datas.title}}</view>
+
+        </block>
+    </scroll-view>
+    <view class="right_tabs_card">
+        <!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+        <!--选项卡-->
+        <block wx:for="{{card_datas}}" wx:for-item="cdata">
+        <scroll-view class="content_container"  hidden='{{cdata.id!=selectId}}' scroll-y="true">
+            <block wx:for="{{cdata.content_item_datas}}" wx:for-item="datas">
+            <view style="overflow:visible;">
+            <view class="content_title_text text-limit1 act">
+                <text  catchtap='JumpToGoodList' data-url='{{datas.id}}'>{{datas.item_title}}</text>
+            </view>
+            <view class="content_item_container">
+                <block wx:for="{{datas.item_child}}" wx:for-item="item_child" > 
+                    <view class="content-item text-limit1 act" catchtap="JumpToGc3" data-typeid='{{item_child.id}}' data-keyword='{{item_child.name}}'>
+                        <image src="{{item_child.image}}"></image>
+                        <text>{{item_child.name}}</text>
+                    </view>
+        
+                </block> 
+            </view>
+            </view>
+            </block>
+        </scroll-view>
+        </block>
+    </view>
+    </view>
+</view>
+</block>
+
+
+<tool bind:toolFun="onToolFun"></tool>
