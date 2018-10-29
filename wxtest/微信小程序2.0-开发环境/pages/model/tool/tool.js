@@ -74,6 +74,8 @@ Component({
         // 倍数
         double: 2,
         pageXY: [], // 当前位置
+
+        test: '',
     },
     methods: {
         btn(e){
@@ -204,6 +206,83 @@ Component({
                 that.setData({
                     [obj.name] : obj.key,
                 })
+            })
+        },
+
+        
+        // 点击图片产生move动效
+        _startShare: function(e){
+
+            this.setData({
+                test: `--rx:0deg; --ry:0deg; --ty:0; --tz:-25rpx`
+            })
+        },
+        _moveShare: function(e){
+            var touchs = e.touches[0];
+            var offset = e.currentTarget;
+
+            // const x = touchs.clientX - offset.offsetLeft;
+            // const y = touchs.clientY - offset.offsetTop;
+            const x = touchs.clientX;
+            const y = touchs.clientY;
+            const xc = common.iosOrAndroid[6]/2
+            const yc = offset.offsetTop+common.iosOrAndroid[7]*0.3
+            
+            var dx = x - xc
+            var dy = y - yc
+            
+            // aElem.onmousemove = function(e) {
+
+            //     const x = e.clientX - boundingClientRect.left
+            //     const y = e.clientY - boundingClientRect.top
+                
+            //     const xc = boundingClientRect.width/2
+            //     const yc = boundingClientRect.height/2
+                
+            //     const dx = x - xc
+            //     const dy = y - yc
+                
+            //     docStyle.setProperty('--rx', `${ dy/-1 }deg`)
+            //     docStyle.setProperty('--ry', `${ dx/10 }deg`)
+                
+            // }
+            
+            // aElem.onmouseleave = function(e) {
+                
+            //     docStyle.setProperty('--ty', '0')
+            //     docStyle.setProperty('--rx', '0')
+            //     docStyle.setProperty('--ry', '0')
+                
+            // }
+            
+            // aElem.onmousedown = function(e) {
+                
+            //     docStyle.setProperty('--tz', '-25px')
+                
+            // }
+            
+            // document.body.onmouseup = function(e) {
+                
+            //     docStyle.setProperty('--tz', '-12px')
+                
+            // }
+
+            const dd = y - yc > 0 ? -1 : 1;
+
+            console.log((dy/-10).toFixed(2),(dx/10*dd).toFixed(2))
+            // console.log(dy/-10*dd,dx/10*dd)
+
+            this.setData({
+                test: `--rx:${ (dy/-10).toFixed(2) }deg; --ry:${ (dx/10*dd).toFixed(2) }deg; --ty:0; --tz:-25rpx`
+                // test: `--rx:${ dy/10 }deg; --ry:${ dx/10 }deg; --ty:0; --tz:-25rpx`
+                // test: `--rx:${ dy/-10 }deg; --ry:${ dx/10 }deg; --ty:0; --tz:-25rpx`
+                // test: `--rx:${ dy/-10 }deg; --ry:${ dx/10 }deg; --ty:0; --tz:-25rpx`
+                // test: `--rx:${ 15 }deg; --ry:${ -14 }deg; --ty:0; --tz:-25rpx`
+            })
+        },
+        _endShare: function(){
+            this.setData({
+                test: `--rx:0deg; --ry:0deg; --ty:0; --tz:-12rpx`
             })
         },
 

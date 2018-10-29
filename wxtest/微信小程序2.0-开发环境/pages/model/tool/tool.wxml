@@ -80,7 +80,7 @@
     <!-- 图片 -->
     <block wx:else>
         <view class="theShare-mark poster-mark" capture-catch:touchend="_closeShare"></view>
-        <image class="share-poster-img" src="{{IMG_URL}}" lazy-load="false" binderror="" bindload="">
+        <image id="test1" class="share-poster-img test02" style="{{test}}" src="{{IMG_URL}}" lazy-load="false" binderror="" bindload="" capture-catch:touchstart="_startShare" capture-catch:touchmove="_moveShare" capture-catch:touchend="_endShare">
         </image>
         <view class="share-poster" capture-catch:touchend="_closeShare" data-id="99" >
             <view class="share-poster01" style="background-color:{{tColor}};"></view>
