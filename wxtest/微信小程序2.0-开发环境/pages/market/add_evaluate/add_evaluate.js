@@ -131,13 +131,13 @@ Page({
   },
 
   inputEvent: function (e) {
-    this.setData({
+    this.setData({ 
       content: e.detail.value,
     })
   },
   addEvaluate: function () {
     if (common.checkStr(this.data.content)) {
-      this.upLoadImgs();
+      this.upLoadImgs(); 
     } else {
       util.showMsg('评论内容存在特殊符号(暂不支持表情)')
     }

@@ -52,7 +52,7 @@ App({
     _storage: function(){   // 打开小程序需要刷新的缓存 
         util.httpsGet(host.tabHost, res => {
             let _data = res.data ? res.data.MiniappTabBar : false;
-            _data && wx.setStorage({ key: host.agentId + "tabbar", data: _data, });
+            _data && wx.setStorage({ key: host.agentId + "tabBar", data: _data, });
         })
     },
 })

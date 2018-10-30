@@ -26,14 +26,10 @@
 </view>
 
 <view class="btn-container" wx:if="{{data.news}}">
-    <view class="sub-btn" hidden="{{data.collected=='true'}}" style=" {{data.collected=='true'?'color:'+tColor+'; border: 1px'+tColor+' solid;':'border:1px #999 solid;'}}" catchtap="reqCol"> 
-        <image class="btn-icon"  style=" background-color:{{tColor}}; "  src="/images/xinb.png"></image>
-        <view>{{data.news.collectionCount==undefined?0:data.news.collectionCount}}</view>
-    </view>
 
-    <view class=" sub-btn isCol" hidden="{{data.collected=='false'}}" style="border: 1px {{tColor}} solid; color:{{tColor}}"   catchtap="reqCancel">
-        <image class="btn-icon" style=" background-color:{{tColor}};" src="/images/xina.png"></image>
-        <view>{{data.news.collectionCount==undefined?0:data.news.collectionCount}}</view>
+    <view class="sub-btn" style="border: 1px {{tColor}} solid; color:{{tColor}}" catchtap="req">
+        <view class="btn-icon likeHeart {{data.collected=='true' ? 'happy' : 'broken' }}" style="{{data.collected=='true' ? '' : 'mix-blend-mode: difference;' }}">{{data.collected=='true' ? '❤' : '🖤' }}</view>
+        <view>{{(data.news.collectionCount>=0?data.news.collectionCount*1:0)|0}}</view>
     </view>
 </view>
 

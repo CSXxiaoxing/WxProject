@@ -19,7 +19,10 @@
 <!-- 商品组件 -->
 <goods-list wx:if="{{item.shopList}}" son-data="{{item.shopList}}" host-src="{{hostSrc}}"></goods-list>
 
+<!-- 商品标签组件 -->
+<!-- <goodsTab-list wx:if="{{item.shopTabList}}" son-data="{{item.shopTabList}}" host-src="{{hostSrc}}"></goodsTab-list> -->
 
+ 
 <!-- 功能组件 -->
 <!-- 搜索组件 -->
 <search-list wx:if="{{item.searchList}}" son-data="{{item.searchList}}"></search-list>

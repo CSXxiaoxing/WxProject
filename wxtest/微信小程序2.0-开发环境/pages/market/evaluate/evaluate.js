@@ -124,7 +124,7 @@ Page({
 
   },
   jumpToEvalDetail: function (e) {
-    let goodsImg = e.currentTarget.dataset.goodsimg
+    let goodsImg = e.currentTarget.dataset.goodsimg.split("?")[0]
     let goodsName = e.currentTarget.dataset.goodsname
     let orderSn = e.currentTarget.dataset.ordersn
     let productId = e.currentTarget.dataset.productid
@@ -134,13 +134,15 @@ Page({
     util.navigateTo(url)
   },
   jumpToAddEval: function (e) {
-    let goodsImg = e.currentTarget.dataset.goodsimg
+    let goodsImg = e.currentTarget.dataset.goodsimg.split("?")[0];
     let goodsName = e.currentTarget.dataset.goodsname
     let orderSn = e.currentTarget.dataset.ordersn
     let productId = e.currentTarget.dataset.productid
     let productGoodsId = e.currentTarget.dataset.productgoodsid
     let ordersProductId = e.currentTarget.dataset.ordersproductid
-    var url = dict.pages.add_evaluate+"?goodsImg=" + goodsImg + "&goodsName=" + goodsName + "&orderSn=" + orderSn + "&productId=" + productId + "&productGoodsId=" + productGoodsId + "&ordersProductId=" + ordersProductId
+    var url = dict.pages.add_evaluate+"?goodsImg=" + goodsImg + "&goodsName=" + goodsName + "&orderSn=" + orderSn + "&productId=" + productId + "&productGoodsId=" + productGoodsId + "&ordersProductId=" + ordersProductId;
+    console.log(11111111,dict.pages.add_evaluate)
+    console.log(2222222,url) 
     util.navigateTo(url)
   },
   /**

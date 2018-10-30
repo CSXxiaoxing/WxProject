@@ -246,15 +246,17 @@ const pages = {
 }
 // 不需要全局的默认背景 - 无使用
 const notbg = ['fx_rule'];
-// 方法
+// 自定义方法
 const FN = {
     "T" : "tabBar",
 }
+
 // index的缓存名称  -- index页面需要改动
 const IDXKEY = ['cl-idx0','cl-idx1','cl-idx2','cl-idx3','cl-idx4','cl-idx5'];
-const theVersions = 'v2.7'  
+const theVersions = 'v3.0'  
 // 防止图片前缀请求不到 -- 正式环境需要去除test
 var imageSrc = 'http://test.image.cangluxmt.com/jcshopimage';
+
 module.exports = {
     pageStaticData, // 文件转移
     styleDict,  // 需要匹配的样式

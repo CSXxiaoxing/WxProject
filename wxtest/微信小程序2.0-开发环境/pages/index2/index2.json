@@ -12,6 +12,7 @@
         "cube-list": "/pages/model/cubeList/cubeList",
         "article-list": "/pages/model/articleList/articleList",
         "goods-list": "/pages/model/goodsList/goodsList",
+        "goodsTab-list": "/pages/model/goodsTabList/goodsTabList",
         "tool": "/pages/model/tool/tool"
     },
     "backgroundTextStyle": "dark",

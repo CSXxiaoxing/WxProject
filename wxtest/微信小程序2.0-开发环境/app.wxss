@@ -1,7 +1,9 @@
 /**app.wxss**/
 @import "wxss/weui.wxss";
 @import "tabBarWxss/style/iconfont.wxss";
-/* @import "/wxParse/wxParse.wxss"; */
+@import "tabBarWxss/animation.wxss";
+
+
 page {
    word-break: break-all;
   word-wrap: break-word;

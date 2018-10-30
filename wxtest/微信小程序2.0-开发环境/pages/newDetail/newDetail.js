@@ -69,6 +69,14 @@ Page({
         }
 
     },
+    // 判断是否点赞
+    req: function(){
+        if(this.data.data.collected){
+            this.reqCol()
+        } {
+            this.reqCancel()    // 取消
+        }
+    },
     // 请求收藏
     reqCol: function () {
         if (this.data.lock && this.data.data.collected == 'false'){
@@ -96,34 +104,34 @@ Page({
     previewImage: function (e) {
         util.previewImage(e);
     },
-  //请求取消收藏
-  reqCancel: function () {
+    //请求取消收藏
+    reqCancel: function () {
 
-    if (this.data.lock && this.data.data.collected == 'true'){
- 
-      this.setData({
-        lock: false
-      })
-    if (this.data.newsId == -1) {
-      return;
+        if (this.data.lock && this.data.data.collected == 'true'){
+    
+        this.setData({
+            lock: false
+        })
+        if (this.data.newsId == -1) {
+        return;
 
-    }
-    var url = host.host + '/member/cancelcollectnews.html?newsId=' + this.data.newsId;
-    var that = this;
-    // cl.Load('加载中..')
-    util.httpsGetWithId(url, function (data) {
-        cl.Load(null)
-      
-      if (data.success) {
-       
-        that.refreshData()
+        }
+        var url = host.host + '/member/cancelcollectnews.html?newsId=' + this.data.newsId;
+        var that = this;
+        // cl.Load('加载中..')
+        util.httpsGetWithId(url, function (data) {
+            cl.Load(null)
         
-      }
-    },function(){
+        if (data.success) {
+        
+            that.refreshData()
+            
+        }
+        },function(){
 
-      },'请求取消收藏')
-    }
-  },
+        },'请求取消收藏')
+        }
+    },
 refreshData:function(){
   var url = host.host + '/news/details/' + this.data.newId + '.html?isAdd=' + false;
   var that = this;

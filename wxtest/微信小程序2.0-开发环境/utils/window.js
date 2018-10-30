@@ -19,6 +19,7 @@ const worldString = 'wx';
  * @todo 不友好兼容
  * 名称不同造成的不友好结构与代码
  */
+
 const wxAPI = { 
     // 测试用
     'downloadFile': {

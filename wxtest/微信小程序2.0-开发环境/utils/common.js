@@ -344,7 +344,8 @@ function accAdd(arg1, arg2) {
 }
 //检测输入文字是否合法
 function checkStr(str) {
-  var chinese = /^(\w|[\u4E00-\u9FA5,.;? ！。'’‘【】、，？+-~!@#$%^&*_\{\}])*$/;
+//   var chinese = /^(\w|[\u4E00-\u9FA5,.;? ！。'’‘【】、，？+-~!@#$%^&*_\{\}])*$/;
+  var chinese = /^(\w|[\u4E00-\u9FA5,.;? ！。'’‘【】、，？+-~!@#$%^&*_\{\}\r\n\\s])*$/;
   if (!chinese.test(str)) {
     return false;
   } else {

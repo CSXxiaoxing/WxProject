@@ -19,7 +19,6 @@
         <swiper-item>
             <view 
             data-phone="{{son.phone}}" 
-            bindtap="jump" 
             data-url="{{son.link}}" 
             data-url-t="{{son.webview}}"
             style="{{item.sonli[0].style}}" 
@@ -91,7 +90,6 @@
 
     <view 
     class='box3' 
-    bindtap="jump" 
     data-url="{{son.link}}" 
     data-url-t="{{son.webview}}" 
     data-phone="{{son.phone}}" 

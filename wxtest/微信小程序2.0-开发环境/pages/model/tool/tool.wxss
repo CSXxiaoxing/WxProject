@@ -151,19 +151,23 @@
 .theShare {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 0%;
     width: 100%;
     height: 100%;
+    transform: translateY(0%);
     /* 8 */
     z-index: 99999998;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* animation-timing-function: cubic-bezier(.1,.25,1,.25); */
+    /* animation-timing-function: ease-in; */
 }
 
 .theShare button{
     width: 100%;
     background: #fff;
+    border-radius: 0;
     border-bottom: 4rpx solid #ececec;
 }
 .theShare button:nth-last-of-type(2){
@@ -182,30 +186,26 @@
 }
 /* 海报 */
 .share-poster {
-    /* width: 80%; */
-    margin-top: 100rpx;
+    width: 80%;
+    margin-top: 40rpx;
     box-shadow: 0px 0rpx 10rpx 0px rgba(255, 255, 255, 0.425);
     box-sizing: border-box;
-
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
 	
 	display:inline-block;
 	cursor:pointer;
 	font-family:Arial;
 	font-weight:bold;
     text-decoration:none;
-    /* background-image: linear-gradient(90deg,#fff 49.9%,#000 50%); */
-    /* -webkit-animation: animate3 10s infinite; */
+
     position: relative;
-    height: 160rpx;
-    border-radius: 30rpx;
+    height: 100rpx;
+    border-radius: 15rpx;
     overflow: hidden;
     
     border: 6rpx solid #000;
     box-shadow: 0px 0px 20rpx 0px rgba(255, 255, 255, 0.65);
     animation: animate2 8s infinite;
-    width: 400rpx;
+    /* width: 400rpx; */
 }
 @keyframes animate2 {
     0% {
@@ -226,7 +226,7 @@
     background: rgba(255, 255, 255, 0);
     font-size: 38rpx;
     height: 80rpx;
-    line-height: 160rpx;
+    line-height: 100rpx;
     text-align: center;
 	color:#ffffff;
     mix-blend-mode: difference;
@@ -271,7 +271,7 @@
     width: 80%;
     height: 60%;
     border-radius: 30rpx;
-    margin-top: -2%;
+    margin-top: -12%;
 }
 .poster-mark {
     position: absolute;
@@ -369,58 +369,58 @@
 /* 点击图片的动态效果 */
     /* transform-style: preserve-3d; */
 	/* transform: perspective(800px); */
-.test02 {
-	position: relative;
-	display: inline-block;
-	padding: 1.5em 1.5em;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-	user-select: none;
-    color: white;
+    .test02 {
+        position: relative;
+        display: inline-block;
+        padding: 1.5em 1.5em;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        color: white;
+        
+        transition: box-shadow .5s ease, transform .2s ease; 
+        will-change: transform;
+        box-shadow: 0 2px 10rpx rgba(0, 0, 0, .2), 0 0px 5rpx rgba(0, 0, 0, .2);
+        transform:
+            translateY(var(--ty, 0))
+            rotateX(var(--rx, 0))
+            rotateY(var(--ry, 0))
+            translateZ(var(--tz, -12px));
+    }
+    /* .test02::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        border-radius: 4px;
+        transition: box-shadow .5s ease, transform .2s ease; 
+        will-change: transform;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+        transform:
+            translateY(var(--ty, 0))
+            rotateX(var(--rx, 0))
+            rotateY(var(--ry, 0))
+            translateZ(var(--tz, -12px));
+    } */
     
-    transition: box-shadow .5s ease, transform .2s ease; 
-    will-change: transform;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    transform:
-        translateY(var(--ty, 0))
-        rotateX(var(--rx, 0))
-        rotateY(var(--ry, 0))
-        translateZ(var(--tz, -12px));
-}
-/* .test02::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
-    border-radius: 4px;
-    transition: box-shadow .5s ease, transform .2s ease; 
-    will-change: transform;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-    transform:
-        translateY(var(--ty, 0))
-        rotateX(var(--rx, 0))
-        rotateY(var(--ry, 0))
-        translateZ(var(--tz, -12px));
-} */
-
-.test02:hover::before {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
-}
-
-.test02::after {
-    position: relative;
-    display: inline-block;
-    content: attr(data-title);
-    transition: transform .2s ease; 
-    font-weight: bold;
-    letter-spacing: .01em;
-    will-change: transform;
-    transform:
-        translateY(var(--ty, 0))
-        rotateX(var(--rx, 0))
-        rotateY(var(--ry, 0));
-}
+    .test02:hover::before {
+        box-shadow: 0 5rpx 15rpx rgba(0, 0, 0, .3);
+    }
+    
+    .test02::after {
+        position: relative;
+        display: inline-block;
+        content: attr(data-title);
+        transition: transform .2s ease; 
+        font-weight: bold;
+        letter-spacing: .01em;
+        will-change: transform;
+        transform:
+            translateY(var(--ty, 0))
+            rotateX(var(--rx, 0))
+            rotateY(var(--ry, 0));
+    }

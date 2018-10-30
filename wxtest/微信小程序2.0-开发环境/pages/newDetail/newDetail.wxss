@@ -70,10 +70,6 @@
   
   font-size: 30rpx;
 }
-.isCol{
-    border: 1px rgb(248, 69, 65) solid;
-    color: rgb(248, 69, 65);
-}
 
 .btn-icon{
 

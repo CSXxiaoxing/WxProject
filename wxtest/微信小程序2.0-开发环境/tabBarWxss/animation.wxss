@@ -1,0 +1,155 @@
+/* 点赞飘出的小心心 */
+.likeHeart{ 
+    /* margin:200px auto; */
+    width: 40rpx;
+    height: 40rpx;
+    transform:translateZ(0);
+    color: #aaa;
+    /* font-size: 3em; */
+    font-size: 40rpx;
+    line-height: 40rpx;
+    text-align: center;
+    cursor: pointer;
+    position:relative;
+    transition: all .3s ease;
+}
+.likeHeart:hover{
+    animation: pulse .6s linear;
+}
+
+.likeHeart::before{
+    content: "❤";
+    position: absolute;
+    color: rgb(248, 69, 65);
+    opacity:0;
+}
+.likeHeart.happy{ 
+    color: rgb(248, 69, 65);
+}
+.likeHeart.happy::before{
+    opacity:0; 
+    transform: translateY(-30rpx) rotateZ(5deg);
+    animation: fly 1s ease;
+}
+.likeHeart.broken{
+    color: #aaa;
+    position:relative;
+    transition: all .3s ease;
+}
+.likeHeart.broken::before, .likeHeart.broken::after{
+    content: "🖤";
+    opacity:1; 
+    color: #ccc;
+    position:absolute;
+    top:-150rpx;
+    transform:  scale(3) rotateZ(0);
+}
+.likeHeart.broken::before{
+    clip: rect(0, 20rpx, 200rpx, 0);
+    animation: break-left 1s ease forwards;
+}
+.likeHeart.broken::after{
+    clip: rect(0, 50rpx, 200rpx, 25rpx);
+    animation: break-right 1s ease forwards;
+}
+@keyframes pulse{
+    50%{
+        transform: scale(1.1);
+    }
+    }
+    @keyframes fly{
+    0%{
+        opacity:0; transform: translateY(-20rpx) rotateZ(15deg);
+    }
+    50%{
+        opacity:.75;
+        transform: scale(4) translateY(-30rpx) rotateZ(-15deg);
+    }
+    100%{
+        opacity:0;
+        transform: scale(4) translateY(-50rpx) rotateZ(15deg);
+    }
+}
+@keyframes break-left{
+    0%{
+        opacity:1;
+        transform: scale(3) rotateZ(0);
+    }
+    20%{
+        opacity:.5;
+        transform: scale(3) translateX(-10rpx) rotateZ(-20deg) translateY(0) ;
+    }
+    50%{
+    opacity:.5;
+        transform: scale(3) translateX(-10rpx) rotateZ(-20deg) translateY(0) ;
+    }
+    100%{
+        opacity:0;
+        transform: scale(3) translateX(-30rpx) rotateZ(-25deg) translateY(50rpx);
+
+    }
+}
+@keyframes break-right{
+    0%{
+        opacity:1;
+        transform: scale(3) rotateZ(0);
+    }
+    20%{
+        opacity:.5;
+        transform: scale(3) translateX(10rpx) rotateZ(20deg) translateY(0) ;
+    }
+    50%{
+    opacity:.5;
+        transform: scale(3) translateX(10rpx) rotateZ(20deg) translateY(0) ;
+    }
+    100%{
+        opacity:0;
+        transform: scale(3) translateX(30rpx) rotateZ(25deg) translateY(50rpx);
+    }
+}
+
+
+
+/* 点击分享时mark出现动效 （tool） */
+@-webkit-keyframes toolMark {
+    0% {
+        transform: translateY(-100%);
+    }
+    55%,80%,96%,100% {
+        transform: translateY(0%);
+        animation-timing-function: ease-out;
+    }
+    68% {
+        transform: translateY(-10%);
+        animation-timing-function: ease-in;
+    }
+    90% {
+        transform: translateY(-3%);
+        animation-timing-function: ease-in;
+    }
+    98% {
+        transform: translateY(-1%);
+        animation-timing-function: ease-in;
+    }
+}
+@keyframes toolMark {
+    0% {
+        transform: translateY(-100%);
+    }
+    55%,80%,96%,100% {
+        transform: translateY(0%);
+        animation-timing-function: ease-out;
+    }
+    68% {
+        transform: translateY(-10%);
+        animation-timing-function: ease-in;
+    }
+    90% {
+        transform: translateY(-3%);
+        animation-timing-function: ease-in;
+    }
+    98% {
+        transform: translateY(-1%);
+        animation-timing-function: ease-in;
+    }
+}

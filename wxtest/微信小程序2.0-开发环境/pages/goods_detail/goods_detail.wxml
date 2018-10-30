@@ -87,7 +87,7 @@
         </block>
     </block>  -->
         
-        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+        <template wx:if="{{currentTab==0}}" is="wxParse" data="{{wxParseData:article.nodes}}"/>
 
     <!--商品规格-->
     <view class="goods_para_content" hidden="{{currentTab!=1}}">
@@ -433,7 +433,7 @@
 
     <view style="height:108rpx;"></view> -->
 
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <template wx:if="{{currentTab==0}}" is="wxParse" data="{{wxParseData:article.nodes}}"/>
     <!--商品咨询-->
 
     <!-- <view class="bottom_btns">

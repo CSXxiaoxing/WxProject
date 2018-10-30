@@ -152,7 +152,7 @@ Page({
   },
   jumpToAddEval: function (e) {
     
-    let goodsImg = e.currentTarget.dataset.goodsimg
+    let goodsImg = e.currentTarget.dataset.goodsimg.split("?")[0]
     let goodsName = e.currentTarget.dataset.goodsname
     let orderSn = e.currentTarget.dataset.ordersn
     let productId = e.currentTarget.dataset.productid
@@ -162,7 +162,7 @@ Page({
     util.navigateTo(url)
   },
   jumpToEvalDetail: function (e) {
-    let goodsImg = e.currentTarget.dataset.goodsimg
+    let goodsImg = e.currentTarget.dataset.goodsimg.split("?")[0]
     let goodsName = e.currentTarget.dataset.goodsname
     let orderSn = e.currentTarget.dataset.ordersn
     let productId = e.currentTarget.dataset.productid

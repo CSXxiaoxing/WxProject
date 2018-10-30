@@ -11,4 +11,5 @@ import storage from "storage";
 // 降低转移成本
 import window from "window";
 
+
 export { host,util,common,pageStaticData,dict,cl,onfire,window,WxParse,storage, }

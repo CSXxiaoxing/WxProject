@@ -212,7 +212,7 @@
 
     <import src="../../../wxParse/wxParse.wxml"/>
     <!-- 富文本 -->
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+    <template wx:if="{{currentTab==0}}" is="wxParse" data="{{wxParseData:article.nodes}}"/>
 
   <view style="height:108rpx;"></view>
   <!--商品咨询-->

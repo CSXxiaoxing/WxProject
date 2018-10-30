@@ -15,7 +15,6 @@ Page({
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
     util.checkSsId(function () {
-
       this.reqService()
     }.bind(this))
   
@@ -39,7 +38,7 @@ Page({
   // 请求服务器
   reqService:function(){
     var that = this;
-
+    
     var url = host.host + '/member/exchange.html';
     util.showLoading('加载中..');
     util.httpsGetWithId(url,function(data){

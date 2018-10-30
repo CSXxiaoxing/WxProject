@@ -1,5 +1,37 @@
 {
 	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": [
+			{
+				"type": "suffix",
+				"value": "*.scss"
+			},
+			{
+				"type": "suffix",
+				"value": "*.wxss.map"
+			},
+			{
+				"type": "file",
+				"value": "转移须知.js"
+			},
+			{
+				"type": "file",
+				"value": ".vscode"
+			},
+			{
+				"type": "file",
+				"value": ".tea"
+			},
+			{
+				"type": "file",
+				"value": ".git"
+			},
+			{
+				"type": "file",
+				"value": "ext.json"
+			}
+		]
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -35,19 +67,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
-					"name": "fx_my  我的分销",
-					"pathName": "pages/fx/fx_my/fx_my",
+					"name": "我的退货",
+					"pathName": "pages/market/my_backGoods/my_backGoods",
 					"query": "",
 					"scene": "1011"
 				},
 				{
 					"id": 1,
-					"name": "提现记录",
-					"pathName": "pages/fx/fx_record/fx_record",
+					"name": "订单详情",
+					"pathName": "pages/indent_details/indent_details",
 					"query": "",
 					"scene": "1011"
 				},
@@ -60,9 +92,9 @@
 				},
 				{
 					"id": 3,
-					"name": "fx_apply  分销申请 完成",
-					"pathName": "pages/fx/fx_apply/fx_apply",
-					"query": "type=我的用户",
+					"name": "新闻",
+					"pathName": "pages/market/add_evaluate/add_evaluate",
+					"query": "newId=196",
 					"scene": "1011"
 				},
 				{

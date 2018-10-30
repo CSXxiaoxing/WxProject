@@ -36,8 +36,12 @@ var debugMode = false;
 
 
 // host = 'http://192.168.30.172:8809/';
+// wx470064507b39c701
+// host = 'https://test.wechat.cangluxmt.com/wechat/'; 
 // agentId = 880; 
 // miniappId = 275;
+// agentId = 799; 
+// miniappId = 327;
 
 
 // 约定的get数据请求方法

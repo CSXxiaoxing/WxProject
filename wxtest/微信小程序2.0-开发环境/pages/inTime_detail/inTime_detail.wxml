@@ -57,7 +57,7 @@
 </view>
 <!-- 富文本 -->
 <import src="../../wxParse/wxParse.wxml"/>
-<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+<template wx:if="{{currentTab==0}}" is="wxParse" data="{{wxParseData:article.nodes}}"/>
 <!--底部按钮-->
 <view class="bottom_btn">
   <text catchtap="jumpToGoodDetail" class="compare act3">对比原商品</text>
